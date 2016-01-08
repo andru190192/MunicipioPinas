@@ -1,0 +1,54 @@
+* { margin: 0px;
+padding: 0px; outline: 0;
+}
+#menu {  text-align: center;
+font-size: 15px;/*tamaño de la letra*/
+width: 990px;
+margin: 0px auto;
+font-family: 'Roboto Condensed', sans-serif;/*con esta linea se aplica el estilo de letra que se agrego en plantilla base*/
+/*font-family: 'Bubblegum Sans';/*con esta linea se aplica el estilo de letra que se agrego en plantilla base*/
+}
+#menu ul { list-style-type: none;}
+#menu ul li.nivel1 { float: left;
+
+
+}
+#menu ul li a {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background-color: #CCC;
+	position: relative;
+	padding-top: 6px;
+	padding-right: 58px;/*el espacio despues de la ultima letra del menu*/
+	padding-bottom: 6px;
+	padding-left: 58px;/*el espacio antes de la primera letra del menu*/
+}
+#menu ul li:hover {position: relative;
+}
+#menu ul li a:hover, #menu ul li:hover a.nivel1 {background-color: #999;/*color cuando pasa el mause por el menu*/
+color: #000;
+position: relative;
+}
+#menu ul li a.nivel1 {display: block!important;display: none;
+position: relative;
+}
+#menu ul li ul {display: none; z-index:1000
+}
+#menu ul li a:hover ul, #menu ul li:hover ul {display: block;
+position: absolute;left: 0px;
+}
+#menu ul li ul li a {
+	width: 160px;
+	padding: 6px 0px 6px 61px;/*alinea el texto del submenu arriba - derecha - abajo - izquierda este tiene que ser igual al del menu */
+	border-top-color: #000;
+	text-align: left;
+}
+#menu ul li ul li a:hover {border-top-color: #000;
+position: relative;
+}
+table.falsa {border-collapse:collapse;
+border:0px;
+float: left;
+position: relative;
+}

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_DatosSlider" value="name:idcontador;datatype:int,name:strimagengrande;datatype:string,name:strimagenpequena;datatype:string,name:strtitulo;datatype:string,name:strsubtitulo;datatype:string,name:strmenu;datatype:string,name:strlink;datatype:string,name:intorden;datatype:int,name:intestado;datatype:int" />
+</info>

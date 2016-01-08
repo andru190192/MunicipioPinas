@@ -1,0 +1,1 @@
+<div class="logo"><a href="index.php"><img src="images/logo.png" width="440" height="100" alt="pinas_arqueologica" /></a></div>
