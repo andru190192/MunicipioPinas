@@ -1,0 +1,4 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+graygrids.com	TRUE	/	FALSE	1999999999	PHPSESSID	f7n4gb6fbje9atofe3d5d5agj2
+

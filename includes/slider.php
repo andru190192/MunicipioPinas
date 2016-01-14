@@ -1,7 +1,7 @@
 <?php require_once('Connections/arqueologia.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -12,7 +12,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -66,13 +66,13 @@ $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
           <?php $contador=1; ?>
 	        <?php do { ?>
             <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<?php echo $contador ?>"><a href="#fragment-<?php echo $contador ?>"><img src="images/slider/<?php echo $row_DatosSlider['strimagenpequena']; ?>" alt="" /><span><?php echo $row_DatosSlider['strmenu']; ?></span></a></li>
-	          <?php 
+	          <?php
 			  $contador++;
 			  } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
-	       
+
 	      </ul>
 <?php
- mysql_data_seek($DatosSlider, 0); 
+ mysql_data_seek($DatosSlider, 0);
  $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
 	    <!-- First Content -->
         <?php $contador=1; ?>
@@ -84,7 +84,7 @@ $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
 	          <p><?php echo $row_DatosSlider['strsubtitulo']; ?><a href="<?php echo $row_DatosSlider['strlink']; ?>" >Leer m&aacute;s</a></p>
 	          </div>
 	        </div>
-	      <?php 
+	      <?php
 		    $contador++;
 			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
 

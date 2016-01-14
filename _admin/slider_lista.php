@@ -79,7 +79,7 @@ function asegurar()
       <?php do { ?>
       <tr>
           <td><?php echo $row_DatosSlider['strtitulo']; ?></td>
-          <td><img src="../images/slider/{DatosSlider.strimagenpequena}" width="80" height="50" /></td>
+          <td><img src="../images/slider/<?php echo $row_DatosSlider['strimagenpequena']; ?>" width="80" height="50" /></td>
           <td><?php echo $row_DatosSlider['intorden']; ?></td>
           <td><?php 
 		  if ($row_DatosSlider['intestado']== 1) 
