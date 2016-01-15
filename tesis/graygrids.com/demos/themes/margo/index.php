@@ -168,45 +168,27 @@
                 <a class="active" href="index.php">Inicio</a>
               </li>
               <li>
-                <a href="about.html">Historia</a>
-                <ul class="dropdown">
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="services.html">Services</a></li>
-                  <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                  <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                  <li><a href="404.html">404 Page</a></li>
-                </ul>
+                <a href="404.html">Historia</a>
               </li>
               <li>
                 <a href="#">Lugares</a>
                 <ul class="dropdown">
-                  <li><a href="tabs.html">Tabs</a></li>
-                  <li><a href="buttons.html">Buttons</a></li>
-                  <li><a href="action-box.html">Action Box</a></li>
-                  <li><a href="testimonials.html">Testimonials</a></li>
-                  <li><a href="latest-posts.html">Latest Posts</a></li>
-                  <li><a href="latest-projects.html">Latest Projects</a></li>
-                  <li><a href="pricing.html">Pricing Tables</a></li>
-                  <li><a href="https://graygrids.com/">Animated Graphs</a></li>
-                  <li><a href="accordion-toggles.html">Accordion & Toggles</a></li>
+                  <li><a href="404.html">Pi&ntilde;as</a></li>
+                  <li><a href="404.html">Zaruma</a></li>
+                  <li><a href="404.html">Portobelo</a></li>
                 </ul>
               </li>
               <li>
                 <a href="portfolio-3.html">Videos</a>
                 <ul class="dropdown">
-                  <li><a href="portfolio-2.html">2 Columns</a></li>
-                  <li><a href="portfolio-3.html">3 Columns</a></li>
-                  <li><a href="portfolio-4.html">4 Columns</a></li>
-                  <li><a href="single-project.html">Single Project</a></li>
+                  <li><a href="404.html">Video 1</a></li>
+                  <li><a href="404.html">Video 2</a></li>
+                  <li><a href="404.html">Video 3</a></li>
+                  <li><a href="404.html">Video 4</a></li>
                 </ul>
               </li>
               <li>
                 <a href="blog.html">Blog</a>
-                <ul class="dropdown">
-                  <li><a href="blog.html">Blog - right Sidebar</a></li>
-                  <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-                  <li><a href="single-post.html">Blog Single Post</a></li>
-                </ul>
               </li>
               <li><a href="contact.php">Contactenos</a></li>
             </ul>
@@ -378,12 +360,12 @@
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated2">
-              <span><?php echo $row_DatosSlider['strtitulo']; ?><strong>Margo</strong></span>
+              <span>Pi&ntilde;as<strong> Arquel&oacute;gico</strong></span>
           </h2>
                 <h3 class="animated3">
-           <span>The ultimate aim of your business</span>
+           <span>Museo de El Gobierno Aut&oacute;nomo Descentralizado Municipal de Pi&ntilde;as</span>
        </h3>
-                <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Check Now</a></p>
+                <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Ver mas</a></p>
               </div>
             </div>
           </div>
@@ -399,12 +381,12 @@
                     <div class="slider-content">
                       <div class="col-md-12 text-center">
                         <h2 class="animated2">
-                      <span><?php echo $row_DatosSlider['strtitulo']; ?> <strong>Margo</strong></span>
+                      <span><?php echo $row_DatosSlider['strtitulo']; ?></span>
                   </h2>
                         <h3 class="animated3">
                    <span><?php echo $row_DatosSlider['strsubtitulo']; ?></span>
                </h3>
-                        <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Check Now</a></p>
+                        <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Ver mas</a></p>
                       </div>
                     </div>
                   </div>
@@ -442,7 +424,7 @@
                 <i class="fa fa-magic icon-medium-effect icon-effect-2"></i>
               </div>
               <div class="service-content">
-                <h4>High Quality Theme</h4>
+                <h4>Arte Contemporanea</h4>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
               </div>
             </div>
@@ -456,7 +438,7 @@
                 <i class="fa fa-eye icon-medium-effect icon-effect-2"></i>
               </div>
               <div class="service-content">
-                <h4>Retina Display Ready</h4>
+                <h4>Arqueolog&iacute;a</h4>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
               </div>
             </div>
@@ -470,7 +452,7 @@
                 <i class="fa fa-code icon-medium-effect icon-effect-1"></i>
               </div>
               <div class="service-content">
-                <h4>Clean Modern Code</h4>
+                <h4>Paleontológia</h4>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
               </div>
             </div>
@@ -484,7 +466,7 @@
                 <i class="fa fa-rocket icon-medium-effect icon-effect-1"></i>
               </div>
               <div class="service-content">
-                <h4>Fast & Light Theme</h4>
+                <h4>Pre-Hisp&aacute;nica</h4>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
               </div>
             </div>
@@ -506,7 +488,7 @@
             <div class="portfolio-item item">
               <div class="portfolio-border">
                 <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://vimeo.com/78468485">
+                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=zMOXOQvNAQY">
                     <div class="thumb-overlay"><i class="fa fa-play"></i></div>
                     <img alt="" src="images/portfolio-1/1.png" />
                   </a>
