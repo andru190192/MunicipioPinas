@@ -1,14 +1,12 @@
 <!doctype html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
-<html lang="en">
+<html lang="es">
 
-
-<!-- Mirrored from graygrids.com/demos/themes/margo/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Jan 2016 17:47:32 GMT -->
 <head>
 
   <!-- Basic -->
-  <title>Margo | Contact</title>
+  <title>Pi&ntilde;as Arqueologico | Contacto</title>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -17,8 +15,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Page Description and Author -->
-  <meta name="description" content="Margo - Responsive HTML5 Template">
-  <meta name="author" content="iThemesLab">
+  <meta name="description" content="Sitio web sobre la arqueologia de pinas">
+  <meta name="author" content="Jorge Jaen">
 
 
   <!-- Bootstrap CSS  -->
@@ -30,7 +28,7 @@
   <!-- Slicknav -->
   <link rel="stylesheet" type="text/css" href="css/slicknav.css" media="screen">
 
-  <!-- Margo CSS Styles  -->
+  <!-- CSS Styles  -->
   <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 
   <!-- Responsive CSS Styles  -->
@@ -51,7 +49,7 @@
   <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
 
 
-  <!-- Margo JS  -->
+  <!-- JS  -->
   <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="js/jquery.migrate.js"></script>
   <script type="text/javascript" src="js/modernizrr.js"></script>
@@ -92,11 +90,11 @@
             <div class="col-md-6">
               <!-- Start Contact Info -->
               <ul class="contact-details">
-                <li><a href="#"><i class="fa fa-map-marker"></i> House-54/A, London, UK</a>
+                <li><a href="#"><i class="fa fa-map-marker"></i> Pi&ntilde;as, El Oro, Ecuador</a>
                 </li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> info@yourcompany.com</a>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> municipio@pinas.gob.ec</a>
                 </li>
-                <li><a href="#"><i class="fa fa-phone"></i> +12 345 678 000</a>
+                <li><a href="#"><i class="fa fa-phone"></i> 593 2976 173</a>
                 </li>
               </ul>
               <!-- End Contact Info -->
@@ -151,7 +149,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index-2.html"><img alt="" src="images/margo.png"></a>
+            <a class="navbar-brand" href="index.php"><img style="width: 114px;height: 23px;" alt="logo" src="images/logo.png"></a>
           </div>
           <div class="navbar-collapse collapse">
             <!-- Stat Search -->
@@ -159,7 +157,7 @@
               <a class="show-search"><i class="fa fa-search"></i></a>
               <div class="search-form">
                 <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                  <input type="text" value="" name="s" id="s" placeholder="Search the site...">
+                  <input type="text" value="" name="s" id="s" placeholder="Buscar en el sitio">
                 </form>
               </div>
             </div>
@@ -167,20 +165,10 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="index-2.html">Home</a>
-                <ul class="dropdown">
-                  <li><a href="index-2.html">Home Main Version</a></li>
-                  <li><a href="index-01.html">Home Version 1</a></li>
-                  <li><a href="index-02.html">Home Version 2</a></li>
-                  <li><a href="index-03.html">Home Version 3</a></li>
-                  <li><a href="index-04.html">Home Version 4</a></li>
-                  <li><a href="index-05.html">Home Version 5</a></li>
-                  <li><a href="index-06.html">Home Version 6</a></li>
-                  <li><a href="index-07.html">Home Version 7</a></li>
-                </ul>
+                <a class="active" href="index.php">Inicio</a>
               </li>
               <li>
-                <a href="about.html">Pages</a>
+                <a href="about.html">Historia</a>
                 <ul class="dropdown">
                   <li><a href="about.html">About</a></li>
                   <li><a href="services.html">Services</a></li>
@@ -190,7 +178,7 @@
                 </ul>
               </li>
               <li>
-                <a href="#">Shortcodes</a>
+                <a href="#">Lugares</a>
                 <ul class="dropdown">
                   <li><a href="tabs.html">Tabs</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
@@ -199,11 +187,12 @@
                   <li><a href="latest-posts.html">Latest Posts</a></li>
                   <li><a href="latest-projects.html">Latest Projects</a></li>
                   <li><a href="pricing.html">Pricing Tables</a></li>
+                  <li><a href="https://graygrids.com/">Animated Graphs</a></li>
                   <li><a href="accordion-toggles.html">Accordion & Toggles</a></li>
                 </ul>
               </li>
               <li>
-                <a href="portfolio-3.html">Portfolio</a>
+                <a href="portfolio-3.html">Videos</a>
                 <ul class="dropdown">
                   <li><a href="portfolio-2.html">2 Columns</a></li>
                   <li><a href="portfolio-3.html">3 Columns</a></li>
@@ -219,7 +208,7 @@
                   <li><a href="single-post.html">Blog Single Post</a></li>
                 </ul>
               </li>
-              <li><a class="active" href="contact.html">Contact</a></li>
+              <li><a href="contact.php">Contactenos</a></li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -228,25 +217,7 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a href="index-2.html">Home</a>
-            <ul class="dropdown">
-              <li><a href="index-2.html">Home Main Version</a>
-              </li>
-              <li><a href="index-01.html">Home Version 1</a>
-              </li>
-              <li><a href="index-02.html">Home Version 2</a>
-              </li>
-              <li><a href="index-03.html">Home Version 3</a>
-              </li>
-              <li><a href="index-04.html">Home Version 4</a>
-              </li>
-              <li><a href="index-05.html">Home Version 5</a>
-              </li>
-              <li><a href="index-06.html">Home Version 6</a>
-              </li>
-              <li><a href="index-07.html">Home Version 7</a>
-              </li>
-            </ul>
+            <a class="active" href="index-04.html">Inicio</a>
           </li>
           <li>
             <a href="about.html">Pages</a>
@@ -280,6 +251,8 @@
               </li>
               <li><a href="pricing.html">Pricing Tables</a>
               </li>
+              <li><a href="https://graygrids.com/">Animated Graphs</a>
+              </li>
               <li><a href="accordion-toggles.html">Accordion & Toggles</a>
               </li>
             </ul>
@@ -309,7 +282,7 @@
             </ul>
           </li>
           <li>
-            <a class="active" href="contact.html">Contact</a>
+            <a href="contact.html">Contact</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
@@ -321,7 +294,7 @@
     <!-- End Header -->
 
     <!-- Start Map -->
-    <div id="map" data-position-latitude="23.858092" data-position-longitude="90.262181"></div>
+    <div id="map" data-position-latitude="-3.679741786776871" data-position-longitude="-79.68237893131413"></div>
     <script>
       (function($) {
         $.fn.CustomMap = function(options) {
@@ -334,9 +307,9 @@
               latitude: posLatitude,
               longitude: posLongitude
             },
-            text: '<div class="map-popup"><h4>Web Development | ZoOm-Arts</h4><p>A web development blog for all your HTML5 and WordPress needs.</p></div>',
+            text: '<div class="map-popup"><h4>Pi&ntilde;as Arqueol&oacute;gico</h4><p>Museo arqueol&oacute;gico de las ciudad de Pi&ntilde;as.</p></div>',
             icon_url: $('#map').data('marker-img'),
-            zoom: 15
+            zoom: 16
           }, options);
 
           var coords = new google.maps.LatLng(settings.home.latitude, settings.home.longitude);
@@ -481,33 +454,33 @@
           <div class="col-md-8">
 
             <!-- Classic Heading -->
-            <h4 class="classic-title"><span>Contact Us</span></h4>
+            <h4 class="classic-title"><span>Contactenos</span></h4>
 
             <!-- Start Contact Form -->
             <form role="form" class="contact-form" id="contact-form" method="post">
               <div class="form-group">
                 <div class="controls">
-                  <input type="text" placeholder="Name" name="name">
+                  <input type="text" placeholder="Nombre" name="name">
                 </div>
               </div>
               <div class="form-group">
                 <div class="controls">
-                  <input type="email" class="email" placeholder="Email" name="email">
+                  <input type="email" class="email" placeholder="E-mail" name="email">
                 </div>
               </div>
               <div class="form-group">
                 <div class="controls">
-                  <input type="text" class="requiredField" placeholder="Subject" name="subject">
+                  <input type="text" class="requiredField" placeholder="Asunto" name="subject">
                 </div>
               </div>
 
               <div class="form-group">
 
                 <div class="controls">
-                  <textarea rows="7" placeholder="Message" name="message"></textarea>
+                  <textarea rows="7" placeholder="Mensaje" name="message"></textarea>
                 </div>
               </div>
-              <button type="submit" id="submit" class="btn-system btn-large">Send</button>
+              <button style="margin-bottom:20px;" type="submit" id="submit" class="btn-system btn-large">Enviar</button>
               <div id="success" style="color:#34495e;"></div>
             </form>
             <!-- End Contact Form -->
@@ -517,32 +490,32 @@
           <div class="col-md-4">
 
             <!-- Classic Heading -->
-            <h4 class="classic-title"><span>Information</span></h4>
+            <h4 class="classic-title"><span>Informaci&oacute;n</span></h4>
 
             <!-- Some Info -->
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</p>
+            <p>Para cualquier consulta puede contactarnos con la siguiente informaci&oacute;n.</p>
 
             <!-- Divider -->
             <div class="hr1" style="margin-bottom:10px;"></div>
 
             <!-- Info - Icons List -->
             <ul class="icons-list">
-              <li><i class="fa fa-globe">  </i> <strong>Address:</strong> 1234 Street Name, Bangladesh.</li>
-              <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong> info@yourcompany.com</li>
-              <li><i class="fa fa-mobile"></i> <strong>Phone:</strong> +12 345 678 001</li>
+              <li><i class="fa fa-road"></i> <strong>Direcci&oacute;n:</strong> 1234 Street Name, Bangladesh.</li>
+              <li><i class="fa fa-envelope-o"></i> <strong>E-mail:</strong> info@yourcompany.com</li>
+              <li><i class="fa fa-mobile"></i><strong> Celular:</strong> +12 345 678 001</li>
             </ul>
 
             <!-- Divider -->
             <div class="hr1" style="margin-bottom:15px;"></div>
 
             <!-- Classic Heading -->
-            <h4 class="classic-title"><span>Working Hours</span></h4>
+            <h4 class="classic-title"><span>Horarios de Atenci&oacute;n</span></h4>
 
             <!-- Info - List -->
-            <ul class="list-unstyled">
-              <li><strong>Monday - Friday</strong> - 9am to 5pm</li>
-              <li><strong>Saturday</strong> - 9am to 2pm</li>
-              <li><strong>Sunday</strong> - Closed</li>
+            <ul class="icons-list">
+              <li><i class="fa fa-clock-o"></i><strong>Lunes - Viernes</strong> - 9am a 5pm</li>
+              <li><i class="fa fa-clock-o"></i><strong>Sabado</strong> - 9am a 2pm</li>
+              <li><i class="fa fa-clock-o"></i><strong>Domingo</strong> - Cerrado</li>
             </ul>
 
           </div>
@@ -560,17 +533,17 @@
         <div class="row footer-widgets">
 
           <!-- Start Subscribe & Social Links Widget -->
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="footer-widget mail-subscribe-widget">
-              <h4>Get in touch<span class="head-line"></span></h4>
-              <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
+              <h4>Suscr&iacute;bete<span class="head-line"></span></h4>
+              <p>&Uacute;nete a nuestra lista de correo para estar al día y obtener notificaciones acerca de nuestros nuevos lanzamientos !</p>
               <form class="subscribe">
-                <input type="text" placeholder="mail@example.com">
-                <input type="submit" class="btn-system" value="Send">
+                <input type="text" placeholder="correo@ejemplo.com">
+                <input type="submit" class="btn-system" value="Enviar">
               </form>
             </div>
             <div class="footer-widget social-widget">
-              <h4>Follow Us<span class="head-line"></span></h4>
+              <h4>S&iacute;guenos<span class="head-line"></span></h4>
               <ul class="social-icons">
                 <li>
                   <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -609,96 +582,15 @@
           <!-- End Subscribe & Social Links Widget -->
 
 
-          <!-- Start Twitter Widget -->
-          <div class="col-md-3">
-            <div class="footer-widget twitter-widget">
-              <h4>Twitter Feed<span class="head-line"></span></h4>
-              <ul>
-                <li>
-                  <p><a href="#">@GrayGrids </a> Lorem ipsum dolor et, consectetur adipiscing eli.</p>
-                  <span>28 February 2014</span>
-                </li>
-                <li>
-                  <p><a href="#">@GrayGrids </a> Lorem ipsum dolor et, consectetur adipiscing eli.An Fusce eleifend aliquet nis application.</p>
-                  <span>26 February 2014</span>
-                </li>
-                <li>
-                  <p><a href="#">@GrayGrids </a> Lorem ipsum dolor et, consectetur adipiscing eli.</p>
-                  <span>28 February 2014</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- .col-md-3 -->
-          <!-- End Twitter Widget -->
-
-
-          <!-- Start Flickr Widget -->
-          <div class="col-md-3">
-            <div class="footer-widget flickr-widget">
-              <h4>Flicker Feed<span class="head-line"></span></h4>
-              <ul class="flickr-list">
-                <li>
-                  <a href="images/flickr-01.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-01.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-02.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-02.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-03.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-03.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-04.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-04.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-05.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-05.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-06.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-06.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-07.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-07.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-08.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-08.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-09.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-09.jpg">
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- .col-md-3 -->
-          <!-- End Flickr Widget -->
-
-
           <!-- Start Contact Widget -->
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="footer-widget contact-widget">
               <h4><img src="images/footer-margo.png" class="img-responsive" alt="Footer Logo" /></h4>
               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
               <ul>
-                <li><span>Phone Number:</span> +01 234 567 890</li>
-                <li><span>Email:</span> company@company.com</li>
-                <li><span>Website:</span> www.yourdomain.com</li>
+                <li><span>Direcci&oacute;n:</span> Pi&ntilde;as, El Oro, Ecuador</li>
+                <li><span>E-mail:</span> municipio@pinas.gob.ec</li>
+                <li><span>Sitio Web:</span> www.pinasarqueologico.com.ec</li>
               </ul>
             </div>
           </div>
@@ -712,15 +604,8 @@
         <!-- Start Copyright -->
         <div class="copyright-section">
           <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2014 Margo - All Rights Reserved</p>
-            </div>
-            <div class="col-md-6">
-              <ul class="footer-nav">
-                <li><a href="#">Sitemap</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
+            <div class="col-md-12">
+              <p>&copy; 2016 Jorge Jaen - Todos los derechos reservados</p>
             </div>
           </div>
         </div>
@@ -739,8 +624,8 @@
   <!-- Style Switcher -->
   <div class="switcher-box">
     <a class="open-switcher show-switcher"><i class="fa fa-cog fa-2x"></i></a>
-    <h4>Style Switcher</h4>
-    <span>12 Predefined Color Skins</span>
+    <h4>Configuraci&oacute;n de Estilos</h4>
+    <span>12 Colores definidos</span>
     <ul class="colors-list">
       <li>
         <a onClick="setActiveStyleSheet('blue'); return false;" title="Blue" class="blue"></a>
@@ -779,18 +664,18 @@
         <a onClick="setActiveStyleSheet('beige'); return false;" title="Biege" class="beige"></a>
       </li>
     </ul>
-    <span>Top Bar Color</span>
+    <span>Color de la Barra Superior</span>
     <select id="topbar-style" class="topbar-style">
-      <option value="1">Light (Default)</option>
+      <option value="1">Light (Por Defecto)</option>
       <option value="2">Dark</option>
       <option value="3">Color</option>
     </select>
-    <span>Layout Style</span>
+    <span>Estilo del Layout</span>
     <select id="layout-style" class="layout-style">
       <option value="1">Wide</option>
       <option value="2">Boxed</option>
     </select>
-    <span>Patterns for Boxed Version</span>
+    <span>Imagen para la versi&oacute;n Boxed</span>
     <ul class="bg-list">
       <li>
         <a href="#" class="bg1"></a>
@@ -854,6 +739,4 @@
 
 </body>
 
-
-<!-- Mirrored from graygrids.com/demos/themes/margo/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Jan 2016 17:47:33 GMT -->
 </html>

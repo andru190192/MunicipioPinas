@@ -3,12 +3,10 @@
 <!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
 <html lang="es">
 
-
-<!-- Mirrored from graygrids.com/demos/themes/margo/index-04.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Jan 2016 17:47:20 GMT -->
 <head>
 
   <!-- Basic -->
-  <title>Pi&nacute;as | Arqueol&oacute;gica</title>
+  <title>Pi&ntilde;as | Arqueol&oacute;gica</title>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -29,7 +27,7 @@
   <!-- Slicknav -->
   <link rel="stylesheet" type="text/css" href="css/slicknav.css" media="screen">
 
-  <!-- Margo CSS Styles  -->
+  <!-- CSS Styles  -->
   <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 
   <!-- Responsive CSS Styles  -->
@@ -53,7 +51,7 @@
   <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
 
 
-  <!-- Margo JS  -->
+  <!-- JS  -->
   <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="js/jquery.migrate.js"></script>
   <script type="text/javascript" src="js/modernizrr.js"></script>
@@ -92,11 +90,11 @@
             <div class="col-md-6">
               <!-- Start Contact Info -->
               <ul class="contact-details">
-                <li><a href="#"><i class="fa fa-map-marker"></i> House-54/A, London, UK</a>
+                <li><a href="#"><i class="fa fa-map-marker"></i> Pi&ntilde;as, El Oro, Ecuador</a>
                 </li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> info@yourcompany.com</a>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> municipio@pinas.gob.ec</a>
                 </li>
-                <li><a href="#"><i class="fa fa-phone"></i> +12 345 678 000</a>
+                <li><a href="#"><i class="fa fa-phone"></i> 593 2976 173</a>
                 </li>
               </ul>
               <!-- End Contact Info -->
@@ -151,7 +149,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index-04.html"><img alt="" src="images/margo.png"></a>
+            <a class="navbar-brand" href="index.php"><img style="width: 114px;height: 23px;" alt="logo" src="images/logo.png"></a>
           </div>
           <div class="navbar-collapse collapse">
             <!-- Stat Search -->
@@ -159,7 +157,7 @@
               <a class="show-search"><i class="fa fa-search"></i></a>
               <div class="search-form">
                 <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                  <input type="text" value="" name="s" id="s" placeholder="Search the site...">
+                  <input type="text" value="" name="s" id="s" placeholder="Buscar en el sitio">
                 </form>
               </div>
             </div>
@@ -167,10 +165,10 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a class="active" href="index-04.html">Inicio</a>
+                <a class="active" href="index.php">Inicio</a>
               </li>
               <li>
-                <a href="about.html">Pages</a>
+                <a href="about.html">Historia</a>
                 <ul class="dropdown">
                   <li><a href="about.html">About</a></li>
                   <li><a href="services.html">Services</a></li>
@@ -180,7 +178,7 @@
                 </ul>
               </li>
               <li>
-                <a href="#">Shortcodes</a>
+                <a href="#">Lugares</a>
                 <ul class="dropdown">
                   <li><a href="tabs.html">Tabs</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
@@ -194,7 +192,7 @@
                 </ul>
               </li>
               <li>
-                <a href="portfolio-3.html">Portfolio</a>
+                <a href="portfolio-3.html">Videos</a>
                 <ul class="dropdown">
                   <li><a href="portfolio-2.html">2 Columns</a></li>
                   <li><a href="portfolio-3.html">3 Columns</a></li>
@@ -210,7 +208,7 @@
                   <li><a href="single-post.html">Blog Single Post</a></li>
                 </ul>
               </li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.php">Contactenos</a></li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -368,6 +366,8 @@
           <li data-target="#main-slide" data-slide-to="0" class="active"></li>
           <li data-target="#main-slide" data-slide-to="1"></li>
           <li data-target="#main-slide" data-slide-to="2"></li>
+          <li data-target="#main-slide" data-slide-to="3"></li>
+          <li data-target="#main-slide" data-slide-to="4"></li>
         </ol>
         <!--/ Indicators end-->
 
@@ -912,17 +912,17 @@
         <div class="row footer-widgets">
 
           <!-- Start Subscribe & Social Links Widget -->
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="footer-widget mail-subscribe-widget">
-              <h4>Get in touch<span class="head-line"></span></h4>
-              <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
+              <h4>Suscr&iacute;bete<span class="head-line"></span></h4>
+              <p>&Uacute;nete a nuestra lista de correo para estar al día y obtener notificaciones acerca de nuestros nuevos lanzamientos !</p>
               <form class="subscribe">
-                <input type="text" placeholder="mail@example.com">
-                <input type="submit" class="btn-system" value="Send">
+                <input type="text" placeholder="correo@ejemplo.com">
+                <input type="submit" class="btn-system" value="Enviar">
               </form>
             </div>
             <div class="footer-widget social-widget">
-              <h4>Follow Us<span class="head-line"></span></h4>
+              <h4>S&iacute;guenos<span class="head-line"></span></h4>
               <ul class="social-icons">
                 <li>
                   <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -961,96 +961,15 @@
           <!-- End Subscribe & Social Links Widget -->
 
 
-          <!-- Start Twitter Widget -->
-          <div class="col-md-3">
-            <div class="footer-widget twitter-widget">
-              <h4>Twitter Feed<span class="head-line"></span></h4>
-              <ul>
-                <li>
-                  <p><a href="#">@GrayGrids </a> Lorem ipsum dolor et, consectetur adipiscing eli.</p>
-                  <span>28 February 2014</span>
-                </li>
-                <li>
-                  <p><a href="#">@GrayGrids </a> Lorem ipsum dolor et, consectetur adipiscing eli.An Fusce eleifend aliquet nis application.</p>
-                  <span>26 February 2014</span>
-                </li>
-                <li>
-                  <p><a href="#">@GrayGrids </a> Lorem ipsum dolor et, consectetur adipiscing eli.</p>
-                  <span>28 February 2014</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- .col-md-3 -->
-          <!-- End Twitter Widget -->
-
-
-          <!-- Start Flickr Widget -->
-          <div class="col-md-3">
-            <div class="footer-widget flickr-widget">
-              <h4>Flicker Feed<span class="head-line"></span></h4>
-              <ul class="flickr-list">
-                <li>
-                  <a href="images/flickr-01.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-01.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-02.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-02.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-03.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-03.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-04.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-04.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-05.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-05.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-06.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-06.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-07.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-07.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-08.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-08.jpg">
-                  </a>
-                </li>
-                <li>
-                  <a href="images/flickr-09.jpg" class="lightbox">
-                    <img alt="" src="images/flickr-09.jpg">
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- .col-md-3 -->
-          <!-- End Flickr Widget -->
-
-
           <!-- Start Contact Widget -->
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="footer-widget contact-widget">
-              <h4><img src="images/footer-margo.png" class="img-responsive" alt="Footer Logo" /></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <h4>Pi&ntilde;as Arqueol&oacute;gico<span class="head-line"></span></h4>
+              <p>Es un proyecto de el Gobierno Aut&oacute;nomo Descentralizado Municipal de Pi&ntilde;as</p>
               <ul>
-                <li><span>Phone Number:</span> +01 234 567 890</li>
-                <li><span>Email:</span> company@company.com</li>
-                <li><span>Website:</span> www.yourdomain.com</li>
+                <li><span>Direcci&oacute;n:</span> Pi&ntilde;as, El Oro, Ecuador</li>
+                <li><span>E-mail:</span> municipio@pinas.gob.ec</li>
+                <li><span>Sitio Web:</span> www.pinasarqueologico.com.ec</li>
               </ul>
             </div>
           </div>
@@ -1064,15 +983,8 @@
         <!-- Start Copyright -->
         <div class="copyright-section">
           <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2014 Margo - All Rights Reserved <a href="http://graygrids.com/">GrayGrids</a> </p>
-            </div>
-            <div class="col-md-6">
-              <ul class="footer-nav">
-                <li><a href="#">Sitemap</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
+            <div class="col-md-12">
+              <p style="text-align: center;">&copy; 2016 Jorge Jaen - Todos los derechos reservados</p>
             </div>
           </div>
         </div>
@@ -1091,8 +1003,8 @@
   <!-- Style Switcher -->
   <div class="switcher-box">
     <a class="open-switcher show-switcher"><i class="fa fa-cog fa-2x"></i></a>
-    <h4>Style Switcher</h4>
-    <span>12 Predefined Color Skins</span>
+    <h4>Configuraci&oacute;n de Estilos</h4>
+    <span>12 Colores definidos</span>
     <ul class="colors-list">
       <li>
         <a onClick="setActiveStyleSheet('blue'); return false;" title="Blue" class="blue"></a>
@@ -1131,18 +1043,18 @@
         <a onClick="setActiveStyleSheet('beige'); return false;" title="Biege" class="beige"></a>
       </li>
     </ul>
-    <span>Top Bar Color</span>
+    <span>Color de la Barra Superior</span>
     <select id="topbar-style" class="topbar-style">
-      <option value="1">Light (Default)</option>
+      <option value="1">Light (Por Defecto)</option>
       <option value="2">Dark</option>
       <option value="3">Color</option>
     </select>
-    <span>Layout Style</span>
+    <span>Estilo del Layout</span>
     <select id="layout-style" class="layout-style">
       <option value="1">Wide</option>
       <option value="2">Boxed</option>
     </select>
-    <span>Patterns for Boxed Version</span>
+    <span>Imagen para la versi&oacute;n Boxed</span>
     <ul class="bg-list">
       <li>
         <a href="#" class="bg1"></a>
@@ -1191,8 +1103,19 @@
 
   <script type="text/javascript" src="js/script.js"></script>
 
+  <script type="text/javascript">
+    //Contact Form
+
+    $('#submit').click(function() {
+
+      $.post("php/send.html", $(".contact-form").serialize(), function(response) {
+        $('#success').html(response);
+      });
+      return false;
+
+    });
+  </script>
+
 </body>
 
-
-<!-- Mirrored from graygrids.com/demos/themes/margo/index-04.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Jan 2016 17:47:21 GMT -->
 </html>
