@@ -473,6 +473,92 @@
           <h4 class="title"><span>Videos</span></h4>
           <div class="projects-carousel touch-carousel">
 
+
+            <?php require_once('../Connections/arqueologia.php'); ?>
+            <?php
+            if (!function_exists("GetSQLValueString")) {
+            function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+            {
+              if (PHP_VERSION < 6) {
+                $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+              }
+
+              $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+              switch ($theType) {
+                case "text":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "long":
+                case "int":
+                  $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                  break;
+                case "double":
+                  $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                  break;
+                case "date":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "defined":
+                  $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                  break;
+              }
+              return $theValue;
+            }
+            }
+
+            $maxRows_DatosSlider = 8;
+            $pageNum_DatosSlider = 0;
+            if (isset($_GET['pageNum_DatosSlider'])) {
+              $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+            }
+            $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+            mysql_select_db($database_arqueologia, $arqueologia);
+            $query_DatosSlider = "SELECT * FROM tblvideos WHERE tblvideos.intestado = 1";
+            $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+            $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+            $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+            if (isset($_GET['totalRows_DatosSlider'])) {
+              $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+            } else {
+              $all_DatosSlider = mysql_query($query_DatosSlider);
+              $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+            }
+            $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+            ?>
+
+
+
+                  <?php
+                   mysql_data_seek($DatosSlider, 0);
+                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                  	    <!-- First Content -->
+                          <?php $contador=1; ?>
+                  	    <?php do { ?>
+                          <div class="portfolio-item item">
+                            <div class="portfolio-border">
+                              <div class="portfolio-thumb">
+                                <a class="lightbox" data-lightbox-type="ajax" href="<?php echo $row_DatosSlider['url']; ?>">
+                                  <div class="thumb-overlay"><i class="fa fa-play"></i></div>
+                                  <img alt="" src="images/portfolio-1/1.png" />
+                                </a>
+                              </div>
+                              <div class="portfolio-details">
+                                <a href="#">
+                                  <h4><?php echo $row_DatosSlider['titulo']; ?></h4>
+                                  <span><?php echo $row_DatosSlider['subtitulo']; ?></span
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                  	      <?php
+                  		    $contador++;
+                  			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
+
+
+
             <div class="portfolio-item item">
               <div class="portfolio-border">
                 <div class="portfolio-thumb">
@@ -703,28 +789,28 @@
                     <div class="counter-item">
                       <i class="fa fa-cloud-upload"></i>
                       <div class="timer" id="item1" data-to="991" data-speed="5000"></div>
-                      <h5>Files uploaded</h5>
+                      <h5>Visitas</h5>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="counter-item">
                       <i class="fa fa-check"></i>
                       <div class="timer" id="item2" data-to="7394" data-speed="5000"></div>
-                      <h5>Projects completed</h5>
+                      <h5>Visitas</h5>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="counter-item">
                       <i class="fa fa-code"></i>
                       <div class="timer" id="item3" data-to="18745" data-speed="5000"></div>
-                      <h5>Lines of code written</h5>
+                      <h5>Visitas</h5>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="counter-item">
                       <i class="fa fa-male"></i>
                       <div class="timer" id="item4" data-to="8423" data-speed="5000"></div>
-                      <h5>Happy clients</h5>
+                      <h5>Visitas</h5>
                     </div>
                   </div>
                 </div>
