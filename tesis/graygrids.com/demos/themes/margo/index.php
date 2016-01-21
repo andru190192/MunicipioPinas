@@ -378,10 +378,10 @@
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated2">
-              <span><?php echo $row_DatosSlider['strtitulo']; ?><strong>Margo</strong></span>
+              <span>Pi&ntilde;as<strong> Arqueol&oacute;gico</strong></span>
           </h2>
                 <h3 class="animated3">
-           <span>The ultimate aim of your business</span>
+           <span>Gobierno Autónomo Descentralizado Municipal de Piñas</span>
        </h3>
                 <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Check Now</a></p>
               </div>
