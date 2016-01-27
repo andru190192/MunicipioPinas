@@ -1,7 +1,7 @@
 <?php require_once('../Connections/arqueologia.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -12,7 +12,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
+      break;    
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -31,11 +31,20 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysql_select_db($database_arqueologia, $arqueologia);
-$query_DatosSlider = "SELECT * FROM tblvideos";
-$DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
-$row_DatosSlider = mysql_fetch_assoc($DatosSlider);
-$totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
+  $deleteSQL = sprintf("DELETE FROM tblslider WHERE idcontador=%s",
+                       GetSQLValueString($_GET['recordID'], "int"));
+
+  mysql_select_db($database_arqueologia, $arqueologia);
+  $Result1 = mysql_query($deleteSQL, $arqueologia) or die(mysql_error());
+
+  $deleteGoTo = "slider_lista.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
+    $deleteGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $deleteGoTo));
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/plantillaadmin.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -55,51 +64,18 @@ $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
   <div class="header"><?php include("../includes/cabecera_admin.php"); ?></div>
   <div class="sidebar1">
   <?php include("../includes/menuizquierda_admin.php"); ?>
-
+   
     <p>&nbsp;</p>
   </div>
   <div class="content"><!-- InstanceBeginEditable name="Partederechaadmin" -->
-     <script>
-function asegurar()
-{
-   rc = confirm("Seguro que desea eliminar?");
-   return rc;
-}
-</script>
-    <h1>Lista de Videos</h1>
-    <p><a href="video_add.php"><img src="images/icono_add.png" width="16" height="16" />A&ntilde;adir Video</a></p>
-    <table width="100%" border="0" cellpadding="2" cellspacing="2">
-      <tr class="tablacabecera">
-        <td width="40%">Url Video</td>
-        <td width="22%">Titulo Video</td>
-        <td width="33%">Subtitulo Video</td>
-        <td width="33%">Estado</td>
-        <td width="5%">Acciones</td>
-      </tr>
-      <?php do { ?>
-      <tr>
-          <td><?php echo $row_DatosSlider['url']; ?></td
-          <td></td>
-          <td><?php echo $row_DatosSlider['titulo']; ?></td>
-          <td><?php echo $row_DatosSlider['subtitulo']; ?></td>
-          <td><?php
-		  if ($row_DatosSlider['intestado']== 1)
-		  		echo "Activo";
-		else
-				echo "Inactivo"; ?></td>
-          <td><a href="video_edit.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><img src="images/icono_edit.png" width="16" height="16" /></a> <a href="video_remove.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><img src="images/icono_remove.png" width="16" height="16" onclick="javascript:return asegurar();"/></a></td>
-          </tr>
-          <?php } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
-     </table>
-    <p>&nbsp;</p>
+ 
+    <h1>Eliminando Slider</h1>
+    <p>Procesando.....</p>
   <!-- InstanceEndEditable -->
-
+   
     <!-- end .content --></div>
   <div class="footer">
     <?php include("../includes/pie_admin.php"); ?></div>
   <!-- end .container --></div>
 </body>
 <!-- InstanceEnd --></html>
-<?php
-mysql_free_result($DatosSlider);
-?>

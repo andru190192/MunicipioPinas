@@ -147,7 +147,7 @@
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index.php"><img style="width: 114px;height: 23px;" alt="logo" src="../images/logo.png"></a>
+            <a class="navbar-brand" href="../index.php"><img style="width: 114px;height: 23px;" alt="logo" src="../images/logo.png"></a>
           </div>
           <div class="navbar-collapse collapse">
             <!-- Stat Search -->

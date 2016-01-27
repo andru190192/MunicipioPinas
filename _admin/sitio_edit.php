@@ -37,18 +37,18 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE tblvideos SET url=%s, titulo=%s, subtitulo=%s, imagen=%s, intestado=%s WHERE id=%s",
-                       GetSQLValueString($_POST['url'], "text"),
-                       GetSQLValueString($_POST['titulo'], "text"),
-                       GetSQLValueString($_POST['subtitulo'], "text"),
+  $updateSQL = sprintf("UPDATE tblslider SET imagen=%s, titulo=%s, resumen=%s, url=%s, intestado=%s WHERE id=%s",
                        GetSQLValueString($_POST['imagen'], "text"),
-                       GetSQLValueString($_POST['intestado'], "int"),
+                       GetSQLValueString($_POST['titulo'], "text"),
+                       GetSQLValueString($_POST['resumen'], "text"),
+                       GetSQLValueString($_POST['url'], "text"),
+                       GetSQLValueString($_POST['intestado'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_arqueologia, $arqueologia);
   $Result1 = mysql_query($updateSQL, $arqueologia) or die(mysql_error());
 
-  $updateGoTo = "video_lista.php";
+  $updateGoTo = "sitio_lista.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
@@ -61,7 +61,7 @@ if (isset($_GET[recordID])) {
   $varDato_DatosSlider = $_GET[recordID];
 }
 mysql_select_db($database_arqueologia, $arqueologia);
-$query_DatosSlider = sprintf("SELECT * FROM tblvideos WHERE tblvideos.id =%s", GetSQLValueString($varDato_DatosSlider, "int"));
+$query_DatosSlider = sprintf("SELECT * FROM tblslider WHERE tblslider.idcontador =%s", GetSQLValueString($varDato_DatosSlider, "int"));
 $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
 $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
 $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
@@ -89,33 +89,47 @@ $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
   </div>
   <div class="content"><!-- InstanceBeginEditable name="Partederechaadmin" -->
       <script>
-        function subirimagen(nombrecampo)
-        {
-        	self.name = 'opener';
-        	remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
-         	remote.focus();
-        	}
-      </script>
-    <h1>Editar Video</h1>
+function subirimagen(nombrecampo)
+{
+	self.name = 'opener';
+	remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
+ 	remote.focus();
+	}
+
+</script>
+    <h1>Editar Publicidad</h1>
     <p>&nbsp;</p>
     <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
       <table align="center">
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Url:</td>
-          <td><input type="text" name="url" value="<?php echo htmlentities($row_DatosSlider['url'], ENT_COMPAT, 'iso8859-1'); ?>" size="25"
+          <td nowrap="nowrap" align="right">Imagen Grande:</td>
+          <td><input type="text" name="strimagengrande" value="<?php echo htmlentities($row_DatosSlider['strimagengrande'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" />
+             <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagengrande');"/></td>
+        </tr>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="right">Imagen Pequena:</td>
+          <td><input type="text" name="strimagenpequena" value="<?php echo htmlentities($row_DatosSlider['strimagenpequena'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" /> <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagenpequena');"/></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">Titulo:</td>
-          <td><input type="text" name="titulo" value="<?php echo htmlentities($row_DatosSlider['titulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+          <td><input type="text" name="strtitulo" value="<?php echo htmlentities($row_DatosSlider['strtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">Subtitulo:</td>
-          <td><input type="text" name="subtitulo" value="<?php echo htmlentities($row_DatosSlider['subtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+          <td><input type="text" name="strsubtitulo" value="<?php echo htmlentities($row_DatosSlider['strsubtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Imagen:</td>
-          <td><input type="text" name="imagen" value="<?php echo htmlentities($row_DatosSlider['imagen'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" /> <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
-        </tr
+          <td nowrap="nowrap" align="right">Menu:</td>
+          <td><input type="text" name="strmenu" value="<?php echo htmlentities($row_DatosSlider['strmenu'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+        </tr>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="right">Link:</td>
+          <td><input type="text" name="strlink" value="<?php echo htmlentities($row_DatosSlider['strlink'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+        </tr>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="right">Orden:</td>
+          <td><input type="text" name="intorden" value="<?php echo htmlentities($row_DatosSlider['intorden'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+        </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">Estado:</td>
           <td><select name="intestado">
@@ -125,11 +139,11 @@ $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">&nbsp;</td>
-          <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar Video</span></a></td>
+          <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar Slider</span></a></td>
         </tr>
       </table>
       <input type="hidden" name="MM_update" value="form1" />
-      <input type="hidden" name="id" value="<?php echo $row_DatosSlider['id']; ?>" />
+      <input type="hidden" name="idcontador" value="<?php echo $row_DatosSlider['idcontador']; ?>" />
     </form>
     <p>&nbsp;</p>
   <!-- InstanceEndEditable -->

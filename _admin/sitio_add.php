@@ -37,17 +37,17 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO tblvideos (url, titulo, subtitulo, imagen, intestado) VALUES (%s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['url'], "text"),
-                       GetSQLValueString($_POST['titulo'], "text"),
-                       GetSQLValueString($_POST['subtitulo'], "text"),
+  $insertSQL = sprintf("INSERT INTO tblsitios (imagen, titulo, resumen, url, intestado) VALUES (%s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['imagen'], "text"),
+                       GetSQLValueString($_POST['titulo'], "text"),
+                       GetSQLValueString($_POST['resumen'], "text"),
+                       GetSQLValueString($_POST['url'], "text"),
                        GetSQLValueString($_POST['intestado'], "int"));
 
   mysql_select_db($database_arqueologia, $arqueologia);
   $Result1 = mysql_query($insertSQL, $arqueologia) or die(mysql_error());
 
-  $insertGoTo = "video_lista.php";
+  $insertGoTo = "sitio_lista.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
@@ -86,25 +86,25 @@ function subirimagen(nombrecampo)
 	}
 
 </script>
-    <h1>A&ntilde;adir Video</h1>
+    <h1>A&ntilde;adir Sitio</h1>
     <p>&nbsp;</p>
     <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
       <table align="center">
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Url:</td>
-          <td><input type="text" name="url" value="" size="32" /></td>
-        </tr>
+          <td nowrap="nowrap" align="right">Imagen :</td>
+          <td><input type="text" name="imagen" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
+        </tr
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">Titulo:</td>
           <td><input type="text" name="titulo" value="" size="32" /></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Subtitulo:</td>
-          <td><input type="text" name="subtitulo" value="" size="32" /></td>
+          <td nowrap="nowrap" align="right">Resumen:</td>
+          <td><input type="text" name="resumen" value="" size="32" /></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Imagen:</td>
-          <td><input type="text" name="imagen" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
+          <td nowrap="nowrap" align="right">Url:</td>
+          <td><input type="text" name="url" value="" size="32" /></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">Estado:</td>
@@ -117,9 +117,11 @@ function subirimagen(nombrecampo)
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">&nbsp;</td>
           <td>
-          <a class="button" href="javascript:document.form1.submit();"><span>Insertar Video</span></a></p></td>
         </tr>
       </table>
+      <div>
+        <a class="button" href="javascript:document.form1.submit();"><span>Insertar Sitio</span></a>
+      </div>
       <input type="hidden" name="MM_insert" value="form1" />
     </form>
     <p>&nbsp;</p>

@@ -9,9 +9,9 @@
 <body>
 
 <?php if ((isset($_POST["enviado"])) && ($_POST["enviado"] == "form1")) {
-	$nombre_archivo = $_FILES['userfile']['name']; 
+	$nombre_archivo = $_FILES['userfile']['name'];
 	move_uploaded_file($_FILES['userfile']['tmp_name'], "../images/slider/".$nombre_archivo);
-	
+
 	?>
     <script>
 		opener.document.form1.<?php echo $_POST["nombrecampo"]; ?>.value="<?php echo $nombre_archivo; ?>";
@@ -29,8 +29,8 @@ else
     <input name="userfile" type="file" />
   </p>
   <p>
-  
-  
+
+
  <a class="button" href="javascript:document.form1.submit();"><span>Subir Imagen</span></a> </p>
 
   </p><input name="nombrecampo" type="hidden" value="<?php echo $_GET["campo"]; ?>" />
