@@ -173,9 +173,12 @@
               <li>
                 <a href="#">Lugares</a>
                 <ul class="dropdown">
-                  <li><a href="404.html">Pi&ntilde;as</a></li>
-                  <li><a href="404.html">Zaruma</a></li>
-                  <li><a href="404.html">Portobelo</a></li>
+                  <li><a href="lugares/brasil.php">El Brasil</a></li>
+                  <li><a href="lugares/lachuva.php">La Chuva</a></li>
+                  <li><a href="lugares/piedras.php">Piedras</a></li>
+                  <li><a href="lugares/riocalera.php">Rio Calera</a></li>
+                  <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
+                  <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
                 </ul>
               </li>
               <li>
@@ -187,10 +190,10 @@
                   <li><a href="404.html">General</a></li>
                 </ul>
               </li>
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
               <li><a href="contact.php">Contactenos</a></li>
+              <li>
+                <a href="../_admin/index.php">Administracion</a>
+              </li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -202,58 +205,29 @@
             <a class="active" href="index.php">Inicio</a>
           </li>
           <li>
-            <a href="about.html">Historia</a
-          </li>
-          <li>
-            <a href="#">Shortcodes</a>
+            <a href="about.html">Historia</a>
             <ul class="dropdown">
-              <li><a href="tabs.html">Tabs</a>
-              </li>
-              <li><a href="buttons.html">Buttons</a>
-              </li>
-              <li><a href="action-box.html">Action Box</a>
-              </li>
-              <li><a href="testimonials.html">Testimonials</a>
-              </li>
-              <li><a href="latest-posts.html">Latest Posts</a>
-              </li>
-              <li><a href="latest-projects.html">Latest Projects</a>
-              </li>
-              <li><a href="pricing.html">Pricing Tables</a>
-              </li>
-              <li><a href="https://graygrids.com/">Animated Graphs</a>
-              </li>
-              <li><a href="accordion-toggles.html">Accordion & Toggles</a>
-              </li>
+              <li><a href="lugares/brasil.php">El Brasil</a></li>
+              <li><a href="lugares/lachuva.php">La Chuva</a></li>
+              <li><a href="lugares/piedras.php">Piedras</a></li>
+              <li><a href="lugares/riocalera.php">Rio Calera</a></li>
+              <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
+              <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
             </ul>
           </li>
           <li>
-            <a href="portfolio-3.html">Portfolio</a>
+            <a href="portfolio-3.html">Precios</a>
             <ul class="dropdown">
-              <li><a href="portfolio-2.html">2 Columns</a>
-              </li>
-              <li><a href="portfolio-3.html">3 Columns</a>
-              </li>
-              <li><a href="portfolio-4.html">4 Columns</a>
-              </li>
-              <li><a href="single-project.html">Single Project</a>
-              </li>
+              <li><a href="404.html">Estudiantes</a></li>
+              <li><a href="404.html">Empresas</a></li>
+              <li><a href="404.html">Turistas</a></li>
+              <li><a href="404.html">General</a></li>
             </ul>
           </li>
           <li>
             <a href="blog.html">Blog</a>
-            <ul class="dropdown">
-              <li><a href="blog.html">Blog - right Sidebar</a>
-              </li>
-              <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a>
-              </li>
-              <li><a href="single-post.html">Blog Single Post</a>
-              </li>
-            </ul>
           </li>
-          <li>
-            <a href="contact.html">Contact</a>
-          </li>
+          <li><a href="contact.php">Contactenos</a></li>
         </ul>
         <!-- Mobile Menu End -->
 
