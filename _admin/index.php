@@ -12,17 +12,37 @@
 
 <body>
 
+
+  <?php
+  @session_start();
+  if(@$_GET["cerrar"])
+  {
+  	session_destroy();
+  	header("location: login/login.php");
+  }
+  if(!empty($_SESSION['usuario']))
+  {
+  	?>
+      <a href="index.php?cerrar=session">Cerrar session(<?php echo $_SESSION['usuario']; ?>)</a>
+  	<?php
+
+  }else
+  echo "Acceso denegado";
+  ?>
+
+
+
 <div class="container">
   <div class="header"><?php include("../includes/cabecera_admin.php"); ?></div>
   <div class="sidebar1">
   <?php include("../includes/menuizquierda_admin.php"); ?>
-   
+
     <p>&nbsp;</p>
   </div>
   <div class="content"><!-- InstanceBeginEditable name="Partederechaadmin" -->
     <h1>Bienvenido a la Administraci&oacute;n</h1>
   <!-- InstanceEndEditable -->
-   
+
     <!-- end .content --></div>
   <div class="footer">
     <?php include("../includes/pie_admin.php"); ?></div>

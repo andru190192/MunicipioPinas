@@ -168,9 +168,6 @@
                 <a class="active" href="index.php">Inicio</a>
               </li>
               <li>
-                <a href="404.html">Historia</a>
-              </li>
-              <li>
                 <a href="#">Lugares</a>
                 <ul class="dropdown">
                   <li><a href="lugares/brasil.php">El Brasil</a></li>
@@ -181,18 +178,9 @@
                   <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
                 </ul>
               </li>
-              <li>
-                <a href="portfolio-3.html">Precios</a>
-                <ul class="dropdown">
-                  <li><a href="404.html">Estudiantes</a></li>
-                  <li><a href="404.html">Empresas</a></li>
-                  <li><a href="404.html">Turistas</a></li>
-                  <li><a href="404.html">General</a></li>
-                </ul>
-              </li>
               <li><a href="contact.php">Contactenos</a></li>
               <li>
-                <a href="../_admin/index.php">Administracion</a>
+                <a href="../_admin/login/login.php">Administracion</a>
               </li>
             </ul>
             <!-- End Navigation List -->
