@@ -168,7 +168,7 @@
                 <a class="active" href="index.php">Inicio</a>
               </li>
               <li>
-                <a href="#">Lugares</a>
+                <a href="#">Sitios</a>
                 <ul class="dropdown">
                   <li><a href="lugares/brasil.php">El Brasil</a></li>
                   <li><a href="lugares/lachuva.php">La Chuva</a></li>
@@ -180,7 +180,7 @@
               </li>
               <li><a href="contact.php">Contactenos</a></li>
               <li>
-                <a href="../_admin/login/login.php">Administracion</a>
+                <a href="../_admin/login/login.php" target="_blank">Administracion</a>
               </li>
             </ul>
             <!-- End Navigation List -->
@@ -193,29 +193,20 @@
             <a class="active" href="index.php">Inicio</a>
           </li>
           <li>
-            <a href="about.html">Historia</a>
+            <a href="about.html">Sitios</a>
             <ul class="dropdown">
               <li><a href="lugares/brasil.php">El Brasil</a></li>
-              <li><a href="lugares/lachuva.php">La Chuva</a></li>
+              <li><a href="lugares/chuva.php">La Chuva</a></li>
               <li><a href="lugares/piedras.php">Piedras</a></li>
               <li><a href="lugares/riocalera.php">Rio Calera</a></li>
               <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
               <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
             </ul>
           </li>
-          <li>
-            <a href="portfolio-3.html">Precios</a>
-            <ul class="dropdown">
-              <li><a href="404.html">Estudiantes</a></li>
-              <li><a href="404.html">Empresas</a></li>
-              <li><a href="404.html">Turistas</a></li>
-              <li><a href="404.html">General</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="blog.html">Blog</a>
-          </li>
           <li><a href="contact.php">Contactenos</a></li>
+          <li>
+            <a href="../_admin/login/login.php" target="_blank">Administracion</a>
+          </li>
         </ul>
         <!-- Mobile Menu End -->
 

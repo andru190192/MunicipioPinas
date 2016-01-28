@@ -66,10 +66,10 @@ if(@$_POST["enviado"])
                             <div class="panel-body">
 															<form action="" method="post" class="form-signin">
 
-															<input class="form-control" type="text" name="usuario"><br>
+															<input class="form-control" type="text" name="usuario" placeholder="Usuario"><br>
 															<?php echo @$error[2]; ?><br>
 
-															<input class="form-control" type="password" name="contra"><br>
+															<input class="form-control" type="password" name="contra" placeholder="Contrase&ntilde;a"><br>
 															<?php echo @$error[1]; ?><br>
 															<input class="btn btn-lg btn-success btn-block" type="submit" value="Iniciar" name="enviado"><br>
 															<?php echo @$error[3]; ?><br>
