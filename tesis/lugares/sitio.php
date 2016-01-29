@@ -163,35 +163,86 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="index.php">Inicio</a>
+                <a class="active" href="../index.php">Inicio</a>
               </li>
               <li>
-                <a href="404.html">Historia</a>
-              </li>
-              <li>
-                <a class="active" href="#">Lugares</a>
+                <a href="#">Sitios</a>
+
+                <?php require_once('../../Connections/arqueologia.php'); ?>
+                <?php
+                if (!function_exists("GetSQLValueString")) {
+                function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+                {
+                  if (PHP_VERSION < 6) {
+                    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+                  }
+
+                  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+                  switch ($theType) {
+                    case "text":
+                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                      break;
+                    case "long":
+                    case "int":
+                      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                      break;
+                    case "double":
+                      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                      break;
+                    case "date":
+                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                      break;
+                    case "defined":
+                      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                      break;
+                  }
+                  return $theValue;
+                }
+                }
+
+                $maxRows_DatosSlider = 5;
+                $pageNum_DatosSlider = 0;
+                if (isset($_GET['pageNum_DatosSlider'])) {
+                  $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+                }
+                $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+                mysql_select_db($database_arqueologia, $arqueologia);
+                $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+                $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+                $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+                if (isset($_GET['totalRows_DatosSlider'])) {
+                  $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+                } else {
+                  $all_DatosSlider = mysql_query($query_DatosSlider);
+                  $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+                }
+                $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+                ?>
+
+
+
+
                 <ul class="dropdown">
-                  <li><a href="lugares/brasil.php">El Brasil</a></li>
-                  <li><a href="lugares/lachuva.php">La Chuva</a></li>
-                  <li><a href="lugares/piedras.php">Piedras</a></li>
-                  <li><a href="lugares/riocalera.php">Rio Calera</a></li>
-                  <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
-                  <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
+                  <?php
+                   mysql_data_seek($DatosSlider, 0);
+                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                  	    <!-- First Content -->
+                          <?php $contador=1; ?>
+                  	    <?php do { ?>
+                            <li><a href="sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                        <?php
+                  		    $contador++;
+                  			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
                 </ul>
               </li>
+              <li><a href="../contact.php">Contactenos</a></li>
               <li>
-                <a href="portfolio-3.html">Precios</a>
-                <ul class="dropdown">
-                  <li><a href="404.html">Estudiantes</a></li>
-                  <li><a href="404.html">Empresas</a></li>
-                  <li><a href="404.html">Turistas</a></li>
-                  <li><a href="404.html">General</a></li>
-                </ul>
+                <a href="../_admin/login/login.php" target="_blank">Administracion</a>
               </li>
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-              <li><a href="contact.php">Contactenos</a></li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -200,32 +251,85 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a href="index.php">Inicio</a>
+            <a class="active" href="../index.php">Inicio</a>
           </li>
           <li>
-            <a class="active" href="#">Lugares</a>
+            <a>Sitios</a>
+            <?php require_once('../../Connections/arqueologia.php'); ?>
+            <?php
+            if (!function_exists("GetSQLValueString")) {
+            function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+            {
+              if (PHP_VERSION < 6) {
+                $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+              }
+
+              $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+              switch ($theType) {
+                case "text":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "long":
+                case "int":
+                  $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                  break;
+                case "double":
+                  $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                  break;
+                case "date":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "defined":
+                  $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                  break;
+              }
+              return $theValue;
+            }
+            }
+
+            $maxRows_DatosSlider = 5;
+            $pageNum_DatosSlider = 0;
+            if (isset($_GET['pageNum_DatosSlider'])) {
+              $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+            }
+            $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+            mysql_select_db($database_arqueologia, $arqueologia);
+            $query_DatosSlider = "SELECT * FROM tblmenusitios";
+            $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+            $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+            $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+            if (isset($_GET['totalRows_DatosSlider'])) {
+              $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+            } else {
+              $all_DatosSlider = mysql_query($query_DatosSlider);
+              $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+            }
+            $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+            ?>
+
+
+
+
             <ul class="dropdown">
-              <li><a href="lugares/brasil.php">El Brasil</a></li>
-              <li><a href="lugares/lachuva.php">La Chuva</a></li>
-              <li><a href="lugares/piedras.php">Piedras</a></li>
-              <li><a href="lugares/riocalera.php">Rio Calera</a></li>
-              <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
-              <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
+              <?php
+               mysql_data_seek($DatosSlider, 0);
+               $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                    <!-- First Content -->
+                      <?php $contador=1; ?>
+                    <?php do { ?>
+                        <li><a href="sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                    <?php
+                      $contador++;
+                    } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
             </ul>
           </li>
+          <li><a href="../contact.php">Contactenos</a></li>
           <li>
-            <a href="portfolio-3.html">Precios</a>
-            <ul class="dropdown">
-              <li><a href="404.html">Estudiantes</a></li>
-              <li><a href="404.html">Empresas</a></li>
-              <li><a href="404.html">Turistas</a></li>
-              <li><a href="404.html">General</a></li>
-            </ul>
+            <a href="../_admin/login/login.php" target="_blank">Administracion</a>
           </li>
-          <li>
-            <a href="blog.html">Blog</a>
-          </li>
-          <li><a href="contact.php">Contactenos</a></li>
         </ul>
         <!-- Mobile Menu End -->
 
@@ -234,28 +338,6 @@
 
     </header>
     <!-- End Header -->
-
-
-    <!-- Start Page Banner -->
-    <div class="page-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h2>Lugares</h2>
-            <p>El Brasil</p>
-          </div>
-          <div class="col-md-6">
-            <ul class="breadcrumbs">
-              <li><a href="../index.php">Inicio</a></li>
-              <li>Lugares</li>
-              <li>El Brasil</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Page Banner -->
-
 
     <!-- Start Content -->
     <div id="content">
@@ -395,7 +477,7 @@
                     <!-- Start Blog Posts -->
                     <div class="col-md-6 blog-box">
                         <div style="text-align:center">
-                          <img width="100%" height="30%" src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" />
+                          <img width="100%" height="30%" src="../../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" />
                         </div>
                     </div>
                     <div class="col-md-6 blog-box">
@@ -404,10 +486,10 @@
                       </p>
                     </div>
                     </div>
-                    <div class="hr1 margin-60"></div>
+                    <div class="hr1 margin-40"></div>
                   <div class="row blog-page">
                       <div class="col-md-6 blog-box">
-                        <iframe width="70%" height="30%" src="<?php echo $row_DatosSlider['video']; ?>" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="70%" height="40%" src="<?php echo $row_DatosSlider['video']; ?>" frameborder="0" allowfullscreen></iframe>
                       </div>
                       <div class="col-md-6 blog-box">
                         <p>

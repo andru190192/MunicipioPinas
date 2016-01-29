@@ -152,7 +152,7 @@
                                              GetSQLValueString($_POST['descripcionimg'], "text"),
                                              GetSQLValueString($_POST['video'], "text"),
                                              GetSQLValueString($_POST['descripcionvideo'], "text"),
-                                             GetSQLValueString($_POST['codigositio'], "text"));
+                                             GetSQLValueString($_POST['sitiocodigo'], "text"));
 
                         mysql_select_db($database_arqueologia, $arqueologia);
                         $Result1 = mysql_query($insertSQL, $arqueologia) or die(mysql_error());
@@ -197,7 +197,30 @@
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Codigo Sitio:</td>
-                                <td><input type="text" name="codigositio" value="" size="32" /></td>
+
+                                <td>
+                                  <?php
+                                  mysql_select_db($database_arqueologia, $arqueologia);
+
+                                  mysql_select_db($database_arqueologia, $arqueologia);
+                                  $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                                  $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
+                                  $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                                  $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+
+
+
+
+
+                                  ?>
+                                  <select name="sitiocodigo" id="sitiocodigo">
+                                    <?php do {
+                                        echo $row_DatosSlider['sitio'];
+                                        echo '<option value="'.$row_DatosSlider['sitiocodigo'].'">'.$row_DatosSlider['sitio'].'</option>';
+
+                                    } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider));?>
+                                  </select>
+                                </td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">&nbsp;</td>

@@ -168,47 +168,83 @@
                 <a class="active" href="index.php">Inicio</a>
               </li>
               <li>
-                <a href="about.html">Historia</a>
+                <a href="#">Sitios</a>
+
+                <?php require_once('../Connections/arqueologia.php'); ?>
+                <?php
+                if (!function_exists("GetSQLValueString")) {
+                function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+                {
+                  if (PHP_VERSION < 6) {
+                    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+                  }
+
+                  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+                  switch ($theType) {
+                    case "text":
+                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                      break;
+                    case "long":
+                    case "int":
+                      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                      break;
+                    case "double":
+                      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                      break;
+                    case "date":
+                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                      break;
+                    case "defined":
+                      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                      break;
+                  }
+                  return $theValue;
+                }
+                }
+
+                $maxRows_DatosSlider = 5;
+                $pageNum_DatosSlider = 0;
+                if (isset($_GET['pageNum_DatosSlider'])) {
+                  $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+                }
+                $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+                mysql_select_db($database_arqueologia, $arqueologia);
+                $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+                $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+                $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+                if (isset($_GET['totalRows_DatosSlider'])) {
+                  $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+                } else {
+                  $all_DatosSlider = mysql_query($query_DatosSlider);
+                  $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+                }
+                $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+                ?>
+
+
+
+
                 <ul class="dropdown">
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="services.html">Services</a></li>
-                  <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                  <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                  <li><a href="404.html">404 Page</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Lugares</a>
-                <ul class="dropdown">
-                  <li><a href="tabs.html">Tabs</a></li>
-                  <li><a href="buttons.html">Buttons</a></li>
-                  <li><a href="action-box.html">Action Box</a></li>
-                  <li><a href="testimonials.html">Testimonials</a></li>
-                  <li><a href="latest-posts.html">Latest Posts</a></li>
-                  <li><a href="latest-projects.html">Latest Projects</a></li>
-                  <li><a href="pricing.html">Pricing Tables</a></li>
-                  <li><a href="https://graygrids.com/">Animated Graphs</a></li>
-                  <li><a href="accordion-toggles.html">Accordion & Toggles</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="portfolio-3.html">Videos</a>
-                <ul class="dropdown">
-                  <li><a href="portfolio-2.html">2 Columns</a></li>
-                  <li><a href="portfolio-3.html">3 Columns</a></li>
-                  <li><a href="portfolio-4.html">4 Columns</a></li>
-                  <li><a href="single-project.html">Single Project</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="blog.html">Blog</a>
-                <ul class="dropdown">
-                  <li><a href="blog.html">Blog - right Sidebar</a></li>
-                  <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-                  <li><a href="single-post.html">Blog Single Post</a></li>
+                  <?php
+                   mysql_data_seek($DatosSlider, 0);
+                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                  	    <!-- First Content -->
+                          <?php $contador=1; ?>
+                  	    <?php do { ?>
+                            <li><a href="lugares/sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                        <?php
+                  		    $contador++;
+                  			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
                 </ul>
               </li>
               <li><a href="contact.php">Contactenos</a></li>
+              <li>
+                <a href="../_admin/login/login.php" target="_blank">Administracion</a>
+              </li>
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -217,72 +253,84 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a class="active" href="index-04.html">Inicio</a>
+            <a class="active" href="index.php">Inicio</a>
           </li>
           <li>
-            <a href="about.html">Pages</a>
+            <a>Sitios</a>
+            <?php require_once('../Connections/arqueologia.php'); ?>
+            <?php
+            if (!function_exists("GetSQLValueString")) {
+            function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+            {
+              if (PHP_VERSION < 6) {
+                $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+              }
+
+              $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+              switch ($theType) {
+                case "text":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "long":
+                case "int":
+                  $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                  break;
+                case "double":
+                  $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                  break;
+                case "date":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "defined":
+                  $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                  break;
+              }
+              return $theValue;
+            }
+            }
+
+            $maxRows_DatosSlider = 5;
+            $pageNum_DatosSlider = 0;
+            if (isset($_GET['pageNum_DatosSlider'])) {
+              $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+            }
+            $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+            mysql_select_db($database_arqueologia, $arqueologia);
+            $query_DatosSlider = "SELECT * FROM tblmenusitios";
+            $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+            $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+            $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+            if (isset($_GET['totalRows_DatosSlider'])) {
+              $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+            } else {
+              $all_DatosSlider = mysql_query($query_DatosSlider);
+              $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+            }
+            $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+            ?>
+
+
+
+
             <ul class="dropdown">
-              <li><a href="about.html">About</a>
-              </li>
-              <li><a href="services.html">Services</a>
-              </li>
-              <li><a href="right-sidebar.html">Right Sidebar</a>
-              </li>
-              <li><a href="left-sidebar.html">Left Sidebar</a>
-              </li>
-              <li><a href="404.html">404 Page</a>
-              </li>
+              <?php
+               mysql_data_seek($DatosSlider, 0);
+               $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                    <!-- First Content -->
+                      <?php $contador=1; ?>
+                    <?php do { ?>
+                        <li><a href="lugares/sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                    <?php
+                      $contador++;
+                    } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
             </ul>
           </li>
+          <li><a href="contact.php">Contactenos</a></li>
           <li>
-            <a href="#">Shortcodes</a>
-            <ul class="dropdown">
-              <li><a href="tabs.html">Tabs</a>
-              </li>
-              <li><a href="buttons.html">Buttons</a>
-              </li>
-              <li><a href="action-box.html">Action Box</a>
-              </li>
-              <li><a href="testimonials.html">Testimonials</a>
-              </li>
-              <li><a href="latest-posts.html">Latest Posts</a>
-              </li>
-              <li><a href="latest-projects.html">Latest Projects</a>
-              </li>
-              <li><a href="pricing.html">Pricing Tables</a>
-              </li>
-              <li><a href="https://graygrids.com/">Animated Graphs</a>
-              </li>
-              <li><a href="accordion-toggles.html">Accordion & Toggles</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="portfolio-3.html">Portfolio</a>
-            <ul class="dropdown">
-              <li><a href="portfolio-2.html">2 Columns</a>
-              </li>
-              <li><a href="portfolio-3.html">3 Columns</a>
-              </li>
-              <li><a href="portfolio-4.html">4 Columns</a>
-              </li>
-              <li><a href="single-project.html">Single Project</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="blog.html">Blog</a>
-            <ul class="dropdown">
-              <li><a href="blog.html">Blog - right Sidebar</a>
-              </li>
-              <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a>
-              </li>
-              <li><a href="single-post.html">Blog Single Post</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="contact.html">Contact</a>
+            <a href="../_admin/login/login.php" target="_blank">Administracion</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
@@ -292,7 +340,6 @@
 
     </header>
     <!-- End Header -->
-
     <!-- Start Map -->
     <div id="map" data-position-latitude="-3.679741786776871" data-position-longitude="-79.68237893131413"></div>
     <script>

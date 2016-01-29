@@ -22,6 +22,21 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -153,9 +168,9 @@
                                              GetSQLValueString($_POST['descripcionimg'], "text"),
                                              GetSQLValueString($_POST['video'], "text"),
                                              GetSQLValueString($_POST['descripcionvideo'], "text"),
-                                             GetSQLValueString($_POST['codigositio'], "text"),
+                                             GetSQLValueString($_POST['sitiocodigo'], "text"),
                                              GetSQLValueString($_POST['id'], "int"));
-
+                                            
                         mysql_select_db($database_arqueologia, $arqueologia);
                         $Result1 = mysql_query($updateSQL, $arqueologia) or die(mysql_error());
 
@@ -164,7 +179,8 @@
                           $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
                           $updateGoTo .= $_SERVER['QUERY_STRING'];
                         }
-                        header(sprintf("Location: %s", $updateGoTo));
+                        //header(sprintf("Location: %s", $updateGoTo));
+
                       }
 
                       $varDato_DatosSlider = "0";
@@ -209,7 +225,42 @@
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Codigo Sitio:</td>
-                                <td><input type="text" name="codigositio" value="<?php echo htmlentities($row_DatosSlider['codigositio'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+                                <td>
+                                  <?php
+
+
+
+                                  mysql_select_db($database_arqueologia, $arqueologia);
+
+                                  mysql_select_db($database_arqueologia, $arqueologia);
+                                  $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                                  $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
+                                  //$row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                                  $row_DatosSlider1 = mysql_fetch_assoc($DatosSlider);
+                                  $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+
+
+
+                                  ?>
+                                  <select name="sitiocodigo" id="sitiocodigo">
+                                    <?php do {
+                                        echo '<option value="'.$row_DatosSlider1['sitiocodigo'].'">'.$row_DatosSlider1['sitio'].'</option>';
+
+                                    } while ($row_DatosSlider1 = mysql_fetch_assoc($DatosSlider));
+
+
+                                    echo '<script language="javascript">'
+                                            . '$(document).ready(function(){';
+                                            echo '$("#sitiocodigo").val("'.$row_DatosSlider ['codigositio'].'")';
+                                            echo '})
+
+                                        </script>';
+
+                                    ?>
+                                  </select>
+
+
+                                </td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -229,22 +280,6 @@
           </section>
 
       </section>
-
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/jquery-1.8.3.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="assets/js/jquery.sparkline.js"></script>
-
-
-        <!--common script for all pages-->
-        <script src="assets/js/common-scripts.js"></script>
-
-        <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-        <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
 
       </body>
     </html>
