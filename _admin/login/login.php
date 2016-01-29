@@ -30,7 +30,8 @@ if(@$_POST["enviado"])
 	{
 		if(!empty($contra))
 		{
-			$consulta=mysql_query("select * from usuarios where usuario='$usuario' and contra='$contra'");
+			$consulta=mysql_query("select * from usuarios where contra=md5('$contra$usuario')");
+			echo "select * from usuarios where contra=md5('$contra$usuario')";
 			if(mysql_num_rows($consulta))
 			{
 				$arreglo=mysql_fetch_array($consulta);

@@ -169,13 +169,76 @@
               </li>
               <li>
                 <a href="#">Sitios</a>
+
+                <?php require_once('../Connections/arqueologia.php'); ?>
+                <?php
+                if (!function_exists("GetSQLValueString")) {
+                function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+                {
+                  if (PHP_VERSION < 6) {
+                    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+                  }
+
+                  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+                  switch ($theType) {
+                    case "text":
+                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                      break;
+                    case "long":
+                    case "int":
+                      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                      break;
+                    case "double":
+                      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                      break;
+                    case "date":
+                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                      break;
+                    case "defined":
+                      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                      break;
+                  }
+                  return $theValue;
+                }
+                }
+
+                $maxRows_DatosSlider = 5;
+                $pageNum_DatosSlider = 0;
+                if (isset($_GET['pageNum_DatosSlider'])) {
+                  $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+                }
+                $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+                mysql_select_db($database_arqueologia, $arqueologia);
+                $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+                $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+                $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+                if (isset($_GET['totalRows_DatosSlider'])) {
+                  $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+                } else {
+                  $all_DatosSlider = mysql_query($query_DatosSlider);
+                  $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+                }
+                $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+                ?>
+
+
+
+
                 <ul class="dropdown">
-                  <li><a href="lugares/brasil.php">El Brasil</a></li>
-                  <li><a href="lugares/lachuva.php">La Chuva</a></li>
-                  <li><a href="lugares/piedras.php">Piedras</a></li>
-                  <li><a href="lugares/riocalera.php">Rio Calera</a></li>
-                  <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
-                  <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
+                  <?php
+                   mysql_data_seek($DatosSlider, 0);
+                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                  	    <!-- First Content -->
+                          <?php $contador=1; ?>
+                  	    <?php do { ?>
+                            <li><a href="lugares/sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                        <?php
+                  		    $contador++;
+                  			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
                 </ul>
               </li>
               <li><a href="contact.php">Contactenos</a></li>
@@ -193,14 +256,76 @@
             <a class="active" href="index.php">Inicio</a>
           </li>
           <li>
-            <a href="about.html">Sitios</a>
+            <a>Sitios</a>
+            <?php require_once('../Connections/arqueologia.php'); ?>
+            <?php
+            if (!function_exists("GetSQLValueString")) {
+            function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+            {
+              if (PHP_VERSION < 6) {
+                $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+              }
+
+              $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+              switch ($theType) {
+                case "text":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "long":
+                case "int":
+                  $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                  break;
+                case "double":
+                  $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                  break;
+                case "date":
+                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                  break;
+                case "defined":
+                  $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                  break;
+              }
+              return $theValue;
+            }
+            }
+
+            $maxRows_DatosSlider = 5;
+            $pageNum_DatosSlider = 0;
+            if (isset($_GET['pageNum_DatosSlider'])) {
+              $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+            }
+            $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+            mysql_select_db($database_arqueologia, $arqueologia);
+            $query_DatosSlider = "SELECT * FROM tblsitios";
+            $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+            $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+            $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+            if (isset($_GET['totalRows_DatosSlider'])) {
+              $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+            } else {
+              $all_DatosSlider = mysql_query($query_DatosSlider);
+              $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+            }
+            $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+            ?>
+
+
+
+
             <ul class="dropdown">
-              <li><a href="lugares/brasil.php">El Brasil</a></li>
-              <li><a href="lugares/chuva.php">La Chuva</a></li>
-              <li><a href="lugares/piedras.php">Piedras</a></li>
-              <li><a href="lugares/riocalera.php">Rio Calera</a></li>
-              <li><a href="lugares/sambotambo.php">Sambotambo</a></li>
-              <li><a href="lugares/sanjacinto.php">San Jacinto</a></li>
+              <?php
+               mysql_data_seek($DatosSlider, 0);
+               $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                    <!-- First Content -->
+                      <?php $contador=1; ?>
+                    <?php do { ?>
+                        <li><a href="lugares/sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                    <?php
+                      $contador++;
+                    } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
             </ul>
           </li>
           <li><a href="contact.php">Contactenos</a></li>
@@ -354,68 +479,6 @@
     <!-- Start Content -->
     <div id="content" style="padding-bottom: 0px !important;">
       <div class="container">
-
-        <!-- Start Services Icons -->
-        <div class="row">
-
-          <!-- Start Service Icon 1 -->
-          <div class="col-md-3 col-sm-6 service-box service-center">
-            <div class="service-boxed">
-              <div class="service-icon" style="margin-top:-25px;">
-                <i class="fa fa-magic icon-medium-effect icon-effect-2"></i>
-              </div>
-              <div class="service-content">
-                <h4>Arte Contemporanea</h4>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
-              </div>
-            </div>
-          </div>
-          <!-- End Service Icon 1 -->
-
-          <!-- Start Service Icon 2 -->
-          <div class="col-md-3 col-sm-6 service-box service-center">
-            <div class="service-boxed">
-              <div class="service-icon" style="margin-top:-25px;">
-                <i class="fa fa-eye icon-medium-effect icon-effect-2"></i>
-              </div>
-              <div class="service-content">
-                <h4>Arqueolog&iacute;a</h4>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
-              </div>
-            </div>
-          </div>
-          <!-- End Service Icon 2 -->
-
-          <!-- Start Service Icon 3 -->
-          <div class="col-md-3 col-sm-6 service-box service-center">
-            <div class="service-boxed">
-              <div class="service-icon" style="margin-top:-25px;">
-                <i class="fa fa-code icon-medium-effect icon-effect-1"></i>
-              </div>
-              <div class="service-content">
-                <h4>Paleontológia</h4>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
-              </div>
-            </div>
-          </div>
-          <!-- End Service Icon 3 -->
-
-          <!-- Start Service Icon 4 -->
-          <div class="col-md-3 col-sm-6 service-box service-center">
-            <div class="service-boxed">
-              <div class="service-icon" style="margin-top:-25px;">
-                <i class="fa fa-rocket icon-medium-effect icon-effect-1"></i>
-              </div>
-              <div class="service-content">
-                <h4>Pre-Hisp&aacute;nica</h4>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem Ipsum is simply dummy text of the printing.</p>
-              </div>
-            </div>
-          </div>
-          <!-- End Service Icon 4 -->
-
-        </div>
-        <!-- End Services Icons -->
 
         <!-- Divider -->
         <div class="hr1 margin-top"></div>

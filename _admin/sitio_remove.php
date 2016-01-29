@@ -1,7 +1,7 @@
 <?php require_once('../Connections/arqueologia.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -12,7 +12,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -32,13 +32,13 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
-  $deleteSQL = sprintf("DELETE FROM tblslider WHERE idcontador=%s",
+  $deleteSQL = sprintf("DELETE FROM tblsitios WHERE id=%s",
                        GetSQLValueString($_GET['recordID'], "int"));
 
   mysql_select_db($database_arqueologia, $arqueologia);
   $Result1 = mysql_query($deleteSQL, $arqueologia) or die(mysql_error());
 
-  $deleteGoTo = "slider_lista.php";
+  $deleteGoTo = "sitio_lista.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
     $deleteGoTo .= $_SERVER['QUERY_STRING'];
@@ -64,15 +64,15 @@ if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
   <div class="header"><?php include("../includes/cabecera_admin.php"); ?></div>
   <div class="sidebar1">
   <?php include("../includes/menuizquierda_admin.php"); ?>
-   
+
     <p>&nbsp;</p>
   </div>
   <div class="content"><!-- InstanceBeginEditable name="Partederechaadmin" -->
- 
+
     <h1>Eliminando Slider</h1>
     <p>Procesando.....</p>
   <!-- InstanceEndEditable -->
-   
+
     <!-- end .content --></div>
   <div class="footer">
     <?php include("../includes/pie_admin.php"); ?></div>
