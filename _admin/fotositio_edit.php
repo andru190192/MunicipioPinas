@@ -22,6 +22,22 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,6 +49,7 @@
   <body>
 
     <?php
+    error_reporting(0);
     @session_start();
     if(@$_GET["cerrar"])
     {
@@ -85,11 +102,16 @@
                       </li>
 
                       <li class="sub-menu">
-                          <a href="sitio_lista.php" >
+                          <a class="active" href="sitio_lista.php" >
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li class="active"><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
@@ -146,24 +168,36 @@
                         $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
                       }
 
-                      if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-                        $insertSQL = sprintf("INSERT INTO tblvideos (imagen, url, titulo, subtitulo, intestado) VALUES (%s, %s, %s, %s, %s)",
+                      if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
+                        $updateSQL = sprintf("UPDATE tblfotositios SET imagen=%s, titulo=%s, subtitulo=%s, descripcion=%s, codigositio=%s WHERE id=%s",
                                              GetSQLValueString($_POST['imagen'], "text"),
-                                             GetSQLValueString($_POST['url'], "text"),
                                              GetSQLValueString($_POST['titulo'], "text"),
                                              GetSQLValueString($_POST['subtitulo'], "text"),
-                                             GetSQLValueString($_POST['intestado'], "int"));
+                                             GetSQLValueString($_POST['descripcion'], "text"),
+                                             GetSQLValueString($_POST['sitiocodigo'], "text"),
+                                             GetSQLValueString($_POST['id'], "int"));
 
-                        mysql_select_db($database_arqueologia, $arqueologia);
-                        $Result1 = mysql_query($insertSQL, $arqueologia) or die(mysql_error());
+                                             mysql_select_db($database_arqueologia, $arqueologia);
+                                             $Result1 = mysql_query($updateSQL, $arqueologia) or die(mysql_error());
 
-                        $insertGoTo = "video_lista.php";
-                        if (isset($_SERVER['QUERY_STRING'])) {
-                          $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
-                          $insertGoTo .= $_SERVER['QUERY_STRING'];
-                        }
-                        header(sprintf("Location: %s", $insertGoTo));
-                      }
+                                             $updateGoTo = "fotositio_lista.php";
+                                             if (isset($_SERVER['QUERY_STRING'])) {
+                                               $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+                                               $updateGoTo .= $_SERVER['QUERY_STRING'];
+                                             }
+                                             header(sprintf("Location: %s", $updateGoTo));
+                                           }
+
+                                           $varDato_DatosSlider = "0";
+                                           if (isset($_GET[recordID])) {
+                                             $varDato_DatosSlider = $_GET[recordID];
+                                           }
+                                           mysql_select_db($database_arqueologia, $arqueologia);
+
+                      $query_DatosSlider = sprintf("SELECT * FROM tblfotositios WHERE tblfotositios.id =%s", GetSQLValueString($varDato_DatosSlider, "int"));
+                      $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
+                      $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                      $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
                       ?>
 
                       <script>
@@ -175,42 +209,62 @@
                       	}
 
                       </script>
-                          <h1>A&ntilde;adir Video</h1>
-                          <p>&nbsp;</p>
+                          <h1>Editar Foto</h1>
                           <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                             <table align="center">
                               <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen(734x250px):</td>
-                                <td><input type="text" name="imagen" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Url:</td>
-                                <td><input type="text" name="url" value="" size="32" required/></td>
+                                <td nowrap="nowrap" align="right">Imagen:</td>
+                                <td><input type="text" name="imagen" value="<?php echo htmlentities($row_DatosSlider['imagen'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" />
+                                   <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Titulo:</td>
-                                <td><input type="text" name="titulo" value="" size="32" /></td>
+                                <td><input type="text" name="titulo" value="<?php echo htmlentities($row_DatosSlider['titulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Subtitulo:</td>
-                                <td><input type="text" name="subtitulo" value="" size="32" /></td>
+                                <td><input type="text" name="subtitulo" value="<?php echo htmlentities($row_DatosSlider['subtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
                               </tr>
                               <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Estado:</td>
-                                <td><label for="intestado"></label>
-                                  <select name="intestado" id="intestado">
-                                    <option value="1">Activo</option>
-                                    <option value="0">Desactivado</option>
-                                </select></td>
+                                <td nowrap="nowrap" align="right">Descripcion:</td>
+                                <td><input type="text" name="descripcion" value="<?php echo htmlentities($row_DatosSlider['descripcion'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
+                              </tr>
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">Codigo Sitio:</td>
+                                <td>
+                                  <?php
+                                  mysql_select_db($database_arqueologia, $arqueologia);
+                                  $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                                  $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
+                                  //$row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                                  $row_DatosSlider1 = mysql_fetch_assoc($DatosSlider);
+                                  $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+                                  ?>
+                                  <select name="sitiocodigo" id="sitiocodigo">
+                                    <?php do {
+                                        echo '<option value="'.$row_DatosSlider1['sitiocodigo'].'">'.$row_DatosSlider1['sitio'].'</option>';
+                                    } while ($row_DatosSlider1 = mysql_fetch_assoc($DatosSlider));
+                                    echo '<script language="javascript">'
+                                            . '$(document).ready(function(){';
+                                            echo '$("#sitiocodigo").val("'.$row_DatosSlider ['codigositio'].'")';
+                                            echo '})
+
+                                        </script>';
+                                    ?>
+                                  </select>
+                                </td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td>
-                                <a class="button" href="javascript:document.form1.submit();"><span>Insertar Video</span></a>          </p></td>
+                                <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar Slider</span></a></td>
                               </tr>
                             </table>
-                            <input type="hidden" name="MM_insert" value="form1" />
+                            <input type="hidden" name="MM_update" value="form1" />
+                            <input type="hidden" name="id" value="<?php echo $row_DatosSlider['id']; ?>" />
                           </form>
+                      <?php
+                      mysql_free_result($DatosSlider);
+                      ?>
 
 
                       	</div><!-- /row mt -->
@@ -218,26 +272,6 @@
           </section>
 
       </section>
-
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/jquery-1.8.3.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="assets/js/jquery.sparkline.js"></script>
-
-
-        <!--common script for all pages-->
-        <script src="assets/js/common-scripts.js"></script>
-
-        <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-        <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
-
-
-
-
       </body>
     </html>
 

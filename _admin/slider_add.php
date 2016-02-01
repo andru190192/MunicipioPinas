@@ -147,13 +147,10 @@
                       }
 
                       if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-                        $insertSQL = sprintf("INSERT INTO tblslider (strimagengrande, strimagenpequena, strtitulo, strsubtitulo, strmenu, strlink, intorden, intestado) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+                        $insertSQL = sprintf("INSERT INTO tblslider (strimagengrande, strtitulo, strsubtitulo, intorden, intestado) VALUES (%s, %s, %s, %s, %s)",
                                              GetSQLValueString($_POST['strimagengrande'], "text"),
-                                             GetSQLValueString($_POST['strimagenpequena'], "text"),
                                              GetSQLValueString($_POST['strtitulo'], "text"),
                                              GetSQLValueString($_POST['strsubtitulo'], "text"),
-                                             GetSQLValueString($_POST['strmenu'], "text"),
-                                             GetSQLValueString($_POST['strlink'], "text"),
                                              GetSQLValueString($_POST['intorden'], "int"),
                                              GetSQLValueString($_POST['intestado'], "int"));
 
@@ -187,24 +184,12 @@
                                 <td><input type="text" name="strimagengrande" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagengrande');"/></td>
                               </tr>
                               <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen Pequena(80x50px):</td>
-                                <td><input type="text" name="strimagenpequena" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagenpequena');"/></td>
-                              </tr>
-                              <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Titulo:</td>
-                                <td><input type="text" name="strtitulo" value="" size="32" /></td>
+                                <td><input type="text" name="strtitulo" value="" size="32" required/></td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Subtitulo:</td>
                                 <td><input type="text" name="strsubtitulo" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Menu:</td>
-                                <td><input type="text" name="strmenu" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Link:</td>
-                                <td><input type="text" name="strlink" value="" size="32" /></td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Orden:</td>

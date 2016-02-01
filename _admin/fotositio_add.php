@@ -22,6 +22,12 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
@@ -79,11 +85,16 @@
                       </li>
 
                       <li class="sub-menu">
-                          <a href="sitio_lista.php" >
+                          <a class="active" href="sitio_lista.php" >
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li class="active"><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
@@ -135,71 +146,94 @@
                       }
                       }
 
-                      mysql_select_db($database_arqueologia, $arqueologia);
-                      $query_DatosSlider = "SELECT * FROM tblslider ORDER BY intorden ASC";
-                      $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
-                      $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
-                      $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+                      $editFormAction = $_SERVER['PHP_SELF'];
+                      if (isset($_SERVER['QUERY_STRING'])) {
+                        $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+                      }
+
+                      if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
+                        $insertSQL = sprintf("INSERT INTO tblfotositios (imagen, titulo, subtitulo, descripcion, codigositio) VALUES (%s, %s, %s, %s, %s)",
+                                             GetSQLValueString($_POST['imagen'], "text"),
+                                             GetSQLValueString($_POST['titulo'], "text"),
+                                             GetSQLValueString($_POST['subtitulo'], "text"),
+                                             GetSQLValueString($_POST['descripcion'], "text"),
+                                             GetSQLValueString($_POST['codigositio'], "text"));
+
+                        mysql_select_db($database_arqueologia, $arqueologia);
+                        $Result1 = mysql_query($insertSQL, $arqueologia) or die(mysql_error());
+
+                        $insertGoTo = "fotositio_lista.php";
+                        if (isset($_SERVER['QUERY_STRING'])) {
+                          $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
+                          $insertGoTo .= $_SERVER['QUERY_STRING'];
+                        }
+                        header(sprintf("Location: %s", $insertGoTo));
+                      }
                       ?>
 
                       <script>
-                      function asegurar()
+                      function subirimagen(nombrecampo)
                       {
-                        rc = confirm("Seguro que desea eliminar?");
-                        return rc;
-                      }
+                      	self.name = 'opener';
+                      	remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
+                       	remote.focus();
+                      	}
+
                       </script>
-                      <div class="container">
-
-                        <div class="content">
-                         <h1>Listado Slider Principal</h1>
-                         <p></p>
-
-                          <table class="table table-striped table-advance table-hover">
-                            <hr>
-                              <thead>
-                              <tr>
-                                  <th>Titulo</th>
-                                  <th>Imagen</th>
-                                  <th>Orden</th>
-                                  <th>Status</th>
-                                  <th>Acciones</th>
+                          <h1>A&ntilde;adir Foto</h1>
+                          <p>&nbsp;</p>
+                          <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+                            <table align="center">
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">Imagen Grande(734x250px):</td>
+                                <td><input type="text" name="imagen" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
                               </tr>
-                              </thead>
-                              <tbody>
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">Titulo:</td>
+                                <td><input type="text" name="titulo" value="" size="32" required/></td>
+                              </tr>
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">Subtitulo:</td>
+                                <td><input type="text" name="subtitulo" value="" size="32" /></td>
+                              </tr>
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">Descripcion:</td>
+                                <td><input type="text" name="descripcion" value="" size="32" /></td>
+                              </tr>
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">Codigo Sitio:</td>
+                                <td>
+                                  <?php
+                                  mysql_select_db($database_arqueologia, $arqueologia);
 
-                                <?php do { ?>
-                                <tr>
-                                    <td><?php echo $row_DatosSlider['strtitulo']; ?></td>
-                                    <td><img src="../images/slider/<?php echo $row_DatosSlider['strimagengrande']; ?>" width="80" height="50" /></td>
-                                    <td><?php echo $row_DatosSlider['intorden']; ?></td>
-                                    <td><?php
-                                if ($row_DatosSlider['intestado']== 1)
-                                    echo "Activo";
-                                else
-                                  echo "Inactivo"; ?></td>
-                                    <td>
-                                      <a href="slider_add.php"><button class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button></a>
-                                      <a href="slider_edit.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                        <a href="slider_remove.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
-                                      </td>
-                                    </tr>
-                                    <?php } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
-                              </tbody>
-                          </table>
-                          <?php
-                          mysql_free_result($DatosSlider);
-                          ?>
-                          </div>
+                                  mysql_select_db($database_arqueologia, $arqueologia);
+                                  $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                                  $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
+                                  $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                                  $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+                                  ?>
+                                  <select name="codigositio" id="codigositio">
+                                    <?php do {
+                                        echo $row_DatosSlider['sitio'];
+                                        echo '<option value="'.$row_DatosSlider['sitiocodigo'].'">'.$row_DatosSlider['sitio'].'</option>';
 
+                                    } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider));?>
+                                  </select>
+                                </td>
+                              </tr>
+                              <tr valign="baseline">
+                                <td nowrap="nowrap" align="right">&nbsp;</td>
+                                <td>
+                                <a class="button" href="javascript:document.form1.submit();"><span>Insertar Foto</span></a>          </p></td>
+                              </tr>
+                            </table>
+                            <input type="hidden" name="MM_insert" value="form1" />
+                          </form>
 
 
                       	</div><!-- /row mt -->
               </section>
           </section>
-
-          <!--main content end-->
-          <!--footer start-->
 
       </section>
 
@@ -219,44 +253,7 @@
         <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
         <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
 
-        <!--script for this page-->
-        <script src="assets/js/sparkline-chart.js"></script>
-    	<script src="assets/js/zabuto_calendar.js"></script>
 
-    	<script type="application/javascript">
-            $(document).ready(function () {
-                $("#date-popover").popover({html: true, trigger: "manual"});
-                $("#date-popover").hide();
-                $("#date-popover").click(function (e) {
-                    $(this).hide();
-                });
-
-                $("#my-calendar").zabuto_calendar({
-                    action: function () {
-                        return myDateFunction(this.id, false);
-                    },
-                    action_nav: function () {
-                        return myNavFunction(this.id);
-                    },
-                    ajax: {
-                        url: "show_data.php?action=1",
-                        modal: true
-                    },
-                    legend: [
-                        {type: "text", label: "Special event", badge: "00"},
-                        {type: "block", label: "Regular event", }
-                    ]
-                });
-            });
-
-
-            function myNavFunction(id) {
-                $("#date-popover").hide();
-                var nav = $("#" + id).data("navigation");
-                var to = $("#" + id).data("to");
-                console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-            }
-        </script>
 
 
       </body>

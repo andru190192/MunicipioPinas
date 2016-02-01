@@ -199,24 +199,12 @@
                                    <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagengrande');"/></td>
                               </tr>
                               <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen Pequena:</td>
-                                <td><input type="text" name="strimagenpequena" value="<?php echo htmlentities($row_DatosSlider['strimagenpequena'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" /> <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagenpequena');"/></td>
-                              </tr>
-                              <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Titulo:</td>
                                 <td><input type="text" name="strtitulo" value="<?php echo htmlentities($row_DatosSlider['strtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Subtitulo:</td>
                                 <td><input type="text" name="strsubtitulo" value="<?php echo htmlentities($row_DatosSlider['strsubtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Menu:</td>
-                                <td><input type="text" name="strmenu" value="<?php echo htmlentities($row_DatosSlider['strmenu'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Link:</td>
-                                <td><input type="text" name="strlink" value="<?php echo htmlentities($row_DatosSlider['strlink'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
                               </tr>
                               <tr valign="baseline">
                                 <td nowrap="nowrap" align="right">Orden:</td>

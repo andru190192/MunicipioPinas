@@ -22,12 +22,6 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -70,7 +64,7 @@
                   	  <h5 class="centered"><?php echo $_SESSION['usuario']; ?></h5>
 
                       <li class="mt">
-                          <a class="active" href="slider_lista.php">
+                          <a href="slider_lista.php">
                               <i class="fa fa-dashboard"></i>
                               <span>Slider Principal</span>
                           </a>
@@ -85,12 +79,12 @@
                       </li>
 
                       <li class="sub-menu">
-                          <a href="sitio_lista.php" >
+                          <a class="active" href="sitio_lista.php" >
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
                           <ul class="sub">
-                              <li><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li class="active"><a  href="fotositio_lista.php">Fotos</a></li>
                               <li><a  href="videositio_lista.php">Videos</a></li>
                           </ul>
                       </li>
@@ -112,42 +106,92 @@
                   <div class="row">
                       <div class="col-lg-12 main-chart">
 
-                      	<div class="row mtbox">
-                      		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                      			<div class="box1">
-    					  			<span class="li_heart"></span>
-    					  			<h3>933</h3>
-                      			</div>
-    					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
-                      		</div>
-                      		<div class="col-md-2 col-sm-2 box0">
-                      			<div class="box1">
-    					  			<span class="li_cloud"></span>
-    					  			<h3>+48</h3>
-                      			</div>
-    					  			<p>48 New files were added in your cloud storage.</p>
-                      		</div>
-                      		<div class="col-md-2 col-sm-2 box0">
-                      			<div class="box1">
-    					  			<span class="li_stack"></span>
-    					  			<h3>23</h3>
-                      			</div>
-    					  			<p>You have 23 unread messages in your inbox.</p>
-                      		</div>
-                      		<div class="col-md-2 col-sm-2 box0">
-                      			<div class="box1">
-    					  			<span class="li_news"></span>
-    					  			<h3>+10</h3>
-                      			</div>
-    					  			<p>More than 10 news were added in your reader.</p>
-                      		</div>
-                      		<div class="col-md-2 col-sm-2 box0">
-                      			<div class="box1">
-    					  			<span class="li_data"></span>
-    					  			<h3>OK!</h3>
-                      			</div>
-    					  			<p>Your server is working perfectly. Relax & enjoy.</p>
-                      		</div>
+                      <?php require_once('../Connections/arqueologia.php'); ?>
+                      <?php
+                      if (!function_exists("GetSQLValueString")) {
+                      function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+                      {
+                        if (PHP_VERSION < 6) {
+                          $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+                        }
+
+                        $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+                        switch ($theType) {
+                          case "text":
+                            $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                            break;
+                          case "long":
+                          case "int":
+                            $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                            break;
+                          case "double":
+                            $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                            break;
+                          case "date":
+                            $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                            break;
+                          case "defined":
+                            $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                            break;
+                        }
+                        return $theValue;
+                      }
+                      }
+
+                      mysql_select_db($database_arqueologia, $arqueologia);
+                      $query_DatosSlider = "SELECT * FROM tblfotositios";
+                      $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
+                      $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                      $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
+                      ?>
+
+                      <script>
+                      function asegurar()
+                      {
+                        rc = confirm("Seguro que desea eliminar?");
+                        return rc;
+                      }
+                      </script>
+                      <h1>Listado de Fotos</h1>
+                         <a href="fotositio_add.php"> <button class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button> A&ntilde;adir Foto</a>
+
+                          <table class="table table-striped table-advance table-hover">
+                            <hr>
+                              <thead>
+                              <tr>
+                                  <th>Imagen</th>
+                                  <th>titulo</th>
+                                  <th>Subtitulo</th>
+                                  <th>Descripcion</th>
+                                  <th>Codigo Sitio</th>
+                                  <th>Acciones</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+
+                                <?php do { ?>
+                                <tr>
+                                    <td><img src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" width="80" height="50" /></td>
+                                    <td width="30%"><?php echo $row_DatosSlider['titulo']; ?></td>
+                                    <td><?php echo $row_DatosSlider['subtitulo']; ?></td>
+                                    <td width="30%"><?php echo $row_DatosSlider['descripcion']; ?></td>
+                                    <td><?php echo $row_DatosSlider['codigositio']; ?></td>
+                                    <td width="50%">
+                                      <a href="fotositio_edit.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                      <a href="fotositio_remove.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
+                                      </td>
+                                    </tr>
+                                    <?php } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
+                              </tbody>
+                          </table>
+                          <?php
+                          mysql_free_result($DatosSlider);
+                          ?>
+                          </div>
+
+
+
                       	</div><!-- /row mt -->
               </section>
           </section>
@@ -176,27 +220,6 @@
         <!--script for this page-->
         <script src="assets/js/sparkline-chart.js"></script>
     	<script src="assets/js/zabuto_calendar.js"></script>
-
-    	<script type="text/javascript">
-            $(document).ready(function () {
-            var unique_id = $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Bienvenido <?php echo $_SESSION['usuario']; ?>!',
-                // (string | mandatory) the text inside the notification
-                text: 'Al panel de administracion.',
-                // (string | optional) the image to display on the left
-                image: 'assets/img/ui-sam.jpg',
-                // (bool | optional) if you want it to fade out on its own or just sit there
-                sticky: true,
-                // (int | optional) the time you want it to be alive for before fading out
-                time: '',
-                // (string | optional) the class name you want to apply to that specific message
-                class_name: 'my-sticky-class'
-            });
-
-            return false;
-            });
-    	</script>
 
     	<script type="application/javascript">
             $(document).ready(function () {

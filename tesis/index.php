@@ -140,203 +140,9 @@
       </div>
       <!-- End Top Bar -->
 
-      <!-- Start Header ( Logo & Naviagtion ) -->
-      <div class="navbar navbar-default navbar-top">
-        <div class="container">
-          <div class="navbar-header">
-            <!-- Stat Toggle Nav Link For Mobiles -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-            <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="index.php"><img style="width: 114px;height: 23px;" alt="logo" src="images/logo.png"></a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <!-- Stat Search -->
-            <div class="search-side">
-              <a class="show-search"><i class="fa fa-search"></i></a>
-              <div class="search-form">
-                <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                  <input type="text" value="" name="s" id="s" placeholder="Buscar en el sitio">
-                </form>
-              </div>
-            </div>
-            <!-- End Search -->
-            <!-- Start Navigation List -->
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a class="active" href="index.php">Inicio</a>
-              </li>
-              <li>
-                <a href="#">Sitios</a>
-
-                <?php require_once('../Connections/arqueologia.php'); ?>
-                <?php
-                if (!function_exists("GetSQLValueString")) {
-                function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-                {
-                  if (PHP_VERSION < 6) {
-                    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-                  }
-
-                  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-                  switch ($theType) {
-                    case "text":
-                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                      break;
-                    case "long":
-                    case "int":
-                      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-                      break;
-                    case "double":
-                      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-                      break;
-                    case "date":
-                      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                      break;
-                    case "defined":
-                      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-                      break;
-                  }
-                  return $theValue;
-                }
-                }
-
-                $maxRows_DatosSlider = 5;
-                $pageNum_DatosSlider = 0;
-                if (isset($_GET['pageNum_DatosSlider'])) {
-                  $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
-                }
-                $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
-
-                mysql_select_db($database_arqueologia, $arqueologia);
-                $query_DatosSlider = "SELECT * FROM tblmenusitios";
-                $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
-                $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
-                $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
-
-                if (isset($_GET['totalRows_DatosSlider'])) {
-                  $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
-                } else {
-                  $all_DatosSlider = mysql_query($query_DatosSlider);
-                  $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
-                }
-                $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
-                ?>
-
-
-
-
-                <ul class="dropdown">
-                  <?php
-                   mysql_data_seek($DatosSlider, 0);
-                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
-                  	    <!-- First Content -->
-                          <?php $contador=1; ?>
-                  	    <?php do { ?>
-                            <li><a href="lugares/sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
-                        <?php
-                  		    $contador++;
-                  			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
-                </ul>
-              </li>
-              <li><a href="contact.php">Contactenos</a></li>
-              <li>
-                <a href="../_admin/login/login.php" target="_blank">Administracion</a>
-              </li>
-            </ul>
-            <!-- End Navigation List -->
-          </div>
-        </div>
-
-        <!-- Mobile Menu Start -->
-        <ul class="wpb-mobile-menu">
-          <li>
-            <a class="active" href="index.php">Inicio</a>
-          </li>
-          <li>
-            <a>Sitios</a>
-            <?php require_once('../Connections/arqueologia.php'); ?>
-            <?php
-            if (!function_exists("GetSQLValueString")) {
-            function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-            {
-              if (PHP_VERSION < 6) {
-                $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-              }
-
-              $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-              switch ($theType) {
-                case "text":
-                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                  break;
-                case "long":
-                case "int":
-                  $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-                  break;
-                case "double":
-                  $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-                  break;
-                case "date":
-                  $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                  break;
-                case "defined":
-                  $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-                  break;
-              }
-              return $theValue;
-            }
-            }
-
-            $maxRows_DatosSlider = 5;
-            $pageNum_DatosSlider = 0;
-            if (isset($_GET['pageNum_DatosSlider'])) {
-              $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
-            }
-            $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
-
-            mysql_select_db($database_arqueologia, $arqueologia);
-            $query_DatosSlider = "SELECT * FROM tblsitios";
-            $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
-            $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
-            $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
-
-            if (isset($_GET['totalRows_DatosSlider'])) {
-              $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
-            } else {
-              $all_DatosSlider = mysql_query($query_DatosSlider);
-              $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
-            }
-            $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
-            ?>
-
-
-
-
-            <ul class="dropdown">
-              <?php
-               mysql_data_seek($DatosSlider, 0);
-               $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
-                    <!-- First Content -->
-                      <?php $contador=1; ?>
-                    <?php do { ?>
-                        <li><a href="lugares/sitio.php"><?php echo $row_DatosSlider['sitio']; ?></a></li>
-                    <?php
-                      $contador++;
-                    } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
-            </ul>
-          </li>
-          <li><a href="contact.php">Contactenos</a></li>
-          <li>
-            <a href="../_admin/login/login.php" target="_blank">Administracion</a>
-          </li>
-        </ul>
-        <!-- Mobile Menu End -->
-
-      </div>
-      <!-- End Header ( Logo & Naviagtion ) -->
+    <?php
+	include_once('menu.php');
+	?>
 
     </header>
     <!-- End Header -->
@@ -380,7 +186,7 @@
     }
     }
 
-    $maxRows_DatosSlider = 4;
+    $maxRows_DatosSlider = 100;
     $pageNum_DatosSlider = 0;
     if (isset($_GET['pageNum_DatosSlider'])) {
       $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
@@ -388,7 +194,7 @@
     $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
 
     mysql_select_db($database_arqueologia, $arqueologia);
-    $query_DatosSlider = "SELECT * FROM tblslider WHERE tblslider.intestado = 1 ORDER BY tblslider.intestado ASC";
+    $query_DatosSlider = "SELECT * FROM tblslider WHERE tblslider.intestado = 1 ORDER BY tblslider.intorden ASC";
     $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
     $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
     $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
@@ -422,7 +228,7 @@
         <!-- Carousel inner -->
         <div class="carousel-inner">
           <div class="item active">
-            <img class="img-responsive" src="images/slider/bg1.jpg" alt="slider">
+            <img class="img-responsive" src="../images/slider/bg1.jpg" alt="slider">
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated2">
@@ -443,7 +249,7 @@
                   <?php $contador=1; ?>
           	    <?php do { ?>
                   <div class="item">
-                    <img class="img-responsive" src="images/slider/<?php echo $row_DatosSlider['strimagengrande']; ?>" alt="slider">
+                    <img class="img-responsive" src="../images/slider/<?php echo $row_DatosSlider['strimagengrande']; ?>" alt="slider">
                     <div class="slider-content">
                       <div class="col-md-12 text-center">
                         <h2 class="animated2">
@@ -523,7 +329,7 @@
             }
             }
 
-            $maxRows_DatosSlider = 8;
+            $maxRows_DatosSlider = 100;
             $pageNum_DatosSlider = 0;
             if (isset($_GET['pageNum_DatosSlider'])) {
               $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
@@ -531,7 +337,7 @@
             $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
 
             mysql_select_db($database_arqueologia, $arqueologia);
-            $query_DatosSlider = "SELECT * FROM tblvideos WHERE tblvideos.intestado = 1";
+            $query_DatosSlider = "SELECT * FROM tblvideos";
             $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
             $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
             $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
@@ -549,244 +355,37 @@
 
                   <?php
                    mysql_data_seek($DatosSlider, 0);
-                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+                   ?>
                   	    <!-- First Content -->
                           <?php $contador=1; ?>
-                  	    <?php do { ?>
-                          <div class="portfolio-item item">
-                            <div class="portfolio-border">
-                              <div class="portfolio-thumb">
-                                <a class="lightbox" data-lightbox-type="ajax" href="<?php echo $row_DatosSlider['url']; ?>">
-                                  <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                                  <img alt="" src="images/portfolio-1/1.png" />
-                                </a>
-                              </div>
-                              <div class="portfolio-details">
-                                <a href="#">
-                                  <h4><?php echo $row_DatosSlider['titulo']; ?></h4>
-                                  <span><?php echo $row_DatosSlider['subtitulo']; ?></span
-                                </a>
+
+                          <?php do { ?>
+
+                            <div class="portfolio-item item">
+                              <div class="portfolio-border">
+                                <div class="portfolio-thumb">
+                                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
+                                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
+                                    <img alt="" src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" />
+                                  </a>
+                                </div>
+                                <div class="portfolio-details">
+                                  <a href="#">
+                                    <h4><?php echo $row_DatosSlider['titulo']; ?></h4>
+                                    <span><?php echo $row_DatosSlider['subtitulo']; ?></span>
+                                  </a>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                  	      <?php
-                  		    $contador++;
-                  			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
+
+                          <?php
+                            $contador++;
+                          } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
 
 
 
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/1.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Website</span>
-                    <span>Drawing</span>
-                  </a>
-                </div>
-              </div>
-            </div>
 
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/2.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Logo</span>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/3.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Drawing</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/4.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Website</span>
-                    <span>Ilustration</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/5.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Logo</span>
-                    <span>Drawing</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/6.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/7.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Website</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/8.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Ilustration</span>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/9.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Ilustration</span>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/10.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Ilustration</span>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/11.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Ilustration</span>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="portfolio-item item">
-              <div class="portfolio-border">
-                <div class="portfolio-thumb">
-                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
-                    <div class="thumb-overlay"><i class="fa fa-play"></i></div>
-                    <img alt="" src="images/portfolio-1/12.png" />
-                  </a>
-                </div>
-                <div class="portfolio-details">
-                  <a href="#">
-                    <h4>Lorem Ipsum Dolor</h4>
-                    <span>Ilustration</span>
-                    <span>Animation</span>
-                  </a>
-                </div>
-              </div>
-            </div>
 
           </div>
         </div>

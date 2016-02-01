@@ -20,52 +20,53 @@
 
 
   <!-- Bootstrap CSS  -->
-  <link rel="stylesheet" href="../asset/css/bootstrap.min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
 
   <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen">
 
   <!-- Slicknav -->
-  <link rel="stylesheet" type="text/css" href="../css/slicknav.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/slicknav.css" media="screen">
 
   <!-- Margo CSS Styles  -->
-  <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 
   <!-- Responsive CSS Styles  -->
-  <link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen">
-
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
+<!-- Css3 Transitions Styles  -->
+  <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
   <!-- Color CSS Styles  -->
-<link rel="stylesheet" type="text/css" href="../css/colors/red.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../css/colors/jade.css" title="jade" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/blue.css" title="blue" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/beige.css" title="beige" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/cyan.css" title="cyan" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/green.css" title="green" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/orange.css" title="orange" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/peach.css" title="peach" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/pink.css" title="pink" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/purple.css" title="purple" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/sky-blue.css" title="sky-blue" media="screen" />
-  <link rel="stylesheet" type="text/css" href="../css/colors/yellow.css" title="yellow" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/colors/red.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/colors/jade.css" title="jade" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/beige.css" title="beige" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/cyan.css" title="cyan" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/green.css" title="green" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/orange.css" title="orange" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/peach.css" title="peach" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/pink.css" title="pink" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/purple.css" title="purple" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css" title="sky-blue" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
 
 
   <!-- Margo JS  -->
-  <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.migrate.js"></script>
-  <script type="text/javascript" src="../js/modernizrr.js"></script>
-  <script type="text/javascript" src="../asset/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.fitvids.js"></script>
-  <script type="text/javascript" src="../js/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="../js/nivo-lightbox.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.isotope.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.appear.js"></script>
-  <script type="text/javascript" src="../js/count-to.js"></script>
-  <script type="text/javascript" src="../js/jquery.textillate.js"></script>
-  <script type="text/javascript" src="../js/jquery.lettering.js"></script>
-  <script type="text/javascript" src="../js/jquery.easypiechart.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.nicescroll.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.parallax.js"></script>
-  <script type="text/javascript" src="../js/jquery.slicknav.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/jquery.migrate.js"></script>
+  <script type="text/javascript" src="js/modernizrr.js"></script>
+  <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="js/nivo-lightbox.min.js"></script>
+  <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="js/jquery.appear.js"></script>
+  <script type="text/javascript" src="js/count-to.js"></script>
+  <script type="text/javascript" src="js/jquery.textillate.js"></script>
+  <script type="text/javascript" src="js/jquery.lettering.js"></script>
+  <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
+  <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+  <script type="text/javascript" src="js/jquery.parallax.js"></script>
+  <script type="text/javascript" src="js/jquery.slicknav.js"></script>
 
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -139,7 +140,7 @@
       <!-- End Top Bar -->
 
       <?php
-	include_once('../menu.php');
+	include_once('menu.php');
 	?>
 
 
@@ -151,9 +152,9 @@
       <div class="container">
 
 
-        <?php require_once('../../Connections/arqueologia.php'); ?>
-        <?php
-        if (!function_exists("GetSQLValueString")) {
+        <?php require_once('../Connections/arqueologia.php'); ?>
+
+          <?php
         function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
         {
           if (PHP_VERSION < 6) {
@@ -182,7 +183,7 @@
           }
           return $theValue;
         }
-        }
+
 
         $maxRows_DatosSlider = 5;
         $pageNum_DatosSlider = 0;
@@ -198,10 +199,8 @@
         //en el where poner el parametro q se recibe
 
 
+        $query_DatosSlider = "SELECT * FROM tblmenusitios WHERE tblmenusitios.sitiocodigo='".$_GET['sitiocodigo']."'";
 
-
-        $query_DatosSlider = "SELECT * FROM tblsitios WHERE tblsitios.codigositio =". $_GET['sitiocodigo'];
-        echo $query_DatosSlider;
         $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
         $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
         $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
@@ -215,72 +214,29 @@
         $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
         ?>
 
-
-        <h1 style="font-size: 50px;text-align:center"><?php echo $row_DatosSlider['sitio']; ?></h1>
         <div class="hr1 margin-60"></div>
+        <h1 style="text-align:center"><?php echo $row_DatosSlider['sitio']; ?></h1>
+        <div class="hr1 margin-60"></div>
+
+
+        <?php
+        $query_DatosSlider = "SELECT * FROM tblfotositios WHERE tblfotositios.codigositio='".$_GET['sitiocodigo']."'";
+
+        $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+        $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+        $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+        if (isset($_GET['totalRows_DatosSlider'])) {
+          $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+        } else {
+          $all_DatosSlider = mysql_query($query_DatosSlider);
+          $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+        }
+        $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+        ?>
 
         <?php
          ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
-
-
-
-
-        <?php require_once('../../Connections/arqueologia.php'); ?>
-        <?php
-        if (!function_exists("GetSQLValueString")) {
-        function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-        {
-          if (PHP_VERSION < 6) {
-            $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-          }
-
-          $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-          switch ($theType) {
-            case "text":
-              $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-              break;
-            case "long":
-            case "int":
-              $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-              break;
-            case "double":
-              $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-              break;
-            case "date":
-              $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-              break;
-            case "defined":
-              $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-              break;
-          }
-          return $theValue;
-        }
-        }
-
-        $maxRows_DatosSlider = 5;
-        $pageNum_DatosSlider = 0;
-        if (isset($_GET['pageNum_DatosSlider'])) {
-          $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
-        }
-        $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
-
-        mysql_select_db($database_arqueologia, $arqueologia);
-        $query_DatosSlider = "SELECT * FROM tblsitios WHERE tblsitios.codigositio = 'br'";
-        $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
-        $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
-        $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
-
-        if (isset($_GET['totalRows_DatosSlider'])) {
-          $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
-        } else {
-          $all_DatosSlider = mysql_query($query_DatosSlider);
-          $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
-        }
-        $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
-        ?>
-
-
 
           <?php
            mysql_data_seek($DatosSlider, 0);
@@ -293,29 +249,71 @@
                     <!-- Start Blog Posts -->
                     <div class="col-md-6 blog-box">
                         <div style="text-align:center">
-                          <img width="100%" height="30%" src="../../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" />
+                          <img width="100%" height="30%" src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" />
                         </div>
                     </div>
                     <div class="col-md-6 blog-box">
+                      <h2>
+                        <?php echo $row_DatosSlider['titulo']; ?>
+                      </h2>
                       <p>
-                        <?php echo $row_DatosSlider['descripcionimg']; ?>
+                        <?php echo $row_DatosSlider['subtitulo']; ?>
+                      </p>
+                      <p>
+                        <?php echo $row_DatosSlider['descripcion']; ?>
                       </p>
                     </div>
                     </div>
-                    <div class="hr1 margin-40"></div>
-                  <div class="row blog-page">
-                      <div class="col-md-6 blog-box">
-                        <iframe width="70%" height="40%" src="<?php echo $row_DatosSlider['video']; ?>" frameborder="0" allowfullscreen></iframe>
-                      </div>
-                      <div class="col-md-6 blog-box">
-                        <p>
-                          <?php echo $row_DatosSlider['descripcionvideo']; ?>
-                        </p>
-                      </div>
-                  </div>
                 <?php
                   $contador++;
                 } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
+
+                <?php
+                $query_DatosSlider = "SELECT * FROM tblvideositios WHERE tblvideositios.codigositio='".$_GET['sitiocodigo']."'";
+
+                $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+                $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+                $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+                if (isset($_GET['totalRows_DatosSlider'])) {
+                  $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+                } else {
+                  $all_DatosSlider = mysql_query($query_DatosSlider);
+                  $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+                }
+                $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+                ?>
+                <?php
+                 ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
+                  <?php
+                   mysql_data_seek($DatosSlider, 0);
+                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                        <!-- First Content -->
+                          <?php $contador=1; ?>
+                        <?php do { ?>
+
+                          <div class="row blog-page">
+                            <!-- Start Blog Posts -->
+                            <div class="col-md-6 blog-box">
+                                <div style="text-align:center">
+                                  <iframe width="70%" height="40%" src="<?php echo $row_DatosSlider['url']; ?>" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="col-md-6 blog-box">
+                              <h2>
+                                <?php echo $row_DatosSlider['titulo']; ?>
+                              </h2>
+                              <p>
+                                <?php echo $row_DatosSlider['subtitulo']; ?>
+                              </p>
+                              <p>
+                                <?php echo $row_DatosSlider['descripcion']; ?>
+                              </p>
+                            </div>
+                            </div>
+                        <?php
+                          $contador++;
+                        } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
 
 
 
@@ -421,7 +419,7 @@
   </div>
   <!-- End Container -->
 
-  <script type="text/javascript" src="../js/script.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
 
 </body>
 
