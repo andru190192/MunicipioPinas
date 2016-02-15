@@ -173,3 +173,230 @@
 .li_world:before {
 	content: "\e02f";
 }
+
+/*------------------------------------------*/
+/*		    09 - Single post Styles
+/*------------------------------------------*/
+
+.blog-page, .blog-post-page {
+	padding-top: 5px;
+}
+
+.blog-post-page .blog-post {
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eee;
+}
+
+.blog-post-page ul.post-meta {
+	margin-bottom: 12px;
+}
+
+.post-content h2 {
+	font-weight: 500;
+}
+
+.post-bottom {
+	padding: 20px 0;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #f6f6f6;
+}
+
+.post-tags-list {
+	float: right;
+	padding-top: 6px;
+}
+
+.post-tags-list a {
+	display: inline-block;
+	color: #666;
+	font-size: 12px;
+	padding: 2px 8px;
+	background: #eee;
+	margin-bottom: 4px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+
+.post-tags-list a:hover {
+	color: #fff;
+}
+
+.post-share {
+	float: left;
+}
+
+.post-share span {
+	margin-right: 4px;
+	font-size: 13px;
+	color: #666;
+}
+
+.post-share a {
+	display: inline-block;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+
+.post-share a.facebook {
+	background-color: #507CBE;
+}
+
+.post-share a.facebook:hover {
+	background-color: #3E68A8;
+}
+
+.post-share a.twitter {
+	background-color: #63CDF1;
+}
+
+.post-share a.twitter:hover {
+	background-color: #36BFED;
+}
+
+.post-share a.gplus {
+	background-color: #F16261;
+}
+
+.post-share a.gplus:hover {
+	background-color: #EF4545;
+}
+
+.post-share a.linkedin {
+	background-color: #90CADD;
+}
+
+.post-share a.linkedin:hover {
+	background-color: #72BBD3;
+}
+
+.post-share a i {
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	display: block;
+	color: #fff;
+	font-size: 1em;
+}
+
+.blog-post .author-info {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.blog-post .author-info .author-image {
+	float: left;
+}
+
+.blog-post .author-info .author-image img {
+	width: 70px;
+	height: 70px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+	border: 4px solid #eee;
+}
+
+.blog-post .author-info .author-bio {
+	padding-left: 85px;
+}
+
+.blog-post .author-info h4 {
+	margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.blog-post .author-info p:last-child {
+	margin: 0;
+}
+
+#comments .comments-list {
+	padding: 0;
+	margin: 0 0 35px 0;
+}
+
+#comments .comments-title {
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+#comments .comments-list li .comment-box {
+	padding: 20px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+	margin-bottom: 20px;
+	border: 1px solid #e8e8e8;
+	box-shadow: 0 0 20px rgba(0,0,0,.04) inset;
+	-o-box-shadow: 0 0 20px rgba(0,0,0,.04) inset;
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,.04) inset;
+  	-webkit-box-shadow: 0 0 20px rgba(0,0,0,.04) inset;
+}
+
+#comments .comments-list li ul {
+	padding-left: 80px;
+}
+
+#comments .avatar {
+	float: left;
+}
+
+#comments .avatar img {
+	width: 60px;
+	height: 60px;
+	padding: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+	border: 1px solid #e8e8e8;
+}
+
+#comments .comment-content {
+	padding-left: 72px;
+}
+
+#comments .comment-content .comment-meta {
+	margin-bottom: 5px;
+}
+
+.comment-content .comment-meta span:after {
+	content: "-";
+	margin: 0 5px;
+	font-weight: 100;
+	color: #666;
+}
+
+.comment-content .comment-meta span:last-child:after {
+	content: "";
+	margin: 0;
+}
+
+.comment-content .comment-meta .comment-by {
+	font-weight: 600;
+	color: #444;
+}
+
+.comment-content .comment-meta .comment-date {
+	color: #666;
+}
+
+#respond .respond-title {
+	font-weight: 500;
+	margin-bottom: 15px;
+}

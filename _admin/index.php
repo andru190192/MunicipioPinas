@@ -8,7 +8,7 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>Administracion</title>
-
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
@@ -71,14 +71,14 @@
 
                       <li class="mt">
                           <a class="active" href="slider_lista.php">
-                              <i class="fa fa-dashboard"></i>
+                              <i class="fa fa-angle-double-right"></i>
                               <span>Slider Principal</span>
                           </a>
                       </li>
 
                       <li class="sub-menu">
                           <a href="video_lista.php" >
-                              <i class="fa fa-desktop"></i>
+                              <i class="fa fa-angle-double-right"></i>
                               <span>Slider Videos</span>
                           </a>
 
@@ -86,7 +86,7 @@
 
                       <li class="sub-menu">
                           <a href="sitio_lista.php" >
-                              <i class="fa fa-cogs"></i>
+                              <i class="fa fa-angle-double-right"></i>
                               <span>Sitios</span>
                           </a>
                           <ul class="sub">
@@ -94,10 +94,32 @@
                               <li><a  href="videositio_lista.php">Videos</a></li>
                           </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
-                              <i class="fa fa-book"></i>
+                              <i class="fa fa-angle-double-right"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-angle-double-right"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-angle-double-right"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="foro_lista.php" >
+                              <i class="fa fa-angle-double-right"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -118,35 +140,35 @@
     					  			<span class="li_heart"></span>
     					  			<h3>933</h3>
                       			</div>
-    					  			<p>933 People liked your page the last 24hs. Whoohoo!</p>
+    					  			<p>933 Imagenes publicadas !</p>
                       		</div>
                       		<div class="col-md-2 col-sm-2 box0">
                       			<div class="box1">
     					  			<span class="li_cloud"></span>
     					  			<h3>+48</h3>
                       			</div>
-    					  			<p>48 New files were added in your cloud storage.</p>
+    					  			<p>48 Videos publicados.</p>
                       		</div>
                       		<div class="col-md-2 col-sm-2 box0">
                       			<div class="box1">
     					  			<span class="li_stack"></span>
     					  			<h3>23</h3>
                       			</div>
-    					  			<p>You have 23 unread messages in your inbox.</p>
+    					  			<p>Mas 23 Me gusta.</p>
                       		</div>
                       		<div class="col-md-2 col-sm-2 box0">
                       			<div class="box1">
     					  			<span class="li_news"></span>
     					  			<h3>+10</h3>
                       			</div>
-    					  			<p>More than 10 news were added in your reader.</p>
+    					  			<p>Mas de 10 Publicaciones.</p>
                       		</div>
                       		<div class="col-md-2 col-sm-2 box0">
                       			<div class="box1">
     					  			<span class="li_data"></span>
     					  			<h3>OK!</h3>
                       			</div>
-    					  			<p>Your server is working perfectly. Relax & enjoy.</p>
+    					  			<p>Servidor ejecutado correctamente.</p>
                       		</div>
                       	</div><!-- /row mt -->
               </section>

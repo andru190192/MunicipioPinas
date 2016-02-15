@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -90,11 +91,37 @@
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -191,37 +218,36 @@
 
                       </script>
                           <h1>Editar Publicidad</h1>
+                          <div class="container">
                           <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <table align="center">
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen Grande:</td>
-                                <td><input type="text" name="strimagengrande" value="<?php echo htmlentities($row_DatosSlider['strimagengrande'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" />
-                                   <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagengrande');"/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Titulo:</td>
-                                <td><input type="text" name="strtitulo" value="<?php echo htmlentities($row_DatosSlider['strtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Subtitulo:</td>
-                                <td><input type="text" name="strsubtitulo" value="<?php echo htmlentities($row_DatosSlider['strsubtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Orden:</td>
-                                <td><input type="text" name="intorden" value="<?php echo htmlentities($row_DatosSlider['intorden'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Estado:</td>
-                                <td><select name="intestado">
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Imagen Grande:</label>
+                                <input id="strimagengrande" type="text" name="strimagengrande" value="<?php echo htmlentities($row_DatosSlider['strimagengrande'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control" />
+                                <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('strimagengrande');" class="form-control"/>
+                                </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Titulo:</label>
+                                <input id="strtitulo" type="text" name="strtitulo" value="<?php echo htmlentities($row_DatosSlider['strtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                                </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Subtitulo:</label>
+                                <input id="strsubtitulo" type="text" name="strsubtitulo" value="<?php echo htmlentities($row_DatosSlider['strsubtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                                </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Orden:</label>
+                                <input id="intorden" type="text" name="intorden" value="<?php echo htmlentities($row_DatosSlider['intorden'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                                </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Estado:</label>
+                                <select name="intestado" class="form-control">
                                   <option value="1" <?php if (!(strcmp(1, htmlentities($row_DatosSlider['intestado'], ENT_COMPAT, 'iso8859-1')))) {echo "SELECTED";} ?>>Activo</option>
                                   <option value="0" <?php if (!(strcmp(0, htmlentities($row_DatosSlider['intestado'], ENT_COMPAT, 'iso8859-1')))) {echo "SELECTED";} ?>>Desactivado</option>
-                                </select></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar Slider</span></a></td>
-                              </tr>
-                            </table>
+                                </select>
+                                </div>
+                            <div class="form-group">
+                                <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Actualizar</span></a>
+                                <a class="btn btn-warning" href="slider_lista.php"><span>Cancelar</span></a>
+                            </div>
                             <input type="hidden" name="MM_update" value="form1" />
                             <input type="hidden" name="idcontador" value="<?php echo $row_DatosSlider['idcontador']; ?>" />
                           </form>
@@ -229,7 +255,7 @@
                       mysql_free_result($DatosSlider);
                       ?>
 
-
+                          </div>
                       	</div><!-- /row mt -->
               </section>
           </section>
@@ -251,6 +277,24 @@
 
         <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
         <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+        <script type="text/javascript">
+          function validarFormulario() {
+            var strimagengrande = document.getElementById("strimagengrande").value;
+            var strtitulo = document.getElementById("strtitulo").value;
+            var strsubtitulo = document.getElementById("strsubtitulo").value;
+            var intorden = document.getElementById("intorden").value;
+            if(strimagengrande.localeCompare("")==0){
+              alert("Ingrese una imagen");
+            }else if(strtitulo.localeCompare("")==0){
+              alert("Ingrese un titulo");
+            }else if(strsubtitulo.localeCompare("")==0){
+              alert("Ingrese un subtitulo");
+            }else if(intorden.localeCompare("")==0){
+              alert("Ingrese un orden");
+            }
+          }
+        </script>
 
       </body>
     </html>

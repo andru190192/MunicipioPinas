@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -33,6 +34,7 @@
   <body>
 
     <?php
+    error_reporting(0);
     @session_start();
     if(@$_GET["cerrar"])
     {
@@ -85,15 +87,41 @@
                       </li>
 
                       <li class="sub-menu">
-                          <a href="sitio_lista.php" >
+                          <a class="active" href="sitio_lista.php" >
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li class="active"><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -147,17 +175,17 @@
                       }
 
                       if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-                        $insertSQL = sprintf("INSERT INTO tblsitios (imagen, descripcionimg, video, descripcionvideo, codigositio) VALUES (%s, %s, %s, %s, %s)",
-                                             GetSQLValueString($_POST['imagen'], "text"),
-                                             GetSQLValueString($_POST['descripcionimg'], "text"),
-                                             GetSQLValueString($_POST['video'], "text"),
-                                             GetSQLValueString($_POST['descripcionvideo'], "text"),
-                                             GetSQLValueString($_POST['sitiocodigo'], "text"));
+                        $insertSQL = sprintf("INSERT INTO tblvideositios (url, titulo, subtitulo, descripcion, codigositio) VALUES (%s, %s, %s, %s, %s)",
+                                             GetSQLValueString($_POST['url'], "text"),
+                                             GetSQLValueString($_POST['titulo'], "text"),
+                                             GetSQLValueString($_POST['subtitulo'], "text"),
+                                             GetSQLValueString($_POST['descripcion'], "text"),
+                                             GetSQLValueString($_POST['codigositio'], "text"));
 
                         mysql_select_db($database_arqueologia, $arqueologia);
                         $Result1 = mysql_query($insertSQL, $arqueologia) or die(mysql_error());
 
-                        $insertGoTo = "sitio_lista.php";
+                        $insertGoTo = "videositio_lista.php";
                         if (isset($_SERVER['QUERY_STRING'])) {
                           $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
                           $insertGoTo .= $_SERVER['QUERY_STRING'];
@@ -175,30 +203,28 @@
                       	}
 
                       </script>
-                          <h1>A&ntilde;adir Informacion</h1>
+                          <h1>A&ntilde;adir Video</h1>
                           <p>&nbsp;</p>
-                          <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <table align="center">
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen:</td>
-                                <td><input type="text" name="imagen" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Descripcion Imagen:</td>
-                                <td><input type="text" name="descripcionimg" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Video:</td>
-                                <td><input type="text" name="video" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Descripcion Video:</td>
-                                <td><input type="text" name="descripcionvideo" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Codigo Sitio:</td>
-
-                                <td>
+                          <div class="container">
+                          <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Url:</label>
+                                <input id="url" type="text" name="url" value="" size="32" class="form-control" /></td>
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Titulo:</label>
+                                <input id="titulo" type="text" name="titulo" value="" size="32" class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Subtitulo:</label>
+                                <input id="subtitulo" type="text" name="subtitulo" value="" class="form-control" size="32" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Descripcion:</label>
+                                <input id="descripcion" type="text" name="descripcion" value="" class="form-control" size="32" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Codigo Sitio:</label>
                                   <?php
                                   mysql_select_db($database_arqueologia, $arqueologia);
 
@@ -207,30 +233,23 @@
                                   $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
                                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
                                   $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
-
-
-
-
-
                                   ?>
-                                  <select name="sitiocodigo" id="sitiocodigo">
+                                  <select name="codigositio" id="codigositio" class="form-control">
                                     <?php do {
                                         echo $row_DatosSlider['sitio'];
-                                        echo '<option value="'.$row_DatosSlider['sitiocodigo'].'">'.$row_DatosSlider['sitio'].'</option>';
+                                        echo '<option value="'.$row_DatosSlider['sitiocodigo'].'">'.$row_DatosSlider['nombre'].'</option>';
 
                                     } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider));?>
                                   </select>
-                                </td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td>
-                                <a class="button" href="javascript:document.form1.submit();"><span>Insertar Slider</span></a>          </p></td>
-                              </tr>
-                            </table>
+                              </div>
+                              <div class="form-group">
+                                <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Insertar</span></a>
+                                <a class="btn btn-warning" href="videositio_lista.php"><span>Cancelar</span></a>
+                              </div>
+
                             <input type="hidden" name="MM_insert" value="form1" />
                           </form>
-
+                        </div>
 
                       	</div><!-- /row mt -->
               </section>
@@ -254,7 +273,24 @@
         <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
         <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
 
+        <script type="text/javascript">
+          function validarFormulario() {
+            var url = document.getElementById("url").value;
+            var titulo = document.getElementById("titulo").value;
+            var subtitulo = document.getElementById("subtitulo").value;
+            var descripcion = document.getElementById("descripcion").value;
+            if(url.localeCompare("")==0){
+              alert("Ingrese una Url");
+            }else if(titulo.localeCompare("")==0){
+              alert("Ingrese un Titulo");
+            }else if(subtitulo.localeCompare("")==0){
+              alert("Ingrese un Subtitulo");
+            }else if(descripcion.localeCompare("")==0){
+              alert("Ingrese una descripcion");
+            }
+          }
 
+        </script>
 
 
       </body>

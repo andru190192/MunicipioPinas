@@ -32,13 +32,13 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
-  $deleteSQL = sprintf("DELETE FROM tblsitios WHERE id=%s",
+  $deleteSQL = sprintf("DELETE FROM tblvideositios WHERE id=%s",
                        GetSQLValueString($_GET['recordID'], "int"));
 
   mysql_select_db($database_arqueologia, $arqueologia);
   $Result1 = mysql_query($deleteSQL, $arqueologia) or die(mysql_error());
 
-  $deleteGoTo = "sitio_lista.php";
+  $deleteGoTo = "videositio_lista.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
     $deleteGoTo .= $_SERVER['QUERY_STRING'];

@@ -18,6 +18,8 @@
   <meta name="description" content="Sitio web sobre la arqueologia de pinas">
   <meta name="author" content="Jorge Jaen">
 
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
 
   <!-- Bootstrap CSS  -->
   <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
@@ -103,34 +105,13 @@
               <!-- Start Social Links -->
               <ul class="social-list">
                 <li>
-                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a target="_blank" class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/profile.php?id=100011309252896"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                  <a target="_blank" class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/PinasArqueolog"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-                <li>
-                  <a class="dribbble itl-tooltip" data-placement="bottom" title="Dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
-                <li>
-                  <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                </li>
-                <li>
-                  <a class="flickr itl-tooltip" data-placement="bottom" title="Flickr" href="#"><i class="fa fa-flickr"></i></a>
-                </li>
-                <li>
-                  <a class="tumblr itl-tooltip" data-placement="bottom" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
-                <li>
-                  <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a class="vimeo itl-tooltip" data-placement="bottom" title="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
-                <li>
-                  <a class="skype itl-tooltip" data-placement="bottom" title="Skype" href="#"><i class="fa fa-skype"></i></a>
+                  <a target="_blank" class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="https://plus.google.com/u/0/105309532380012613395?hl=es-419"><i class="fa fa-google-plus"></i></a>
                 </li>
               </ul>
               <!-- End Social Links -->
@@ -140,9 +121,116 @@
       </div>
       <!-- End Top Bar -->
 
-      <?php
-	include_once('menu.php');
-	?>
+
+
+
+            <!-- Start Header ( Logo & Naviagtion ) -->
+            <div class="navbar navbar-default navbar-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <!-- Stat Toggle Nav Link For Mobiles -->
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                  </button>
+                  <!-- End Toggle Nav Link For Mobiles -->
+                  <a class="navbar-brand" href="index.php"><img style="width: 114px;height: 23px;" alt="logo" src="images/logo.png"></a>
+                </div>
+                <div class="navbar-collapse collapse">
+
+                  <!-- End Search -->
+                  <!-- Start Navigation List -->
+                  <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <a href="index.php">Inicio</a>
+                    </li>
+                    <li>
+                      <a href="#">Sitios</a>
+
+                      <?php require_once('../Connections/arqueologia.php'); ?>
+                      <?php
+                      if (!function_exists("GetSQLValueString")) {
+                      function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+                      {
+                        if (PHP_VERSION < 6) {
+                          $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+                        }
+
+                        $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+                        switch ($theType) {
+                          case "text":
+                            $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                            break;
+                          case "long":
+                          case "int":
+                            $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+                            break;
+                          case "double":
+                            $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+                            break;
+                          case "date":
+                            $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+                            break;
+                          case "defined":
+                            $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+                            break;
+                        }
+                        return $theValue;
+                      }
+                      }
+
+                      $maxRows_DatosSlider = 100;
+                      $pageNum_DatosSlider = 0;
+                      if (isset($_GET['pageNum_DatosSlider'])) {
+                        $pageNum_DatosSlider = $_GET['pageNum_DatosSlider'];
+                      }
+                      $startRow_DatosSlider = $pageNum_DatosSlider * $maxRows_DatosSlider;
+
+                      mysql_select_db($database_arqueologia, $arqueologia);
+                      $query_DatosSlider = "SELECT * FROM tblmenusitios";
+                      $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+                      $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+                      $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+                      if (isset($_GET['totalRows_DatosSlider'])) {
+                        $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+                      } else {
+                        $all_DatosSlider = mysql_query($query_DatosSlider);
+                        $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+                      }
+                      $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+                      ?>
+
+
+
+
+                      <ul class="dropdown">
+                        <?php
+                         mysql_data_seek($DatosSlider, 0);
+                         $row_DatosSlider = mysql_fetch_assoc($DatosSlider);?>
+                        	    <!-- First Content -->
+                                <?php $contador=1; ?>
+                        	    <?php do { ?>
+                                <!--aqui pasar el parametros-->
+                                  <li><a href="sitio.php?sitiocodigo=<?php echo $row_DatosSlider['sitiocodigo']; ?>"><?php echo $row_DatosSlider['nombre']; ?></a></li>
+                              <?php
+                        		    $contador++;
+                        			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
+                      </ul>
+                    </li>
+                    <li><a href="historia.php">Historia</a></li>
+                    <li><a class="active" href="contact.php">Contactenos</a></li>
+                    <li>
+                      <a href="../_admin/login/login.php" target="_blank">Administracion</a>
+                    </li>
+                  </ul>
+                  <!-- End Navigation List -->
+                </div>
+              </div>
+
+
+            </div>
+
 
 
     </header>
@@ -311,30 +399,25 @@
             <h4 class="classic-title"><span>Contactenos</span></h4>
 
             <!-- Start Contact Form -->
-            <form role="form" class="contact-form" id="contact-form" method="post">
+            <form role="form" class="contact-form" id="contact-form" method="post" action="php/send.php">
               <div class="form-group">
                 <div class="controls">
-                  <input type="text" placeholder="Nombre" name="name">
+                  <input type="text" placeholder="Nombre" id="nombre" name="nombre" style="border: 1px solid #B4B4B4;">
                 </div>
               </div>
               <div class="form-group">
                 <div class="controls">
-                  <input type="email" class="email" placeholder="E-mail" name="email">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="controls">
-                  <input type="text" class="requiredField" placeholder="Asunto" name="subject">
+                  <input type="email" class="email" id="email" placeholder="E-mail" name="email" style="border: 1px solid #B4B4B4;">
                 </div>
               </div>
 
               <div class="form-group">
 
                 <div class="controls">
-                  <textarea rows="7" placeholder="Mensaje" name="message"></textarea>
+                  <textarea rows="7" placeholder="Mensaje" id="mensaje" name="mensaje" style="border: 1px solid #B4B4B4;"></textarea>
                 </div>
               </div>
-              <button style="margin-bottom:20px;" type="submit" id="submit" class="btn-system btn-large">Enviar</button>
+              <input style="margin-bottom:20px;"  id="submit" type="submit" name="submit" class="btn-system btn-large" value="Enviar" />
               <div id="success" style="color:#34495e;"></div>
             </form>
             <!-- End Contact Form -->
@@ -354,9 +437,9 @@
 
             <!-- Info - Icons List -->
             <ul class="icons-list">
-              <li><i class="fa fa-road"></i> <strong>Direcci&oacute;n:</strong> 1234 Street Name, Bangladesh.</li>
-              <li><i class="fa fa-envelope-o"></i> <strong>E-mail:</strong> info@yourcompany.com</li>
-              <li><i class="fa fa-mobile"></i><strong> Celular:</strong> +12 345 678 001</li>
+              <li><i class="fa fa-road"></i> <strong>Direcci&oacute;n:</strong> Pi&ntilde;as, El Oro, Ecuador.</li>
+              <li><i class="fa fa-envelope-o"></i> <strong>E-mail:</strong> municipio@pinas.gob.ec</li>
+              <li><i class="fa fa-mobile"></i><strong> Celular:</strong> +593 989676339</li>
             </ul>
 
             <!-- Divider -->
@@ -400,34 +483,13 @@
               <h4>S&iacute;guenos<span class="head-line"></span></h4>
               <ul class="social-icons">
                 <li>
-                  <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a target="_blank" class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/profile.php?id=100011309252896"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                  <a target="_blank" class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/PinasArqueolog"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-                <li>
-                  <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
-                <li>
-                  <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                </li>
-                <li>
-                  <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
-                </li>
-                <li>
-                  <a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
-                <li>
-                  <a class="instgram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a class="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
-                <li>
-                  <a class="skype" href="#"><i class="fa fa-skype"></i></a>
+                  <a target="_blank" class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="https://plus.google.com/u/0/105309532380012613395?hl=es-419"><i class="fa fa-google-plus"></i></a>
                 </li>
               </ul>
             </div>
@@ -439,14 +501,15 @@
           <!-- Start Contact Widget -->
           <div class="col-md-6">
             <div class="footer-widget contact-widget">
-              <h4><img src="images/footer-margo.png" class="img-responsive" alt="Footer Logo" /></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <h4>Pi&ntilde;as Arqueol&oacute;gico<span class="head-line"></span></h4>
+              <p>Es un proyecto de el Gobierno Aut&oacute;nomo Descentralizado Municipal de Pi&ntilde;as</p>
               <ul>
                 <li><span>Direcci&oacute;n:</span> Pi&ntilde;as, El Oro, Ecuador</li>
                 <li><span>E-mail:</span> municipio@pinas.gob.ec</li>
                 <li><span>Sitio Web:</span> www.pinasarqueologico.com.ec</li>
               </ul>
             </div>
+            <img width="15%" src="images/qr.png">
           </div>
           <!-- .col-md-3 -->
           <!-- End Contact Widget -->
@@ -459,7 +522,7 @@
         <div class="copyright-section">
           <div class="row">
             <div class="col-md-12">
-              <p>&copy; 2016 Jorge Jaen - Todos los derechos reservados</p>
+              <p style="text-align: center;">&copy; 2016 Jorge Jaen - Todos los derechos reservados</p>
             </div>
           </div>
         </div>
@@ -581,14 +644,7 @@
   <script type="text/javascript">
     //Contact Form
 
-    $('#submit').click(function() {
 
-      $.post("php/send.html", $(".contact-form").serialize(), function(response) {
-        $('#success').html(response);
-      });
-      return false;
-
-    });
   </script>
 
 </body>

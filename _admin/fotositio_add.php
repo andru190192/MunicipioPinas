@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -33,6 +34,8 @@
   <body>
 
     <?php
+    error_reporting(0);
+    error_reporting(0);
     @session_start();
     if(@$_GET["cerrar"])
     {
@@ -99,6 +102,27 @@
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -182,27 +206,27 @@
                       </script>
                           <h1>A&ntilde;adir Foto</h1>
                           <p>&nbsp;</p>
-                          <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <table align="center">
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen Grande(734x250px):</td>
-                                <td><input type="text" name="imagen" value="" size="32" /><input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Titulo:</td>
-                                <td><input type="text" name="titulo" value="" size="32" required/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Subtitulo:</td>
-                                <td><input type="text" name="subtitulo" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Descripcion:</td>
-                                <td><input type="text" name="descripcion" value="" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Codigo Sitio:</td>
-                                <td>
+                          <div class="container">
+                          <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Imagen Grande(734x250px):</label>
+                                <input id="imagen" type="text" name="imagen" value="" size="32" class="form-control"/>
+                                <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');" class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="ejemplo_email_1">Titulo:</label>
+                                <input id="titulo" type="text" name="titulo" value="" size="32" required class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="ejemplo_email_1">Subtitulo:</label>
+                                <input id="subtitulo" type="text" name="subtitulo" value="" size="32" class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="ejemplo_email_1">Descripcion:</label>
+                                <input id="descripcion" type="text" name="descripcion" value="" size="32" class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="ejemplo_email_1">Codigo Sitio:</label>
                                   <?php
                                   mysql_select_db($database_arqueologia, $arqueologia);
 
@@ -212,21 +236,18 @@
                                   $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
                                   $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
                                   ?>
-                                  <select name="codigositio" id="codigositio">
+                                  <select name="codigositio" id="codigositio" class="form-control">
                                     <?php do {
                                         echo $row_DatosSlider['sitio'];
-                                        echo '<option value="'.$row_DatosSlider['sitiocodigo'].'">'.$row_DatosSlider['sitio'].'</option>';
+                                        echo '<option value="'.$row_DatosSlider['sitiocodigo'].'">'.$row_DatosSlider['nombre'].'</option>';
 
                                     } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider));?>
                                   </select>
-                                </td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td>
-                                <a class="button" href="javascript:document.form1.submit();"><span>Insertar Foto</span></a>          </p></td>
-                              </tr>
-                            </table>
+                                </div>
+                                <div class="form-group">
+                                  <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Insertar</span></a>
+                                  <a class="btn btn-warning" href="fotositio_lista.php"><span>Cancelar</span></a>
+                                </div>
                             <input type="hidden" name="MM_insert" value="form1" />
                           </form>
 
@@ -254,7 +275,23 @@
         <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
 
 
-
+        <script type="text/javascript">
+          function validarFormulario() {
+            var imagen = document.getElementById("imagen").value;
+            var titulo = document.getElementById("titulo").value;
+            var subtitulo = document.getElementById("subtitulo").value;
+            var descripcion = document.getElementById("descripcion").value;
+            if(imagen.localeCompare("")==0){
+              alert("Ingrese una imagen");
+            }else if(titulo.localeCompare("")==0){
+              alert("Ingrese un titulo");
+            }else if(subtitulo.localeCompare("")==0){
+              alert("Ingrese un subtitulo");
+            }else if(descripcion.localeCompare("")==0){
+              alert("Ingrese una descripcion");
+            }
+          }
+        </script>
 
       </body>
     </html>

@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -118,6 +119,27 @@
                               <span>Usuarios</span>
                           </a>
                       </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
+                          </a>
+                      </li>
                   </ul>
                   <!-- sidebar menu end-->
               </div>
@@ -210,28 +232,27 @@
 
                       </script>
                           <h1>Editar Foto</h1>
-                          <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <table align="center">
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen:</td>
-                                <td><input type="text" name="imagen" value="<?php echo htmlentities($row_DatosSlider['imagen'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" />
-                                   <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Titulo:</td>
-                                <td><input type="text" name="titulo" value="<?php echo htmlentities($row_DatosSlider['titulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Subtitulo:</td>
-                                <td><input type="text" name="subtitulo" value="<?php echo htmlentities($row_DatosSlider['subtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Descripcion:</td>
-                                <td><input type="text" name="descripcion" value="<?php echo htmlentities($row_DatosSlider['descripcion'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Codigo Sitio:</td>
-                                <td>
+                          <div class="container">
+                          <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Imagen:</label>
+                                <input id="imagen" type="text" name="imagen" value="<?php echo htmlentities($row_DatosSlider['imagen'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control"/>
+                                <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Titulo:</label>
+                                <input id="titulo" type="text" name="titulo" value="<?php echo htmlentities($row_DatosSlider['titulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Subtitulo:</label>
+                                <input id="subtitulo" type="text" name="subtitulo" value="<?php echo htmlentities($row_DatosSlider['subtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Descripcion:</label>
+                                <input id="descripcion" type="text" name="descripcion" value="<?php echo htmlentities($row_DatosSlider['descripcion'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Codigo Sitio:</label>
                                   <?php
                                   mysql_select_db($database_arqueologia, $arqueologia);
                                   $query_DatosSlider = "SELECT * FROM tblmenusitios";
@@ -240,9 +261,9 @@
                                   $row_DatosSlider1 = mysql_fetch_assoc($DatosSlider);
                                   $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
                                   ?>
-                                  <select name="sitiocodigo" id="sitiocodigo">
+                                  <select name="sitiocodigo" id="sitiocodigo" class="form-control">
                                     <?php do {
-                                        echo '<option value="'.$row_DatosSlider1['sitiocodigo'].'">'.$row_DatosSlider1['sitio'].'</option>';
+                                        echo '<option value="'.$row_DatosSlider1['sitiocodigo'].'">'.$row_DatosSlider1['nombre'].'</option>';
                                     } while ($row_DatosSlider1 = mysql_fetch_assoc($DatosSlider));
                                     echo '<script language="javascript">'
                                             . '$(document).ready(function(){';
@@ -252,16 +273,15 @@
                                         </script>';
                                     ?>
                                   </select>
-                                </td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar Slider</span></a></td>
-                              </tr>
-                            </table>
+                            </div>
+
+                            <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Actualizar</span></a>
+                            <a class="btn btn-warning" href="fotositio_lista.php"><span>Cancelar</span></a>
+
                             <input type="hidden" name="MM_update" value="form1" />
                             <input type="hidden" name="id" value="<?php echo $row_DatosSlider['id']; ?>" />
                           </form>
+                        </div>
                       <?php
                       mysql_free_result($DatosSlider);
                       ?>
@@ -272,6 +292,23 @@
           </section>
 
       </section>
+      <script type="text/javascript">
+        function validarFormulario() {
+          var imagen = document.getElementById("imagen").value;
+          var titulo = document.getElementById("titulo").value;
+          var subtitulo = document.getElementById("subtitulo").value;
+          var descripcion = document.getElementById("descripcion").value;
+          if(imagen.localeCompare("")==0){
+            alert("Ingrese una imagen");
+          }else if(titulo.localeCompare("")==0){
+            alert("Ingrese un titulo");
+          }else if(subtitulo.localeCompare("")==0){
+            alert("Ingrese un subtitulo");
+          }else if(descripcion.localeCompare("")==0){
+            alert("Ingrese una descripcion");
+          }
+        }
+      </script>
       </body>
     </html>
 

@@ -12,15 +12,7 @@
             <a class="navbar-brand" href="index.php"><img style="width: 114px;height: 23px;" alt="logo" src="images/logo.png"></a>
           </div>
           <div class="navbar-collapse collapse">
-            <!-- Stat Search -->
-            <div class="search-side">
-              <a class="show-search"><i class="fa fa-search"></i></a>
-              <div class="search-form">
-                <form autocomplete="off" role="search" method="get" class="searchform" action="#">
-                  <input type="text" value="" name="s" id="s" placeholder="Buscar en el sitio">
-                </form>
-              </div>
-            </div>
+
             <!-- End Search -->
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
@@ -96,13 +88,14 @@
                           <?php $contador=1; ?>
                   	    <?php do { ?>
                           <!--aqui pasar el parametros-->
-                            <li><a href="sitio.php?sitiocodigo=<?php echo $row_DatosSlider['sitiocodigo']; ?>"><?php echo $row_DatosSlider['sitio']; ?></a></li>
+                            <li><a href="sitio.php?sitiocodigo=<?php echo $row_DatosSlider['sitiocodigo']; ?>"><?php echo $row_DatosSlider['nombre']; ?></a></li>
                         <?php
                   		    $contador++;
                   			} while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
                 </ul>
               </li>
               <li><a href="historia.php">Historia</a></li>
+              <li><a href="blog.php">Blog</a></li>
               <li><a href="contact.php">Contactenos</a></li>
               <li>
                 <a href="../_admin/login/login.php" target="_blank">Administracion</a>

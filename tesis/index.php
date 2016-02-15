@@ -18,6 +18,8 @@
   <meta name="description" content="Sitio web sobre la arqueologia de pinas">
   <meta name="author" content="Jorge Jaen">
 
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
   <!-- Bootstrap CSS  -->
   <link rel="stylesheet" href="asset/css/bootstrap.min.css" type="text/css" media="screen">
 
@@ -103,34 +105,13 @@
               <!-- Start Social Links -->
               <ul class="social-list">
                 <li>
-                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a target="_blank" class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/profile.php?id=100011309252896"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                  <a target="_blank" class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/PinasArqueolog"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-                <li>
-                  <a class="dribbble itl-tooltip" data-placement="bottom" title="Dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
-                <li>
-                  <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                </li>
-                <li>
-                  <a class="flickr itl-tooltip" data-placement="bottom" title="Flickr" href="#"><i class="fa fa-flickr"></i></a>
-                </li>
-                <li>
-                  <a class="tumblr itl-tooltip" data-placement="bottom" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
-                <li>
-                  <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a class="vimeo itl-tooltip" data-placement="bottom" title="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
-                <li>
-                  <a class="skype itl-tooltip" data-placement="bottom" title="Skype" href="#"><i class="fa fa-skype"></i></a>
+                  <a target="_blank" class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="https://plus.google.com/u/0/105309532380012613395?hl=es-419"><i class="fa fa-google-plus"></i></a>
                 </li>
               </ul>
               <!-- End Social Links -->
@@ -237,7 +218,6 @@
                 <h3 class="animated3">
                   <span>Museo de El Municipio de Pi&ntilde;as</span>
                 </h3>
-                <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Ver mas</a></p>
               </div>
             </div>
           </div>
@@ -253,12 +233,11 @@
                     <div class="slider-content">
                       <div class="col-md-12 text-center">
                         <h2 class="animated2">
-                      <span><?php echo $row_DatosSlider['strtitulo']; ?></span>
+                      <span style="color: white;"><?php echo $row_DatosSlider['strtitulo']; ?></span>
                   </h2>
                         <h3 class="animated3">
-                   <span><?php echo $row_DatosSlider['strsubtitulo']; ?></span>
+                   <span style="color: white;"><?php echo $row_DatosSlider['strsubtitulo']; ?></span>
                </h3>
-                        <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Ver mas</a></p>
                       </div>
                     </div>
                   </div>
@@ -292,7 +271,7 @@
 
         <!-- Seccion de Carousel de Videos -->
         <div class="recent-projects">
-          <h4 class="title"><span>Videos</span></h4>
+          <h2 class="title"><span>Videos</span></h4>
           <div class="projects-carousel touch-carousel">
 
 
@@ -365,7 +344,7 @@
                             <div class="portfolio-item item">
                               <div class="portfolio-border">
                                 <div class="portfolio-thumb">
-                                  <a class="lightbox" data-lightbox-type="ajax" href="https://www.youtube.com/watch?v=Am6v7apaTkI">
+                                  <a class="lightbox" data-lightbox-type="ajax" href="<?php echo $row_DatosSlider['url']; ?>">
                                     <div class="thumb-overlay"><i class="fa fa-play"></i></div>
                                     <img alt="" src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" />
                                   </a>
@@ -402,30 +381,30 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="counter-item">
-                      <i class="fa fa-cloud-upload"></i>
-                      <div class="timer" id="item1" data-to="991" data-speed="5000"></div>
-                      <h5>Visitas</h5>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-3 col-md-3">
-                    <div class="counter-item">
-                      <i class="fa fa-check"></i>
-                      <div class="timer" id="item2" data-to="7394" data-speed="5000"></div>
-                      <h5>Visitas</h5>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-3 col-md-3">
-                    <div class="counter-item">
-                      <i class="fa fa-code"></i>
-                      <div class="timer" id="item3" data-to="18745" data-speed="5000"></div>
-                      <h5>Visitas</h5>
+                      <i class="fa fa-male"></i>
+                      <div class="timer" id="item1" data-to="6" data-speed="5000"></div>
+                      <h5>Visita Diarias</h5>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="counter-item">
                       <i class="fa fa-male"></i>
-                      <div class="timer" id="item4" data-to="8423" data-speed="5000"></div>
-                      <h5>Visitas</h5>
+                      <div class="timer" id="item2" data-to="35" data-speed="5000"></div>
+                      <h5>Visitas Semanales</h5>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-3 col-md-3">
+                    <div class="counter-item">
+                      <i class="fa fa-male"></i>
+                      <div class="timer" id="item3" data-to="140" data-speed="5000"></div>
+                      <h5>Visitas Mensuales</h5>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-3 col-md-3">
+                    <div class="counter-item">
+                      <i class="fa fa-male"></i>
+                      <div class="timer" id="item4" data-to="1680" data-speed="5000"></div>
+                      <h5>Visitas Anuales</h5>
                     </div>
                   </div>
                 </div>
@@ -451,48 +430,32 @@
 
               <!--Start Clients Carousel-->
               <div class="our-clients">
-                <div class="clients-carousel custom-carousel touch-carousel navigation-3" data-appeared-items="5" data-navigation="true">
+                <div class="clients-carousel custom-carousel touch-carousel navigation-3" data-appeared-items="4" data-navigation="true">
 
                   <!-- Client 1 -->
                   <div class="client-item item">
-                    <a href="#"><img src="images/c1.png" alt="" /></a>
+                    <a href=""><img src="images/1.png" alt="" /></a>
                   </div>
 
                   <!-- Client 2 -->
                   <div class="client-item item">
-                    <a href="#"><img src="images/c2.png" alt="" /></a>
+                    <a href=""><img style="width: 65%" src="images/2.png" alt="" /></a>
                   </div>
 
                   <!-- Client 3 -->
                   <div class="client-item item">
-                    <a href="#"><img src="images/c3.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 4 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c4.png" alt="" /></a>
-                  </div>
-
-                  <!-- Client 5 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c5.png" alt="" /></a>
+                    <a href=""><img style="width: 65%" src="images/3.png" alt="" /></a>
                   </div>
 
                   <!-- Client 6 -->
                   <div class="client-item item">
-                    <a href="#"><img src="images/c6.png" alt="" /></a>
+                    <a href=""><img style="width: 75%" src="images/6.png" alt="" /></a>
                   </div>
 
-                  <!-- Client 7 -->
+                  <!-- Client 4 -->
                   <div class="client-item item">
-                    <a href="#"><img src="images/c7.png" alt="" /></a>
+                    <a href=""><img style="width: 65%" src="images/4.png" alt="" /></a>
                   </div>
-
-                  <!-- Client 8 -->
-                  <div class="client-item item">
-                    <a href="#"><img src="images/c8.png" alt="" /></a>
-                  </div>
-
                 </div>
               </div>
               <!-- End Clients Carousel -->
@@ -522,34 +485,13 @@
               <h4>S&iacute;guenos<span class="head-line"></span></h4>
               <ul class="social-icons">
                 <li>
-                  <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a target="_blank" class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/profile.php?id=100011309252896"><i class="fa fa-facebook"></i></a>
                 </li>
                 <li>
-                  <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                  <a target="_blank" class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/PinasArqueolog"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                  <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
-                </li>
-                <li>
-                  <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
-                <li>
-                  <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                </li>
-                <li>
-                  <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
-                </li>
-                <li>
-                  <a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
-                <li>
-                  <a class="instgram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a class="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
-                <li>
-                  <a class="skype" href="#"><i class="fa fa-skype"></i></a>
+                  <a target="_blank" class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="https://plus.google.com/u/0/105309532380012613395?hl=es-419"><i class="fa fa-google-plus"></i></a>
                 </li>
               </ul>
             </div>
@@ -569,6 +511,7 @@
                 <li><span>Sitio Web:</span> www.pinasarqueologico.com.ec</li>
               </ul>
             </div>
+            <img width="15%" src="images/qr.png">
           </div>
           <!-- .col-md-3 -->
           <!-- End Contact Widget -->

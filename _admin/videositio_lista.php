@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -64,7 +65,7 @@
                   	  <h5 class="centered"><?php echo $_SESSION['usuario']; ?></h5>
 
                       <li class="mt">
-                          <a class="active" href="slider_lista.php">
+                          <a href="slider_lista.php">
                               <i class="fa fa-dashboard"></i>
                               <span>Slider Principal</span>
                           </a>
@@ -79,15 +80,40 @@
                       </li>
 
                       <li class="sub-menu">
-                          <a href="sitio_lista.php" >
+                          <a class="active" href="sitio_lista.php" >
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li class="active"><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -136,7 +162,7 @@
                       }
 
                       mysql_select_db($database_arqueologia, $arqueologia);
-                      $query_DatosSlider = "SELECT * FROM tblsitios";
+                      $query_DatosSlider = "SELECT * FROM tblvideositios";
                       $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
                       $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
                       $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
@@ -149,18 +175,19 @@
                         return rc;
                       }
                       </script>
-                      <h1>Listado Sitios</h1>
-                         <a href="sitio_add.php"> <button class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button> A&ntilde;adir Informacion</a>
-
-                          <table class="table table-striped table-advance table-hover">
-                            <hr>
-                              <thead>
+                      <h1 style="text-align:center">Listado de Videos</h1>
+                      <br/>
+                      <br/>
+                         <div class="container">
+                           <a href="videositio_add.php"> <button class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button> A&ntilde;adir Video</a>
+                           <br/>
+                           <br/>
+                         <table class="table table-bordered table-striped table-condensed cf">
+                             <thead class="cf">
                               <tr>
-                                  <th>Imagen</th>
-                                  <th>Descripcion Imagen</th>
-                                  <th>Video</th>
-                                  <th>Descripcion Video</th>
-                                  <th>Codigo Sitio</th>
+                                  <th>Url</th>
+                                  <th>titulo</th>
+                                  <th>Descripcion</th>
                                   <th>Acciones</th>
                               </tr>
                               </thead>
@@ -168,14 +195,12 @@
 
                                 <?php do { ?>
                                 <tr>
-                                    <td><img src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" width="80" height="50" /></td>
-                                    <td width="30%"><?php echo $row_DatosSlider['descripcionimg']; ?></td>
-                                    <td><?php echo $row_DatosSlider['video']; ?></td>
-                                    <td width="30%"><?php echo $row_DatosSlider['descripcionvideo']; ?></td>
-                                    <td><?php echo $row_DatosSlider['codigositio']; ?></td>
-                                    <td width="50%">
-                                      <a href="sitio_edit.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                      <a href="sitio_remove.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
+                                    <td><?php echo $row_DatosSlider['url']; ?></td>
+                                    <td width="15%"><?php echo $row_DatosSlider['titulo']; ?></td>
+                                    <td width="50%"><?php echo $row_DatosSlider['descripcion']; ?></td>
+                                    <td>
+                                      <a href="videositio_edit.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                      <a href="videositio_remove.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
                                       </td>
                                     </tr>
                                     <?php } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>
@@ -185,6 +210,7 @@
                           mysql_free_result($DatosSlider);
                           ?>
                           </div>
+
 
 
 

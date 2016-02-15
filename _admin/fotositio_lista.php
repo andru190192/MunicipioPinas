@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -94,6 +95,27 @@
                               <span>Usuarios</span>
                           </a>
                       </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
+                          </a>
+                      </li>
                   </ul>
                   <!-- sidebar menu end-->
               </div>
@@ -153,18 +175,17 @@
                         return rc;
                       }
                       </script>
-                      <h1>Listado de Fotos</h1>
+                      <div class="container">
+                      <h1 style="text-align:center">Listado de Fotos</h1>
                          <a href="fotositio_add.php"> <button class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button> A&ntilde;adir Foto</a>
-
-                          <table class="table table-striped table-advance table-hover">
-                            <hr>
-                              <thead>
+                         <br/>
+                         <br/>
+                         <table class="table table-bordered table-striped table-condensed cf">
+                             <thead class="cf">
                               <tr>
                                   <th>Imagen</th>
                                   <th>titulo</th>
-                                  <th>Subtitulo</th>
                                   <th>Descripcion</th>
-                                  <th>Codigo Sitio</th>
                                   <th>Acciones</th>
                               </tr>
                               </thead>
@@ -172,12 +193,10 @@
 
                                 <?php do { ?>
                                 <tr>
-                                    <td><img src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" width="80" height="50" /></td>
-                                    <td width="30%"><?php echo $row_DatosSlider['titulo']; ?></td>
-                                    <td><?php echo $row_DatosSlider['subtitulo']; ?></td>
-                                    <td width="30%"><?php echo $row_DatosSlider['descripcion']; ?></td>
-                                    <td><?php echo $row_DatosSlider['codigositio']; ?></td>
-                                    <td width="50%">
+                                    <td width="5%"><img src="../images/slider/<?php echo $row_DatosSlider['imagen']; ?>" width="80" height="50" /></td>
+                                    <td width="5%"><?php echo $row_DatosSlider['titulo']; ?></td>
+                                    <td width="10%"><?php echo $row_DatosSlider['descripcion']; ?></td>
+                                    <td width="2%">
                                       <a href="fotositio_edit.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                                       <a href="fotositio_remove.php?recordID=<?php echo $row_DatosSlider['id']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
                                       </td>
@@ -188,8 +207,8 @@
                           <?php
                           mysql_free_result($DatosSlider);
                           ?>
-                          </div>
-
+</div>
+                        </div>
 
 
                       	</div><!-- /row mt -->

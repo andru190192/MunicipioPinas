@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -33,6 +34,7 @@
   <body>
 
     <?php
+    error_reporting(0);
     @session_start();
     if(@$_GET["cerrar"])
     {
@@ -70,7 +72,7 @@
                   	  <h5 class="centered"><?php echo $_SESSION['usuario']; ?></h5>
 
                       <li class="mt">
-                          <a class="active" href="slider_lista.php">
+                          <a  href="slider_lista.php">
                               <i class="fa fa-dashboard"></i>
                               <span>Slider Principal</span>
                           </a>
@@ -89,11 +91,37 @@
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
-                          <a href="usuario_lista.php" >
+                          <a class="active" href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -186,29 +214,30 @@
                             </script>
                           <h1>Editar Usuario</h1>
                           <p>&nbsp;</p>
-                          <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <table align="center">
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Usuario</td>
-                                <td><input type="text" name="usuario" value="<?php echo htmlentities($row_DatosSlider['usuario'], ENT_COMPAT, 'iso8859-1'); ?>" size="25"
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Contrase&ntilde;a:</td>
-                                <td><input type="password" name="contra" value="<?php echo htmlentities($row_DatosSlider['contra'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Cedula:</td>
-                                <td><input type="text" name="cedula" value="<?php echo htmlentities($row_DatosSlider['cedula'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Nombre:</td>
-                                <td><input type="text" name="nombre" value="<?php echo htmlentities($row_DatosSlider['nombre'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar Usuario</span></a></td>
-                              </tr>
-                            </table>
+                        <div class="container">
+                          <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+                            <div class="form-group">
+                              <label for="ejemplo_email_1">Usuario:</label>
+                              <input id="usuario" type="text" name="usuario" value="<?php echo htmlentities($row_DatosSlider['usuario'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Contrase&ntilde;a:</label>
+                                <input id="password" type="password" name="contra" value="<?php echo htmlentities($row_DatosSlider['contra'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Cedula:</label>
+                                <input id="cedula" type="text" name="cedula" value="<?php echo htmlentities($row_DatosSlider['cedula'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Nombre:</label>
+                                <input id="nombre" type="text" name="nombre"  value="<?php echo htmlentities($row_DatosSlider['nombre'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control" onKeypress="if (event.keyCode >45 && event.keyCode  <57) event.returnValue = false;"/>
+                            </div>
+
+                            <div class="form-group">
+                                <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Actualizar</span></a>
+                                <a class="btn btn-warning" href="usuario_lista.php"><span>Cancelar</span></a>
+                            </div>
+
                             <input type="hidden" name="MM_update" value="form1" />
                             <input type="hidden" name="idusuario" value="<?php echo $row_DatosSlider['idusuario']; ?>" />
                           </form>
@@ -217,7 +246,7 @@
                       mysql_free_result($DatosSlider);
                       ?>
 
-
+                      </div>
 
                       	</div><!-- /row mt -->
               </section>
@@ -240,6 +269,24 @@
 
         <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
         <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+        <script type="text/javascript">
+          function validarFormulario() {
+            var usuario = document.getElementById("usuario").value;
+            var password = document.getElementById("password").value;
+            var cedula = document.getElementById("cedula").value;
+            var nombre = document.getElementById("nombre").value;
+            if(usuario.localeCompare("")==0){
+              alert("Ingrese un usuario");
+            }else if(password.localeCompare("")==0){
+              alert("Ingrese un password");
+            }else if(cedula.localeCompare("")==0){
+              alert("Ingrese una cedula");
+            }else if(nombre.localeCompare("")==0){
+              alert("Ingrese un nombre");
+            }
+          }
+        </script>
 
       </body>
     </html>

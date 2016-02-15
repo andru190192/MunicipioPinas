@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Inicio de Sesion</title>
+<link rel="icon" type="image/png" href="../../tesis/images/favicon.png" />
 
 <!-- CSS  -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen">
@@ -61,7 +62,7 @@ if(@$_POST["enviado"])
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="row-fluid user-row">
-                                    <img src="http://s11.postimg.org/7kzgji28v/logo_sm_2_mr_1.png" class="img-responsive" alt="Conxole Admin"/>
+                                    <img src="img/logo.png" class="img-responsive" alt="Conxole Admin"/>
                                 </div>
                             </div>
                             <div class="panel-body">

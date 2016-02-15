@@ -18,6 +18,8 @@
   <meta name="description" content="Sitio web sobre la arqueologia de pinas">
   <meta name="author" content="Jorge Jaen">
 
+  
+
 
   <!-- Bootstrap CSS  -->
   <link rel="stylesheet" href="../tesis/asset/css/bootstrap.min.css" type="text/css" media="screen">

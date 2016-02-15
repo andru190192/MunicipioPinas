@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -37,6 +38,7 @@
 
     <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -101,15 +103,41 @@
                       </li>
 
                       <li class="sub-menu">
-                          <a href="sitio_lista.php" >
+                          <a class="active" href="sitio_lista.php" >
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li class="active"><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -163,32 +191,32 @@
                       }
 
                       if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-                        $updateSQL = sprintf("UPDATE tblsitios SET imagen=%s, descripcionimg=%s, video=%s, descripcionvideo=%s, codigositio=%s WHERE id=%s",
-                                             GetSQLValueString($_POST['imagen'], "text"),
-                                             GetSQLValueString($_POST['descripcionimg'], "text"),
-                                             GetSQLValueString($_POST['video'], "text"),
-                                             GetSQLValueString($_POST['descripcionvideo'], "text"),
+                        $updateSQL = sprintf("UPDATE tblvideositios SET url=%s, titulo=%s, subtitulo=%s, descripcion=%s, codigositio=%s WHERE id=%s",
+                                             GetSQLValueString($_POST['url'], "text"),
+                                             GetSQLValueString($_POST['titulo'], "text"),
+                                             GetSQLValueString($_POST['subtitulo'], "text"),
+                                             GetSQLValueString($_POST['descripcion'], "text"),
                                              GetSQLValueString($_POST['sitiocodigo'], "text"),
                                              GetSQLValueString($_POST['id'], "int"));
-                                            
-                        mysql_select_db($database_arqueologia, $arqueologia);
-                        $Result1 = mysql_query($updateSQL, $arqueologia) or die(mysql_error());
 
-                        $updateGoTo = "sitio_lista.php";
-                        if (isset($_SERVER['QUERY_STRING'])) {
-                          $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-                          $updateGoTo .= $_SERVER['QUERY_STRING'];
-                        }
-                        //header(sprintf("Location: %s", $updateGoTo));
+                                             mysql_select_db($database_arqueologia, $arqueologia);
+                                             $Result1 = mysql_query($updateSQL, $arqueologia) or die(mysql_error());
 
-                      }
+                                             $updateGoTo = "fotositio_lista.php";
+                                             if (isset($_SERVER['QUERY_STRING'])) {
+                                               $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+                                               $updateGoTo .= $_SERVER['QUERY_STRING'];
+                                             }
+                                             header(sprintf("Location: %s", $updateGoTo));
+                                           }
 
-                      $varDato_DatosSlider = "0";
-                      if (isset($_GET[recordID])) {
-                        $varDato_DatosSlider = $_GET[recordID];
-                      }
-                      mysql_select_db($database_arqueologia, $arqueologia);
-                      $query_DatosSlider = sprintf("SELECT * FROM tblsitios WHERE tblsitios.id =%s", GetSQLValueString($varDato_DatosSlider, "int"));
+                                           $varDato_DatosSlider = "0";
+                                           if (isset($_GET[recordID])) {
+                                             $varDato_DatosSlider = $_GET[recordID];
+                                           }
+                                           mysql_select_db($database_arqueologia, $arqueologia);
+
+                      $query_DatosSlider = sprintf("SELECT * FROM tblvideositios WHERE tblvideositios.id =%s", GetSQLValueString($varDato_DatosSlider, "int"));
                       $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
                       $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
                       $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
@@ -203,73 +231,56 @@
                       	}
 
                       </script>
-                          <h1>Editar Informaci&oacute;n</h1>
-                          <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <table align="center">
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Imagen:</td>
-                                <td><input type="text" name="imagen" value="<?php echo htmlentities($row_DatosSlider['imagen'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" />
-                                   <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');"/></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Descipcion Imagen:</td>
-                                <td><input type="text" name="descripcionimg" value="<?php echo htmlentities($row_DatosSlider['descripcionimg'], ENT_COMPAT, 'iso8859-1'); ?>" size="32"></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Video:</td>
-                                <td><input type="text" name="video" value="<?php echo htmlentities($row_DatosSlider['video'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Descripcion Video:</td>
-                                <td><input type="text" name="descripcionvideo" value="<?php echo htmlentities($row_DatosSlider['descripcionvideo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" /></td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">Codigo Sitio:</td>
-                                <td>
+                          <h1>Editar Video</h1>
+                          <div class="container">
+                          <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Url:</label>
+                                <input id="url" type="text" name="url" value="<?php echo htmlentities($row_DatosSlider['url'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Titulo:</label>
+                                <input id="titulo" type="text" name="titulo" value="<?php echo htmlentities($row_DatosSlider['titulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Subtitulo:</label>
+                                <input id="subtitulo" type="text" name="subtitulo" value="<?php echo htmlentities($row_DatosSlider['subtitulo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Descripcion:</label>
+                                <input id="descripcion" type="text" name="descripcion" value="<?php echo htmlentities($row_DatosSlider['descripcion'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ejemplo_email_1">Codigo Sitio:</label>
                                   <?php
-
-
-
-                                  mysql_select_db($database_arqueologia, $arqueologia);
-
                                   mysql_select_db($database_arqueologia, $arqueologia);
                                   $query_DatosSlider = "SELECT * FROM tblmenusitios";
                                   $DatosSlider = mysql_query($query_DatosSlider, $arqueologia) or die(mysql_error());
                                   //$row_DatosSlider = mysql_fetch_assoc($DatosSlider);
                                   $row_DatosSlider1 = mysql_fetch_assoc($DatosSlider);
                                   $totalRows_DatosSlider = mysql_num_rows($DatosSlider);
-
-
-
                                   ?>
-                                  <select name="sitiocodigo" id="sitiocodigo">
+                                  <select name="sitiocodigo" id="sitiocodigo" class="form-control">
                                     <?php do {
-                                        echo '<option value="'.$row_DatosSlider1['sitiocodigo'].'">'.$row_DatosSlider1['sitio'].'</option>';
-
+                                        echo '<option value="'.$row_DatosSlider1['sitiocodigo'].'">'.$row_DatosSlider1['nombre'].'</option>';
                                     } while ($row_DatosSlider1 = mysql_fetch_assoc($DatosSlider));
-
-
                                     echo '<script language="javascript">'
                                             . '$(document).ready(function(){';
                                             echo '$("#sitiocodigo").val("'.$row_DatosSlider ['codigositio'].'")';
                                             echo '})
 
                                         </script>';
-
                                     ?>
                                   </select>
+                              </div>
 
+                                <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Actualizar</span></a>
+                                <a class="btn btn-warning" href="videositio_lista.php"><span>Cancelar</span></a>
 
-                                </td>
-                              </tr>
-                              <tr valign="baseline">
-                                <td nowrap="nowrap" align="right">&nbsp;</td>
-                                <td><a class="button" href="javascript:document.form1.submit();"><span>Actualizar</span></a></td>
-                              </tr>
-                            </table>
                             <input type="hidden" name="MM_update" value="form1" />
                             <input type="hidden" name="id" value="<?php echo $row_DatosSlider['id']; ?>" />
                           </form>
+                        </div>
                       <?php
                       mysql_free_result($DatosSlider);
                       ?>
@@ -280,6 +291,25 @@
           </section>
 
       </section>
+
+      <script type="text/javascript">
+        function validarFormulario() {
+          var url = document.getElementById("url").value;
+          var titulo = document.getElementById("titulo").value;
+          var subtitulo = document.getElementById("subtitulo").value;
+          var descripcion = document.getElementById("descripcion").value;
+          if(url.localeCompare("")==0){
+            alert("Ingrese una Url");
+          }else if(titulo.localeCompare("")==0){
+            alert("Ingrese un Titulo");
+          }else if(subtitulo.localeCompare("")==0){
+            alert("Ingrese un Subtitulo");
+          }else if(descripcion.localeCompare("")==0){
+            alert("Ingrese una descripcion");
+          }
+        }
+      </script>
+
 
       </body>
     </html>

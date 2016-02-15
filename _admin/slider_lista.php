@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="icon" type="image/png" href="../tesis/images/favicon.png" />
 
     <title>Administracion</title>
 
@@ -83,11 +84,37 @@
                               <i class="fa fa-cogs"></i>
                               <span>Sitios</span>
                           </a>
+                          <ul class="sub">
+                              <li><a  href="fotositio_lista.php">Fotos</a></li>
+                              <li><a  href="videositio_lista.php">Videos</a></li>
+                          </ul>
                       </li>
+
                       <li class="sub-menu">
                           <a href="usuario_lista.php" >
                               <i class="fa fa-book"></i>
                               <span>Usuarios</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="sitio_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Nuevo Sitio</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a href="historia.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Historia</span>
+                          </a>
+                      </li>
+
+                      <li class="sub-menu">
+                          <a class="active" href="foro_lista.php" >
+                              <i class="fa fa-book"></i>
+                              <span>Blog</span>
                           </a>
                       </li>
                   </ul>
@@ -155,9 +182,8 @@
                          <h1>Listado Slider Principal</h1>
                          <p></p>
 
-                          <table class="table table-striped table-advance table-hover">
-                            <hr>
-                              <thead>
+                         <table class="table table-bordered table-striped table-condensed cf">
+                             <thead class="cf">
                               <tr>
                                   <th>Titulo</th>
                                   <th>Imagen</th>
