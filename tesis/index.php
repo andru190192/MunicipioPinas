@@ -39,7 +39,7 @@
   <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
 
   <!-- Color CSS Styles  -->
-<link rel="stylesheet" type="text/css" href="css/colors/red.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/colors/red.css" media="screen">
   <link rel="stylesheet" type="text/css" href="css/colors/jade.css" title="jade" media="screen" />
   <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue" media="screen" />
   <link rel="stylesheet" type="text/css" href="css/colors/beige.css" title="beige" media="screen" />
