@@ -229,6 +229,7 @@
                   <?php $contador=1; ?>
           	    <?php do { ?>
                   <div class="item">
+                    
                     <img class="img-responsive" src="../images/slider/<?php echo $row_DatosSlider['strimagengrande']; ?>" alt="slider">
                     <div class="slider-content">
                       <div class="col-md-12 text-center">
@@ -511,7 +512,7 @@
                 <li><span>Sitio Web:</span> www.pinasarqueologico.com.ec</li>
               </ul>
             </div>
-            <img width="15%" src="images/qr.png">
+            <img class="qr" width="15%" src="images/qr.png">
           </div>
           <!-- .col-md-3 -->
           <!-- End Contact Widget -->
