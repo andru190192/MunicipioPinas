@@ -1,5 +1,5 @@
 <?php
-	include("conexionBD.php");
+	include("../Connections/arqueologia.php");
 	
 	if(isset($_POST["submit"])){
 		if(!empty($_POST['mensaje'])){
