@@ -133,100 +133,51 @@
               <section class="wrapper">
                   <div class="row">
                       <div class="col-lg-12 main-chart">
-
-                      <?php require_once('../Connections/arqueologia.php'); ?>
                       <?php
-                      if (!function_exists("GetSQLValueString")) {
-                      function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-                      {
-                        if (PHP_VERSION < 6) {
-                          $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-                        }
-
-                        $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-                        switch ($theType) {
-                          case "text":
-                            $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                            break;
-                          case "long":
-                          case "int":
-                            $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-                            break;
-                          case "double":
-                            $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-                            break;
-                          case "date":
-                            $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                            break;
-                          case "defined":
-                            $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-                            break;
-                        }
-                        return $theValue;
-                      }
-                      }
-
-                      $editFormAction = $_SERVER['PHP_SELF'];
-                      if (isset($_SERVER['QUERY_STRING'])) {
-                        $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
-                      }
-
-                      if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-                        $insertSQL = sprintf("INSERT INTO foro (autor, titulo, mensaje, identificador, fecha, ult_respuesta,imagen) VALUES ('$autor', '$titulo', '$mensaje', '$identificador','$fecha','$fecha','$imagen')",
-                                             GetSQLValueString($_POST['autor'], "text"),
-                                             GetSQLValueString($_POST['titulo'], "text"),
-                                             GetSQLValueString($_POST['mensaje'], "text"),
-                                             GetSQLValueString($_POST['imagen'], "text"));
-
-                        mysql_select_db($database_arqueologia, $arqueologia);
-                        $Result1 = mysql_query($insertSQL, $arqueologia) or die(mysql_error());
-
-                        $insertGoTo = "foro_lista.php";
-                        if (isset($_SERVER['QUERY_STRING'])) {
-                          $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
-                          $insertGoTo .= $_SERVER['QUERY_STRING'];
-                        }
-                        header(sprintf("Location: %s", $insertGoTo));
-                      }
+                        if(isset($_GET["respuestas"]))
+                          $respuestas = $_GET['respuestas'];
+                        else
+                          $respuestas = 0;
+                        if(isset($_GET["identificador"]))
+                          $identificador = $_GET['identificador'];
+                        else
+                          $identificador = 0;
                       ?>
-
                       <script>
-                      function subirimagen(nombrecampo)
-                      {
-                      	self.name = 'opener';
-                      	remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
-                       	remote.focus();
-                      	}
+                        function subirimagen(nombrecampo)
+                        {
+                          alert("entreeee");
+                          self.name = 'opener';
+                          remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
+                          remote.focus();
+                          }
 
-                      </script>
-                          <h1>A&ntilde;adir Publicacion</h1>
-                          <p>&nbsp;</p>
-                          <div class="container">
-                          <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-                            <div class="form-group">
-                              <label for="ejemplo_email_1">Imagen:</label>
-                              <input id="imagen" type="text" name="imagen" value="" size="32" class="form-control"/>
-                              <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');" class="form-control"/>
-                            </div>
-                            <div class="form-group">
-                              <label for="ejemplo_email_1">Autor:</label>
-                              <input id="autor" type="text" name="autor" value="" size="32" required class="form-control"/>
-                            </div>
-                            <div class="form-group">
-                              <label for="ejemplo_email_1">Titulo:</label>
-                              <input id="titulo" type="text" name="titulo" value="" size="32" class="form-control"/>
-                            </div>
-                            <div class="form-group">
-                              <label for="ejemplo_email_1">Mensaje:</label>
-                              <input id="mensaje" type="text" name="mensaje" value="" size="32" class="form-control"/>
-                            </div>
-                                <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Insertar</span></a>
-                                <a class="btn btn-warning" href="foro_lista.php"><span>Cancelar</span></a>
+                        </script>
+                      <table>
+                      <form method="post" name="form1" id="form1" action="agregar.php">
+                        <input type="hidden" name="identificador" value="<?php echo $identificador;?>">
+                        <input type="hidden" name="respuestas" value="<?php echo $respuestas;?>">
+                          <tr>
+                          <td>Autor </td>
+                          <td><input type="text" name="autor"></td>
+                          </tr>
+                          <tr>
+                            <td>Titulo</td>
+                            <td><input type="text" name="titulo"></td>
+                          </tr>
+                          <tr>
+                            <td>Mensaje</td>
+                            <td><textarea name="mensaje" cols="50" rows="5" required="required"></textarea></td>
+                          </tr>
+                          <tr>
+                            <td><input type="submit" id="submit" name="submit" value="Enviar Mensaje"></td>
+                          </tr>
+                            <input id="imagen" type="text" name="imagen" value="" size="32" class="form-control"/>
+                            <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');">
+                        </form>
+                      </table>
 
-                            <input type="hidden" name="MM_insert" value="form1" />
-                          </form>
-                        </div>
+                      </div>
 
                       	</div><!-- /row mt -->
               </section>

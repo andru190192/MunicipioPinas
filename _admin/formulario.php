@@ -9,16 +9,17 @@
 		$identificador = 0;
 ?>
 <script>
-                      function subirimagen(nombrecampo)
-                      {
-                        self.name = 'opener';
-                        remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
-                        remote.focus();
-                        }
+  function subirimagen(nombrecampo)
+  {
+    alert("entreeee");
+    self.name = 'opener';
+    remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
+    remote.focus();
+    }
 
-                      </script>
+  </script>
 <table>
-<form name="form" action="agregar.php" method="post">
+<form method="post" name="form1" id="form1" action="agregar.php">
 	<input type="hidden" name="identificador" value="<?php echo $identificador;?>">
 	<input type="hidden" name="respuestas" value="<?php echo $respuestas;?>">
     <tr>
@@ -36,8 +37,7 @@
     <tr>
       <td><input type="submit" id="submit" name="submit" value="Enviar Mensaje"></td>
     </tr>
-
       <input id="imagen" type="text" name="imagen" value="" size="32" class="form-control"/>
-      <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');" 
+      <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');">
   </form>
 </table>

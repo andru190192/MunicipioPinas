@@ -207,7 +207,7 @@
                                     <td>
                                       <a href="slider_add.php"><button class="btn btn-success btn-xs"><i class="fa fa-plus"></i></button></a>
                                       <a href="slider_edit.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                        <a href="slider_remove.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
+                                      <a href="slider_remove.php?recordID=<?php echo $row_DatosSlider['idcontador']; ?>"><button class="btn btn-danger btn-xs" onclick="javascript:return asegurar();"><i class="fa fa-trash-o "></i></button></a>
                                       </td>
                                     </tr>
                                     <?php } while ($row_DatosSlider = mysql_fetch_assoc($DatosSlider)); ?>

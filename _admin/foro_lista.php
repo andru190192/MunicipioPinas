@@ -159,7 +159,8 @@
                             echo "<td>$titulo</td>";
                             echo "<td>$autor</td>";
                             echo "<td>$respuestas</td>";
-                            echo "<td><a href='foro.php?id=$id'><button class='btn btn-primary btn-xs'><i class='fa fa-weixin'></i></button></a></td>";
+                            echo "<td><a href='foro.php?id=$id'><button class='btn btn-primary btn-xs'><i class='fa fa-weixin'></i></button></a>";
+                            echo "<a href='foro_remove.php?id=$id'><button class='btn btn-danger btn-xs' onclick='javascript:return asegurar();'><i class='fa fa-trash-o'></i></button></a></td>";
                             echo "</tr>";
                           }
                         ?>

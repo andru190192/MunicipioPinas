@@ -7,6 +7,7 @@
 			$mensaje=$_POST['mensaje'];
 			$respuestas=$_POST['respuestas'];
 			$identificador=$_POST['identificador'];
+			$imagen=$_POST['imagen'];
 			$fecha = date("d-m-y");
 			
 			
@@ -16,7 +17,7 @@
 			echo $identificador;
 			
 			//Grabamos el mensaje en la base de datos.
-			$query = "INSERT INTO foro (autor, titulo, mensaje, identificador, fecha, ult_respuesta) VALUES ('$autor', '$titulo', '$mensaje', '$identificador','$fecha','$fecha')";
+			$query = "INSERT INTO foro (autor, titulo, mensaje, identificador, fecha, ult_respuesta,imagen) VALUES ('$autor', '$titulo', '$mensaje', '$identificador','$fecha','$fecha','$imagen')";
 			
 			echo $query;
 			echo "identificador:";
