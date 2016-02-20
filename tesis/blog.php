@@ -409,7 +409,7 @@
                     $respuestas = $row['respuestas'];
                 echo "<li>";
                 echo "  <div class='widget-thumb'>";
-                echo "    <a href='foro.php?id=$id'><img src='../images/slider/prueba.jpg'/></a>";
+                echo "    <a href='foro.php?id=$id'><img src='../images/slider/$imagen'/></a>";
                 echo "  </div>";
                 echo " <div class='widget-content'>";
                 echo "    <h5><a href='foro.php?id=$id'>$titulo</a></h5>";

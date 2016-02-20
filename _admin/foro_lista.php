@@ -129,7 +129,7 @@
                       <div class="col-lg-12 main-chart">
                         <h1 style="text-align:center">Listado de Publicaciones</h1>
                         <div class="container">
-                        <a href="formulario.php"> 
+                        <a href="foro_add.php"> 
                           <button class="btn btn-success btn-xs">
                             <i class="fa fa-plus"></i>
                             </button> A&ntilde;adir Publicacion

@@ -353,6 +353,17 @@
     </div>
     <!-- End Page Banner -->
 
+    
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=1055629574493997";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+
     <!-- Start Content -->
     <div id="content">    
 			<div class="container">
@@ -391,9 +402,10 @@
                     echo "    <li><a>$respuestas Comentarios</a></li>";
                     echo "  </ul>";
                     echo "  <p>$mensaje</p>";
-                    echo "<br /><br /><a href='formulario.php?id&respuestas=$respuestas&identificador=$id'>Responder</a><br />";
+                    echo "<br/><div class='fb-login-button' data-max-rows='1' data-size='large' data-show-faces='false' data-auto-logout-link='true'></div>";
+                    echo "<br/><br/><h3><a href='formulario.php?id&respuestas=$respuestas&identificador=$id'>Comentar</a><br /></h3>";
               echo "</div>";
-            echo "</div>";
+              echo "</div>";
             }
             ?>
             <!-- End Post -->

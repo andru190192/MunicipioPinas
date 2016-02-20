@@ -133,50 +133,57 @@
               <section class="wrapper">
                   <div class="row">
                       <div class="col-lg-12 main-chart">
-                      <?php
-                        if(isset($_GET["respuestas"]))
-                          $respuestas = $_GET['respuestas'];
-                        else
-                          $respuestas = 0;
-                        if(isset($_GET["identificador"]))
-                          $identificador = $_GET['identificador'];
-                        else
-                          $identificador = 0;
-                      ?>
-                      <script>
-                        function subirimagen(nombrecampo)
-                        {
-                          alert("entreeee");
-                          self.name = 'opener';
-                          remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
-                          remote.focus();
-                          }
+                       
+                        <?php
+  if(isset($_GET["respuestas"]))
+    $respuestas = $_GET['respuestas'];
+  else
+    $respuestas = 0;
+  if(isset($_GET["identificador"]))
+    $identificador = $_GET['identificador'];
+  else
+    $identificador = 0;
+?>
+<script>
+  function subirimagen(nombrecampo)
+  {
+    self.name = 'opener';
+    remote = open('gestionimagen.php?campo='+nombrecampo, 'remote', 'width=400,height=150,location=no,scrollbars=yes,menubars=no,toolbars=no,resizable=yes,fullscreen=no, status=yes');
+    remote.focus();
+    }
 
-                        </script>
-                      <table>
-                      <form method="post" name="form1" id="form1" action="agregar.php">
-                        <input type="hidden" name="identificador" value="<?php echo $identificador;?>">
-                        <input type="hidden" name="respuestas" value="<?php echo $respuestas;?>">
-                          <tr>
-                          <td>Autor </td>
-                          <td><input type="text" name="autor"></td>
-                          </tr>
-                          <tr>
-                            <td>Titulo</td>
-                            <td><input type="text" name="titulo"></td>
-                          </tr>
-                          <tr>
-                            <td>Mensaje</td>
-                            <td><textarea name="mensaje" cols="50" rows="5" required="required"></textarea></td>
-                          </tr>
-                          <tr>
-                            <td><input type="submit" id="submit" name="submit" value="Enviar Mensaje"></td>
-                          </tr>
-                            <input id="imagen" type="text" name="imagen" value="" size="32" class="form-control"/>
-                            <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');">
-                        </form>
-                      </table>
+  </script>
+                          <p>&nbsp;</p>
+                          <div class="container">
+                          <h1>A&ntilde;adir Publicacion</h1>
+                          <form method="post" name="form1" id="form1" action="agregar.php">
+                            <div class="form-group">
+                                  <label for="imagen">Imagen Grande(734x250px):</label>
+                                  <input id="imagen" type="text" name="imagen" value="" size="32" class="form-control"/>
+                                  <input type="button" name="button" id="button" value="Subir Imagen" onclick="javascript:subirimagen('imagen');" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                  <label for="autor">Autor:</label>
+                                  <input id="autor" type="text" name="autor" value="" size="32" required class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                  <label for="titulo">Titulo:</label>
+                                  <input id="titulo" type="text" name="titulo" value="" size="32" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                  <label for="mensaje">Mensaje:</label>
+                                  <input id="mensaje" type="text" name="mensaje" value="" size="5" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" id="submit" name="submit" value="Insertar">
+                                <a class="btn btn-warning" href="foro_lista.php"><span>Cancelar</span></a>
+                            </div>
+                            <input type="hidden" name="MM_insert" value="form1" />
+                          </form>
 
+                          </div>
+
+  
                       </div>
 
                       	</div><!-- /row mt -->
