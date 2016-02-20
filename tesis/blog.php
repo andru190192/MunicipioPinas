@@ -362,7 +362,7 @@
                     $imagen = $row['imagen'];
                     echo "<div class='blog-post standard-post'>";
                     echo "  <div class='post-head text-center'>";
-                    echo "<a class='lightbox' title='This is an image title' href='../images/slider/prueba.jpg'>";
+                    echo "<a class='lightbox' title='This is an image title' href='../images/slider/$imagen'>";
                     echo "<div class='thumb-overlay'><i class='fa fa-arrows-alt'></i></div>";
                     echo "      <div class='thumb-overlay'><i class='fa fa-arrows-alt'></i></div>";
                     echo "      <img width='850px' src='../images/slider/$imagen'>";
@@ -407,6 +407,7 @@
                     $fecha = $row['fecha'];
                     $mensaje = $row['mensaje'];
                     $respuestas = $row['respuestas'];
+                    $imagen = $row['imagen'];
                 echo "<li>";
                 echo "  <div class='widget-thumb'>";
                 echo "    <a href='foro.php?id=$id'><img src='../images/slider/$imagen'/></a>";
