@@ -175,11 +175,13 @@
                       }
 
                       if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-                        $updateSQL = sprintf("UPDATE tblmenusitios SET nombre=%s, sitiocodigo=%s WHERE id=%s",
+                        $updateSQL = sprintf("UPDATE tblmenusitios SET nombre=%s, comollegar=%s, latitud=%s, longitud=%s, sitiocodigo=%s WHERE id=%s",
                                              GetSQLValueString($_POST['nombre'], "text"),
+                                             GetSQLValueString($_POST['comollegar'], "text"),
+                                             GetSQLValueString($_POST['latitud'], "text"),
+                                             GetSQLValueString($_POST['longitud'], "text"),
                                              GetSQLValueString($_POST['sitiocodigo'], "text"),
                                              GetSQLValueString($_POST['id'], "int"));
-
                         mysql_select_db($database_arqueologia, $arqueologia);
                         $Result1 = mysql_query($updateSQL, $arqueologia) or die(mysql_error());
 
@@ -221,8 +223,20 @@
                                 <input id="nombre" type="text" name="nombre" value="<?php echo htmlentities($row_DatosSlider['nombre'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control"/>
                               </div>
                               <div class="form-group">
-                                <label for="ejemplo_email_1">Codigo Sitio:</label>
-                                <input disabled="true" id="sitiocodigo" type="text" name="sitiocodigo" value="<?php echo htmlentities($row_DatosSlider['sitiocodigo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
+                                <label for="comollegar">Como llegar:</label>
+                                <input id="comollegar" type="text" name="comollegar" value="<?php echo htmlentities($row_DatosSlider['comollegar'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="latitud">Latitud:</label>
+                                <input id="latitud" type="text" name="latitud" value="<?php echo htmlentities($row_DatosSlider['latitud'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="longitud">Longitud:</label>
+                                <input id="longitud" type="text" name="longitud" value="<?php echo htmlentities($row_DatosSlider['longitud'], ENT_COMPAT, 'iso8859-1'); ?>" size="25" class="form-control"/>
+                              </div>
+                              <div class="form-group">
+                                <label for="sitiocodigo">Codigo Sitio:</label>
+                                <input readonly id="sitiocodigo" type="text" name="sitiocodigo" value="<?php echo htmlentities($row_DatosSlider['sitiocodigo'], ENT_COMPAT, 'iso8859-1'); ?>" size="32" class="form-control" />
                               </div>
                               <div class="form-group">
                                 <a class="btn btn-primary" href="javascript:document.form1.submit();" onclick="validarFormulario()"><span>Actualizar </span></a>

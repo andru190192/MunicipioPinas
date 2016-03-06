@@ -52,7 +52,7 @@
   <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow" media="screen" />
 
 
-  <!-- Margo JS  -->
+  <!-- JS  -->
   <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="js/jquery.migrate.js"></script>
   <script type="text/javascript" src="js/modernizrr.js"></script>
@@ -68,6 +68,7 @@
   <script type="text/javascript" src="js/jquery.easypiechart.min.js"></script>
   <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
   <script type="text/javascript" src="js/jquery.parallax.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
   <script type="text/javascript" src="js/jquery.slicknav.js"></script>
 
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -397,6 +398,186 @@
         <div class="hr1 margin-60"></div>
         <div class="hr1 margin-60"></div>
 
+        <?php
+        $query_DatosSlider = "SELECT * FROM tblmenusitios WHERE tblmenusitios.sitiocodigo='".$_GET['sitiocodigo']."'";
+
+        $query_limit_DatosSlider = sprintf("%s LIMIT %d, %d", $query_DatosSlider, $startRow_DatosSlider, $maxRows_DatosSlider);
+        $DatosSlider = mysql_query($query_limit_DatosSlider, $arqueologia) or die(mysql_error());
+        $row_DatosSlider = mysql_fetch_assoc($DatosSlider);
+
+        if (isset($_GET['totalRows_DatosSlider'])) {
+          $totalRows_DatosSlider = $_GET['totalRows_DatosSlider'];
+        } else {
+          $all_DatosSlider = mysql_query($query_DatosSlider);
+          $totalRows_DatosSlider = mysql_num_rows($all_DatosSlider);
+        }
+        $totalPages_DatosSlider = ceil($totalRows_DatosSlider/$maxRows_DatosSlider)-1;
+        ?>
+        
+        <div class="hr1 margin-60"></div>
+        <div class="row blog-page">
+          <div class="col-md-6 blog-box">
+            <!-- Start Map -->
+              <div id="map" data-position-latitude="<?php echo $row_DatosSlider['latitud']; ?>" data-position-longitude="<?php echo $row_DatosSlider['longitud']; ?>"></div>
+              <script>
+                (function($) {
+                  $.fn.CustomMap = function(options) {
+
+                    var posLatitude = $('#map').data('position-latitude'),
+                      posLongitude = $('#map').data('position-longitude');
+
+                    var settings = $.extend({
+                      home: {
+                        latitude: posLatitude,
+                        longitude: posLongitude
+                      },
+                      text: '<div class="map-popup"><h4>Pi&ntilde;as Arqueol&oacute;gico</h4><p>Museo arqueol&oacute;gico de las ciudad de Pi&ntilde;as.</p></div>',
+                      icon_url: $('#map').data('marker-img'),
+                      zoom: 16
+                    }, options);
+
+                    var coords = new google.maps.LatLng(settings.home.latitude, settings.home.longitude);
+
+                    return this.each(function() {
+                      var element = $(this);
+
+                      var options = {
+                        zoom: settings.zoom,
+                        center: coords,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        mapTypeControl: false,
+                        scaleControl: false,
+                        streetViewControl: false,
+                        panControl: true,
+                        disableDefaultUI: true,
+                        zoomControlOptions: {
+                          style: google.maps.ZoomControlStyle.DEFAULT
+                        },
+                        overviewMapControl: true,
+                      };
+
+                      var map = new google.maps.Map(element[0], options);
+
+                      var icon = {
+                        url: settings.icon_url,
+                        origin: new google.maps.Point(0, 0)
+                      };
+
+                      var marker = new google.maps.Marker({
+                        position: coords,
+                        map: map,
+                        icon: icon,
+                        draggable: false
+                      });
+
+                      var info = new google.maps.InfoWindow({
+                        content: settings.text
+                      });
+
+                      google.maps.event.addListener(marker, 'click', function() {
+                        info.open(map, marker);
+                      });
+
+                      var styles = [{
+                        "featureType": "landscape",
+                        "stylers": [{
+                          "saturation": -100
+                        }, {
+                          "lightness": 65
+                        }, {
+                          "visibility": "on"
+                        }]
+                      }, {
+                        "featureType": "poi",
+                        "stylers": [{
+                          "saturation": -100
+                        }, {
+                          "lightness": 51
+                        }, {
+                          "visibility": "simplified"
+                        }]
+                      }, {
+                        "featureType": "road.highway",
+                        "stylers": [{
+                          "saturation": -100
+                        }, {
+                          "visibility": "simplified"
+                        }]
+                      }, {
+                        "featureType": "road.arterial",
+                        "stylers": [{
+                          "saturation": -100
+                        }, {
+                          "lightness": 30
+                        }, {
+                          "visibility": "on"
+                        }]
+                      }, {
+                        "featureType": "road.local",
+                        "stylers": [{
+                          "saturation": -100
+                        }, {
+                          "lightness": 40
+                        }, {
+                          "visibility": "on"
+                        }]
+                      }, {
+                        "featureType": "transit",
+                        "stylers": [{
+                          "saturation": -100
+                        }, {
+                          "visibility": "simplified"
+                        }]
+                      }, {
+                        "featureType": "administrative.province",
+                        "stylers": [{
+                          "visibility": "on"
+                        }]
+                      }, {
+                        "featureType": "water",
+                        "elementType": "labels",
+                        "stylers": [{
+                          "visibility": "on"
+                        }, {
+                          "lightness": -25
+                        }, {
+                          "saturation": -100
+                        }]
+                      }, {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{
+                          "hue": "#ffff00"
+                        }, {
+                          "lightness": -25
+                        }, {
+                          "saturation": -97
+                        }]
+                      }];
+
+                      map.setOptions({
+                        styles: styles
+                      });
+                    });
+
+                  };
+                }(jQuery));
+
+                jQuery(document).ready(function() {
+                  jQuery('#map').CustomMap();
+                });
+              </script>
+            <!-- End Map -->
+          </div>
+          <div class="col-md-6 blog-box">
+            <h2 style="text-align: center;font-size: 30px !important;padding-bottom: 20px;">Como LLegar</h2>
+            <p style="font-size: 16px;">
+              <?php echo $row_DatosSlider['comollegar']; ?>
+            </p>
+          </div>
+        </div>
+
+        <div class="hr1 margin-60"></div>
 
         <?php
         $query_DatosSlider = "SELECT * FROM tblfotositios WHERE tblfotositios.codigositio='".$_GET['sitiocodigo']."'";

@@ -174,8 +174,11 @@
                       }
 
                       if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-                        $insertSQL = sprintf("INSERT INTO tblmenusitios (nombre, sitiocodigo) VALUES (%s, %s)",
+                        $insertSQL = sprintf("INSERT INTO tblmenusitios (nombre, comollegar, latitud, longitud, sitiocodigo) VALUES (%s, %s, %s, %s, %s)",
                                              GetSQLValueString($_POST['nombre'], "text"),
+                                             GetSQLValueString($_POST['comollegar'], "text"),
+                                             GetSQLValueString($_POST['latitud'], "text"),
+                                             GetSQLValueString($_POST['longitud'], "text"),
                                              GetSQLValueString($_POST['sitiocodigo'], "text"));
 
                         mysql_select_db($database_arqueologia, $arqueologia);
@@ -205,11 +208,23 @@
                           <div class="container">
                           <form role="form" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                               <div class="form-group">
-                              <label for="ejemplo_email_1">Nombre del Sitio:</label>
+                              <label for="nombre">Nombre del Sitio:</label>
                               <input id="nombre" type="text" name="nombre" value="" size="32" class="form-control" required/>
                               </div>
                               <div class="form-group">
-                              <label for="ejemplo_email_1">Codigo Sitio:</label>
+                              <label for="comollegar">Como llegar:</label>
+                              <input id="comollegar" type="text" name="comollegar" value="" size="32" class="form-control" required/>
+                              </div>
+                              <div class="form-group">
+                              <label for="latitud">Latitud:</label>
+                              <input id="latitud" type="text" name="latitud" value="" size="32" class="form-control" required/>
+                              </div>
+                              <div class="form-group">
+                              <label for="longitud">Longitud:</label>
+                              <input id="longitud" type="text" name="longitud" value="" size="32" class="form-control" required/>
+                              </div>
+                              <div class="form-group">
+                              <label for="sitiocodigo">Codigo Sitio:</label>
                               <input id="sitiocodigo" type="text" name="sitiocodigo" value="" size="32" class="form-control" required/>
                               </div>
 
